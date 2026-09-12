@@ -288,14 +288,14 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     """
     Construct the log of the h-day forward SUMMED RV as the dependent variable.
 
-        Y_t^(h) = ln( Σ_{k=1}^{h}  RV_{t+k} )
+        Y_t^(h) = ln( Σ_{k=0}^{h-1}  RV_{t+k} )
 
     Alignment note: this script lags its regressors by one day (RV_d =
     ln(RV_{t-1}), see load_base_features), so the forecast window that sits
     one step ahead of the information set is [t .. t+h-1] -- hence the
-    shift(-(h-1)) below, versus HAR_RV_run.py's shift(-h) with
-    contemporaneous regressors. Both are genuine 1-step-ahead forecasts with
-    the same information gap; only the row labelling differs.
+    shift(-(h-1)) below. HAR_RV_run.py and ProjectC use the same convention,
+    which is what makes `year >= TEST_START_YEAR` select the same test
+    forecasts, and the same number of them, as Dataset_Custom.
 
         h=1  -> Y_t = ln(RV_t)
         h=5  -> Y_t = ln( RV_t + ... + RV_{t+4}  )

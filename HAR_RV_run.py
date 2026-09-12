@@ -22,22 +22,23 @@ Target construction:
     For horizon h, the dependent variable is the log of the SUMMED realized
     variance over the forecast window:
 
-        Y_t^(h) = ln( Sum_{k=1}^{h}  RV_{t+k} )
+        Y_t^(h) = ln( Sum_{k=0}^{h-1}  RV_{t+k} )
 
-    h=1  -> Y_t = ln(RV_{t+1})
-    h=5  -> Y_t = ln( RV_{t+1} + ... + RV_{t+5}  )
-    h=22 -> Y_t = ln( RV_{t+1} + ... + RV_{t+22} )
+    h=1  -> Y_t = ln(RV_t)
+    h=5  -> Y_t = ln( RV_t + ... + RV_{t+4}  )
+    h=22 -> Y_t = ln( RV_t + ... + RV_{t+21} )
 
     This is the same target the deep baselines optimise (--aggregate_logsum
     in run.py / LSTM_run.py, where it is a log-sum-exp over the ln(RV)
     channel), so the comparison is like for like. It differs from the log of
     the window MEAN by the constant ln(h), which the OLS intercept absorbs.
 
-    The regressors (RV_d, RV_w, RV_m) use information available AT time t
-    (i.e. they include today's RV_t), so predicting over [t+1 .. t+h] is a
-    genuine 1-step-ahead forecast -- matching the deep look-back window,
-    which also ends at t. They are IDENTICAL across horizons; only the
-    target changes.
+    The regressors (RV_d, RV_w, RV_m) are all lagged one day, so the
+    information set ends at t-1 and predicting [t .. t+h-1] is a genuine
+    1-step-ahead forecast. This is ProjectC's alignment, shared with
+    HAR_Q_run.py, and it makes the year-based split select exactly the same
+    test forecasts -- and the same number of them -- as Dataset_Custom.
+    The regressors are IDENTICAL across horizons; only the target changes.
 
 HAC bandwidth (Patton & Sheppard, 2009; Bollerslev et al., 2016):
     L = 2*(h-1), applied via Newey-West (1987) Bartlett kernel.
@@ -171,13 +172,18 @@ def load_base_features(filepath: str) -> pd.DataFrame:
     and non-positive entries (holidays that leak in as RV = 0) are dropped.
 
     Regressors are identical across all forecast horizons -- only the
-    target variable Y^(h) changes.  All three use information available
-    AT time t (they include today's RV_t); the target then spans the
-    future window [t+1 .. t+h], so there is no look-ahead.
+    target variable Y^(h) changes.  All windows use shift(1), so the
+    information set ends strictly at t-1 while the target spans
+    [t .. t+h-1]; there is no look-ahead.
 
-        RV_d : ln(RV_t)
-        RV_w : mean( ln(RV_t), ..., ln(RV_{t-4})  )
-        RV_m : mean( ln(RV_t), ..., ln(RV_{t-21}) )
+        RV_d : ln(RV_{t-1})
+        RV_w : mean( ln(RV_{t-1}), ..., ln(RV_{t-5})  )
+        RV_m : mean( ln(RV_{t-1}), ..., ln(RV_{t-22}) )
+
+    This is ProjectC's row-alignment convention (and HAR_Q_run.py's). It is
+    the same forecast as the contemporaneous-regressor form, indexed one day
+    earlier -- which is what makes the year-based test split select exactly
+    the same forecasts, and the same NUMBER of them, as Dataset_Custom.
     """
     raw = pd.read_csv(filepath, index_col=0, parse_dates=True)
     raw.index.name = "date"
@@ -192,9 +198,9 @@ def load_base_features(filepath: str) -> pd.DataFrame:
     SAMPLE_END_YEAR   = int(s.index.year.max())
 
     df = pd.DataFrame({"ln_RV": s})
-    df["RV_d"] = df["ln_RV"]
-    df["RV_w"] = df["ln_RV"].rolling(LAG_W).mean()
-    df["RV_m"] = df["ln_RV"].rolling(LAG_M).mean()
+    df["RV_d"] = df["ln_RV"].shift(1)
+    df["RV_w"] = df["ln_RV"].shift(1).rolling(LAG_W).mean()
+    df["RV_m"] = df["ln_RV"].shift(1).rolling(LAG_M).mean()
     return df   # NaN rows dropped per-horizon after target is attached
 
 
@@ -206,20 +212,22 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     """
     Construct the log of the h-day forward SUMMED RV as the dependent variable.
 
-        Y_t^(h) = ln( Sum_{k=1}^{h}  RV_{t+k} )
+        Y_t^(h) = ln( Sum_{k=0}^{h-1}  RV_{t+k} )
 
-    The regressors in load_base_features include today's value (RV_d =
-    ln(RV_t), etc.), so the newest information available at row t is from t.
-    The target therefore spans [t+1 .. t+h], making every horizon a genuine
-    1-step-ahead forecast:
+    Window convention (ProjectC / HAR_Q_run.py): every regressor is shifted
+    by one day, so the information set ends at t-1 while the target covers
+    [t .. t+h-1] -- a genuine 1-step-ahead forecast, indexed one day earlier
+    than the contemporaneous-regressor form:
 
-        h=1  -> Y_t = ln(RV_{t+1})
-        h=5  -> Y_t = ln( RV_{t+1} + ... + RV_{t+5}  )
-        h=22 -> Y_t = ln( RV_{t+1} + ... + RV_{t+22} )
+        h=1  -> Y_t = ln(RV_t)
+        h=5  -> Y_t = ln( RV_t + ... + RV_{t+4}  )
+        h=22 -> Y_t = ln( RV_t + ... + RV_{t+21} )
 
-    Internally: rolling(h).sum() on the LEVEL series gives the trailing sum
-    over [t-h+1 .. t]; the final shift(-h) slides that window forward to
-    [t+1 .. t+h], and the log is taken last.
+    This indexing matters for the split, not for the forecasts: keying each
+    forecast to the first day it covers (rather than the last day of its
+    information set) is what makes `year >= TEST_START_YEAR` pick out exactly
+    the same test forecasts -- and the same COUNT -- as Dataset_Custom's
+    border arithmetic, which starts the test window at val_end - seq_len.
 
     Note this is the log of a SUM, not the mean of logs. It exceeds the log
     of the window mean by exactly ln(h) (absorbed by the OLS intercept), and
@@ -235,7 +243,12 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     DataFrame with 'Y_h' added; rows with any NaN dropped.
     """
     df = df_base.copy()
-    df["Y_h"] = forward_log_sum(df["ln_RV"], h)
+    if h == 1:
+        df["Y_h"] = df["ln_RV"]
+    else:
+        # forward_log_sum gives ln(sum RV[t+1 .. t+h]); shift back by one to
+        # land on the [t .. t+h-1] window this script indexes by.
+        df["Y_h"] = forward_log_sum(df["ln_RV"], h).shift(1)
     df = df.dropna(subset=["Y_h", "RV_d", "RV_w", "RV_m"])
     return df
 
