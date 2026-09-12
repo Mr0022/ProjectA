@@ -6,26 +6,38 @@ Based on: Corsi, F. (2009). A simple approximate long-memory model of
 
 Horizons : h = 1  (daily),  h = 5  (weekly),  h = 22  (monthly)
 
+Data: ./data/EURUSD-RV.csv -- realized variance in LEVELS (column 'RV'),
+    log-transformed on load. A file already in logs ('ln_RV') also works.
+
 Split logic mirrors Dataset_Custom (data_provider/data_loader.py) exactly:
-    Dataset_Custom : train 2010-2021, val 2022-2023, test 2024-2025
-    HAR-RV (OLS)   : train 2010-2023, test 2024-2025
+    Dataset_Custom : train <=2021, val 2022-2023, test >=2024
+    HAR-RV (OLS)   : train <=2023,                test >=2024
 
     The validation window (2022-2023) is folded into the training sample
-    because OLS has no hyperparameters to tune. The test window (2024-2025)
+    because OLS has no hyperparameters to tune. The test window (>=2024)
     is IDENTICAL to the deep learning baseline, enabling a fair
     out-of-sample comparison.
 
-Target construction (Corsi, 2009; Bollerslev et al., 2016):
-    For horizon h, the dependent variable is the h-day forward average:
+Target construction:
+    For horizon h, the dependent variable is the log of the SUMMED realized
+    variance over the forecast window:
 
-        Y_t^(h) = (1/h) * Sum_{k=1}^{h}  ln(RV_{t+k})
+        Y_t^(h) = ln( Sum_{k=1}^{h}  RV_{t+k} )
+
+    h=1  -> Y_t = ln(RV_{t+1})
+    h=5  -> Y_t = ln( RV_{t+1} + ... + RV_{t+5}  )
+    h=22 -> Y_t = ln( RV_{t+1} + ... + RV_{t+22} )
+
+    This is the same target the deep baselines optimise (--aggregate_logsum
+    in run.py / LSTM_run.py, where it is a log-sum-exp over the ln(RV)
+    channel), so the comparison is like for like. It differs from the log of
+    the window MEAN by the constant ln(h), which the OLS intercept absorbs.
 
     The regressors (RV_d, RV_w, RV_m) use information available AT time t
-    (i.e. they include today's RV_t), so predicting the average over
-    [t+1 .. t+h] is a genuine 1-step-ahead forecast. This matches the
-    information set used by the HAR-residual deep-learning hybrids
-    (Dataset_HAR_Residual), whose look-back window also ends at t. The
-    regressors are IDENTICAL across horizons -- only the target changes.
+    (i.e. they include today's RV_t), so predicting over [t+1 .. t+h] is a
+    genuine 1-step-ahead forecast -- matching the deep look-back window,
+    which also ends at t. They are IDENTICAL across horizons; only the
+    target changes.
 
 HAC bandwidth (Patton & Sheppard, 2009; Bollerslev et al., 2016):
     L = 2*(h-1), applied via Newey-West (1987) Bartlett kernel.
@@ -33,11 +45,12 @@ HAC bandwidth (Patton & Sheppard, 2009; Bollerslev et al., 2016):
     h=5  -> L=8
     h=22 -> L=42
 
-Metrics   : MSE, MAE, QLIKE (Patton, 2011) -- computed on ln(RV) scale
+Metrics   : MSE, MAE, QLIKE (Patton, 2011) -- computed on the log scale of
+            the target, i.e. on ln(sum RV)
 
 Usage:
     python HAR_RV_run.py
-    python HAR_RV_run.py --data_path ./data/realized_volatility.csv
+    python HAR_RV_run.py --data_path ./data/EURUSD-RV.csv
 ==============================================================================
 """
 
@@ -62,12 +75,14 @@ from   statsmodels.stats.stattools         import durbin_watson
 from   statsmodels.stats.diagnostic        import acorr_ljungbox
 from   scipy                               import stats
 
+from utils.rv import pick_rv_column, to_log_rv, forward_log_sum
+
 
 # ==============================================================================
 # 0.  CONFIGURATION
 # ==============================================================================
 
-DATA_FILE  = "./data/realized_volatility.csv"
+DATA_FILE  = "./data/EURUSD-RV.csv"
 
 # -- Output directory ----------------------------------------------------------
 # All figures and CSVs are written here. Created automatically if missing.
@@ -88,7 +103,7 @@ def out_path(filename: str) -> str:
 #       TRAIN_END_YEAR  = 2023   -> train rows where year <= 2023
 #       TEST_START_YEAR = 2024   -> test  rows where year >= 2024
 #
-#   The test window 2024-2025 is identical to the DL model test set.
+#   The test window (year >= 2024) is identical to the DL model test set.
 # ------------------------------------------------------------------------------
 TRAIN_END_YEAR  = 2023
 TEST_START_YEAR = 2024
@@ -102,6 +117,11 @@ HORIZONS = {
 
 LAG_W    = 5    # weekly component window
 LAG_M    = 22   # monthly component window
+
+# First/last year actually present in the loaded file. Set by load_base_features
+# so printouts and figure captions follow the data instead of hardcoded years.
+SAMPLE_START_YEAR = None
+SAMPLE_END_YEAR   = None
 DPI_SAVE = 300
 
 # -- Publication palette -------------------------------------------------------
@@ -147,7 +167,8 @@ def load_base_features(filepath: str) -> pd.DataFrame:
     Load ln(RV) series and build the three HAR regressors.
 
     The CSV must have a date column (parsed as index) and a numeric column
-    named 'ln_RV' (or the first numeric column will be used).
+    named 'RV' (levels) or 'ln_RV' (logs); levels are log-transformed here,
+    and non-positive entries (holidays that leak in as RV = 0) are dropped.
 
     Regressors are identical across all forecast horizons -- only the
     target variable Y^(h) changes.  All three use information available
@@ -160,8 +181,15 @@ def load_base_features(filepath: str) -> pd.DataFrame:
     """
     raw = pd.read_csv(filepath, index_col=0, parse_dates=True)
     raw.index.name = "date"
-    col = "ln_RV" if "ln_RV" in raw.columns else raw.select_dtypes("number").columns[0]
+    col = pick_rv_column(raw.columns)
     s   = raw[col].sort_index().dropna()
+
+    ln_rv, keep = to_log_rv(s.values, col)
+    s = pd.Series(ln_rv, index=s.index)[keep]
+
+    global SAMPLE_START_YEAR, SAMPLE_END_YEAR
+    SAMPLE_START_YEAR = int(s.index.year.min())
+    SAMPLE_END_YEAR   = int(s.index.year.max())
 
     df = pd.DataFrame({"ln_RV": s})
     df["RV_d"] = df["ln_RV"]
@@ -176,9 +204,9 @@ def load_base_features(filepath: str) -> pd.DataFrame:
 
 def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     """
-    Construct the h-day forward average log-RV as the dependent variable.
+    Construct the log of the h-day forward SUMMED RV as the dependent variable.
 
-        Y_t^(h) = (1/h) * Sum_{k=1}^{h}  ln(RV_{t+k})
+        Y_t^(h) = ln( Sum_{k=1}^{h}  RV_{t+k} )
 
     The regressors in load_base_features include today's value (RV_d =
     ln(RV_t), etc.), so the newest information available at row t is from t.
@@ -186,11 +214,16 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     1-step-ahead forecast:
 
         h=1  -> Y_t = ln(RV_{t+1})
-        h=5  -> Y_t = mean( ln(RV_{t+1}), ..., ln(RV_{t+5})  )
-        h=22 -> Y_t = mean( ln(RV_{t+1}), ..., ln(RV_{t+22}) )
+        h=5  -> Y_t = ln( RV_{t+1} + ... + RV_{t+5}  )
+        h=22 -> Y_t = ln( RV_{t+1} + ... + RV_{t+22} )
 
-    rolling(h).mean() gives the trailing average over [t-h+1 .. t]; the
-    final shift(-h) slides that window forward to [t+1 .. t+h].
+    Internally: rolling(h).sum() on the LEVEL series gives the trailing sum
+    over [t-h+1 .. t]; the final shift(-h) slides that window forward to
+    [t+1 .. t+h], and the log is taken last.
+
+    Note this is the log of a SUM, not the mean of logs. It exceeds the log
+    of the window mean by exactly ln(h) (absorbed by the OLS intercept), and
+    differs from the mean of logs by a Jensen gap that grows with h.
 
     Parameters
     ----------
@@ -202,7 +235,7 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     DataFrame with 'Y_h' added; rows with any NaN dropped.
     """
     df = df_base.copy()
-    df["Y_h"] = df["ln_RV"].rolling(h).mean().shift(-h)
+    df["Y_h"] = forward_log_sum(df["ln_RV"], h)
     df = df.dropna(subset=["Y_h", "RV_d", "RV_w", "RV_m"])
     return df
 
@@ -337,11 +370,11 @@ def print_split_info(train: pd.DataFrame, test: pd.DataFrame, h: int):
     print(f"  {'Train':<8} {len(train):>6}  "
           f"{str(train.index[0].date()):>12}  "
           f"{str(train.index[-1].date()):>12}  "
-          f"2010 - {TRAIN_END_YEAR}")
+          f"{SAMPLE_START_YEAR} - {TRAIN_END_YEAR}")
     print(f"  {'Test':<8} {len(test):>6}  "
           f"{str(test.index[0].date()):>12}  "
           f"{str(test.index[-1].date()):>12}  "
-          f"{TEST_START_YEAR} - 2025")
+          f"{TEST_START_YEAR} - {SAMPLE_END_YEAR}")
     print(f"  {THIN[:60]}")
     print(f"  Note: validation window (2022-2023) folded into train -- OLS")
     print(f"        has no hyperparameters. Test window matches DL model.\n")
@@ -380,7 +413,8 @@ def print_estimation_table(result, h: int):
     print(f"  AIC          : {result.aic:.3f}   BIC : {result.bic:.3f}")
 
 def print_metrics_by_horizon(all_metrics: dict):
-    print_section("OUT-OF-SAMPLE FORECAST EVALUATION -- ALL HORIZONS  (Test Set  2024-2025)")
+    print_section(f"OUT-OF-SAMPLE FORECAST EVALUATION -- ALL HORIZONS  "
+                  f"(Test Set  {TEST_START_YEAR}-{SAMPLE_END_YEAR})")
     print(f"  {'Metric':<10}", end="")
     for h in HORIZONS:
         print(f"  {HORIZONS[h]['label']:>20}", end="")
@@ -393,11 +427,11 @@ def print_metrics_by_horizon(all_metrics: dict):
             print(f"  {v:>20.6f}", end="")
         print()
     print(THIN)
-    print("  Note: All metrics on ln(RV) scale.  QLIKE: Patton (2011), smaller = better.")
+    print("  Note: MSE/MAE on the ln(sum RV) scale. QLIKE compares exp() of the\n        target, i.e. summed variance over the window; the ln(h) offset\n        cancels in its ratio, so it is comparable across conventions.")
 
 def print_diagnostics(diag: dict, h: int):
     hlabel = HORIZONS[h]["label"]
-    print_section(f"RESIDUAL DIAGNOSTICS  [h={h}, {hlabel}, Training Sample 2010-{TRAIN_END_YEAR}]")
+    print_section(f"RESIDUAL DIAGNOSTICS  [h={h}, {hlabel}, Training Sample {SAMPLE_START_YEAR}-{TRAIN_END_YEAR}]")
     print(f"  {'Statistic':<30} {'Value':>12}")
     print(THIN)
     for k, v in diag.items():
@@ -429,10 +463,10 @@ def figure_multi_horizon_forecast(results_dict):
                 ls="--", alpha=0.90, label=f"HAR-RV  h={h}")
         ax.fill_between(t_idx, actual.values, pred.values,
                         color="#aaaaaa", alpha=0.18, label="Error")
-        ax.set_ylabel(f"$\\bar{{\\ln(RV)}}^{{({h})}}$", fontsize=10)
+        ax.set_ylabel(f"$\\ln\\left(\\sum RV\\right)^{{({h})}}$", fontsize=10)
         ax.set_title(
             f"{panel_letters[idx]}  {HORIZONS[h]['label']} -- Out-of-Sample Forecast  "
-            f"({TEST_START_YEAR}-2025)",
+            f"({TEST_START_YEAR}-{SAMPLE_END_YEAR})",
             loc="left", pad=4)
         ax.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
@@ -443,7 +477,7 @@ def figure_multi_horizon_forecast(results_dict):
 
     fig.suptitle(
         f"HAR-RV Multi-Horizon Forecasts: h = 1, 5, 22  (Corsi, 2009)\n"
-        f"Train: 2010-{TRAIN_END_YEAR}  |  Test: {TEST_START_YEAR}-2025",
+        f"Train: {SAMPLE_START_YEAR}-{TRAIN_END_YEAR}  |  Test: {TEST_START_YEAR}-{SAMPLE_END_YEAR}",
         fontsize=12, fontweight="bold", y=1.01)
     fig.savefig(out_path("har_rv_fig1_multihoriz_forecast.pdf"), bbox_inches="tight")
     fig.savefig(out_path("har_rv_fig1_multihoriz_forecast.png"), dpi=DPI_SAVE, bbox_inches="tight")
@@ -475,7 +509,7 @@ def figure_loss_comparison(all_metrics: dict):
         ax.yaxis.set_minor_locator(AutoMinorLocator())
 
     fig.suptitle(
-        f"HAR-RV: Out-of-Sample Loss by Horizon -- Test Set  {TEST_START_YEAR}-2025",
+        f"HAR-RV: Out-of-Sample Loss by Horizon -- Test Set  {TEST_START_YEAR}-{SAMPLE_END_YEAR}",
         fontsize=12, fontweight="bold")
     fig.savefig(out_path("har_rv_fig2_loss_comparison.pdf"), bbox_inches="tight")
     fig.savefig(out_path("har_rv_fig2_loss_comparison.png"), dpi=DPI_SAVE, bbox_inches="tight")
@@ -555,7 +589,7 @@ def figure_residual_diagnostics_multihoriz(results_dict: dict):
         ax.legend(fontsize=8)
 
     fig.suptitle(
-        f"HAR-RV: ACF of Squared Residuals -- Training Sample 2010-{TRAIN_END_YEAR} "
+        f"HAR-RV: ACF of Squared Residuals -- Training Sample {SAMPLE_START_YEAR}-{TRAIN_END_YEAR} "
         f"(Vertical line = NW bandwidth)",
         fontsize=11, fontweight="bold")
     fig.savefig(out_path("har_rv_fig4_acf_residuals.pdf"), bbox_inches="tight")
@@ -585,8 +619,8 @@ def figure_scatter_grid(results_dict: dict):
         xs = np.array([lo, hi])
         ax.plot(xs, intercept + slope * xs, color=C_TEST, lw=1.0,
                 label=f"OLS fit  R2={r**2:.3f}")
-        ax.set_xlabel(f"Predicted  $\\bar{{\\ln(RV)}}^{{({h})}}$", fontsize=9)
-        ax.set_ylabel(f"Actual     $\\bar{{\\ln(RV)}}^{{({h})}}$", fontsize=9)
+        ax.set_xlabel(f"Predicted  $\\ln\\left(\\sum RV\\right)^{{({h})}}$", fontsize=9)
+        ax.set_ylabel(f"Actual     $\\ln\\left(\\sum RV\\right)^{{({h})}}$", fontsize=9)
         ax.set_title(f"{panel_letters[idx]}  h={h}  [{HORIZONS[h]['label']}]",
                      loc="left", pad=3)
         ax.legend(fontsize=8)
@@ -594,7 +628,7 @@ def figure_scatter_grid(results_dict: dict):
         ax.yaxis.set_minor_locator(AutoMinorLocator())
 
     fig.suptitle(
-        f"HAR-RV: Actual vs. Predicted -- Test Set  {TEST_START_YEAR}-2025  (all horizons)",
+        f"HAR-RV: Actual vs. Predicted -- Test Set  {TEST_START_YEAR}-{SAMPLE_END_YEAR}  (all horizons)",
         fontsize=12, fontweight="bold")
     fig.savefig(out_path("har_rv_fig5_scatter_grid.pdf"), bbox_inches="tight")
     fig.savefig(out_path("har_rv_fig5_scatter_grid.png"), dpi=DPI_SAVE, bbox_inches="tight")
@@ -658,7 +692,7 @@ def main(data_file: str = DATA_FILE):
     print(f"\n{SEP}")
     print("  HAR-RV MULTI-HORIZON MODEL  --  Corsi (2009)")
     print("  EUR/USD Realized Volatility  |  Horizons: h = 1, 5, 22")
-    print(f"  Split: Train 2010-{TRAIN_END_YEAR}  |  Test {TEST_START_YEAR}-2025")
+    print(f"  Split: Train <={TRAIN_END_YEAR}  |  Test >={TEST_START_YEAR}")
     print(f"  (Split mirrors Dataset_Custom in data_loader.py for DL comparison)")
     print(SEP)
 
@@ -732,7 +766,7 @@ def main(data_file: str = DATA_FILE):
 
     # -- 10.6  Summary ---------------------------------------------------------
     print(f"\n{SEP}")
-    print(f"  FINAL SUMMARY -- OUT-OF-SAMPLE TEST SET  ({TEST_START_YEAR}-2025)")
+    print(f"  FINAL SUMMARY -- OUT-OF-SAMPLE TEST SET  ({TEST_START_YEAR}-{SAMPLE_END_YEAR})")
     print(THIN)
     hdr = f"  {'Horizon':<14} {'NW Lag':>8} {'MSE':>12} {'MAE':>12} {'QLIKE':>12}"
     print(hdr)
@@ -745,8 +779,8 @@ def main(data_file: str = DATA_FILE):
     print(THIN)
     print(f"""
   Split:
-    Train  2010 - {TRAIN_END_YEAR}  (year <= {TRAIN_END_YEAR}, val folded in)
-    Test   {TEST_START_YEAR} - 2025   (year >= {TEST_START_YEAR})
+    Train  {SAMPLE_START_YEAR} - {TRAIN_END_YEAR}  (year <= {TRAIN_END_YEAR}, val folded in)
+    Test   {TEST_START_YEAR} - {SAMPLE_END_YEAR}   (year >= {TEST_START_YEAR})
     Logic mirrors Dataset_Custom in data_loader.py -- test window is
     IDENTICAL to the deep learning baseline for a fair comparison.
 
@@ -767,6 +801,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="HAR-RV multi-horizon realized-volatility baseline (Corsi, 2009).")
     parser.add_argument("--data_path", type=str, default=DATA_FILE,
-                        help="Path to the ln(RV) CSV (date index + 'ln_RV' column).")
+                        help="Path to the RV CSV (date index + an 'RV' level column, or 'ln_RV').")
     args = parser.parse_args()
     main(args.data_path)

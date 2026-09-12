@@ -28,12 +28,12 @@ class Exp_Main(Exp_Basic):
         model_dict = {
             'ModernTCN': ModernTCN,
         }
-        # When aggregate_mean is enabled the model head must output a single
-        # value (the predicted mean).  Temporarily set pred_len=1 so that
+        # When aggregate_logsum is enabled the model head must output a single
+        # value (the predicted ln(sum RV)).  Temporarily set pred_len=1 so that
         # ModernTCN builds with target_window=1, then restore the original
         # value so the data loader still loads the full pred_len future steps
-        # (needed to compute the ground-truth mean inside _get_target).
-        if getattr(self.args, 'aggregate_mean', False):
+        # (needed to build the ground-truth target inside _get_target).
+        if getattr(self.args, 'aggregate_logsum', False):
             orig_pred_len = self.args.pred_len
             self.args.pred_len = 1
             model = model_dict[self.args.model].Model(self.args).float()
@@ -46,10 +46,18 @@ class Exp_Main(Exp_Basic):
         return model
 
     def _get_target(self, batch_y, f_dim):
-        """Slice the future window from batch_y and optionally mean-pool it."""
+        """
+        Slice the future window and, when aggregating, reduce it to
+
+            Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} )
+
+        The data channel holds ln(RV) (Dataset_Custom forbids scaling for
+        exactly this reason), so the sum of levels is a log-sum-exp over the
+        horizon axis. For h = 1 it reduces to ln(RV_{t+1}).
+        """
         y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-        if getattr(self.args, 'aggregate_mean', False):
-            y = y.mean(dim=1, keepdim=True)
+        if getattr(self.args, 'aggregate_logsum', False):
+            y = torch.logsumexp(y, dim=1, keepdim=True)
         return y
 
     def _unpack_batch(self, batch):
@@ -332,13 +340,11 @@ class Exp_Main(Exp_Basic):
         if self.args.test_flop:
             test_params_flop((batch_x.shape[1], batch_x.shape[2]))
             exit()
-        preds = np.array(preds)
-        trues = np.array(trues)
-        inputx = np.array(inputx)
-
-        preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
-        trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
-        inputx = inputx.reshape(-1, inputx.shape[-2], inputx.shape[-1])
+        # concatenate (not np.array + reshape): the test loader keeps the final
+        # partial batch, so per-batch first dimensions differ.
+        preds = np.concatenate(preds, axis=0)
+        trues = np.concatenate(trues, axis=0)
+        inputx = np.concatenate(inputx, axis=0)
 
         # result save
         folder_path = './results/' + setting + '/'
@@ -410,8 +416,7 @@ class Exp_Main(Exp_Basic):
                 pred = outputs.detach().cpu().numpy()  # .squeeze()
                 preds.append(pred)
 
-        preds = np.array(preds)
-        preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
+        preds = np.concatenate(preds, axis=0)
 
         # result save
         folder_path = './results/' + setting + '/'

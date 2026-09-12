@@ -1,11 +1,9 @@
 from data_provider.data_loader import Dataset_Custom, Dataset_Custom_Events, Dataset_Pred
-from data_provider.data_loader import Dataset_HAR_Residual
 from torch.utils.data import DataLoader
 
 data_dict = {
     'custom': Dataset_Custom,
     'custom_events': Dataset_Custom_Events,
-    'har_residual': Dataset_HAR_Residual,
 }
 
 
@@ -15,7 +13,11 @@ def data_provider(args, flag):
 
     if flag == 'test':
         shuffle_flag = False
-        drop_last = True
+        # Keep the final partial batch: dropping it silently discards the tail
+        # of the test period (with batch_size 256 that was ~20% of the 2024+
+        # sample) and makes the metrics non-comparable to the HAR baselines,
+        # which score every row.
+        drop_last = False
         batch_size = args.batch_size
         freq = args.freq
     elif flag == 'pred':

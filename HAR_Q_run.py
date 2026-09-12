@@ -20,14 +20,38 @@ attenuates its coefficient toward the smoother weekly/monthly components.
 This is the headline "HAR-Q" specification (daily lag only), NOT "HAR-Q-F"
 (which would also adjust the weekly and monthly lags).
 
-Split logic mirrors Dataset_Custom (data_provider/data_loader.py) exactly:
-    Dataset_Custom : train 2010-2021, val 2022-2023, test 2024-2025
-    HAR-Q (OLS)    : train 2010-2023, test 2024-2025
+Target construction:
+    For horizon h, the dependent variable is the log of the SUMMED realized
+    variance over the forecast window -- the same target as HAR-RV and the
+    deep baselines (--aggregate_logsum):
+
+        Y_t^(h) = ln( Sum_{k=1}^{h}  RV_{t+k} )
+
+    It differs from the log of the window MEAN by the constant ln(h), which
+    the OLS intercept absorbs.
+
+Split logic mirrors Dataset_Custom (data_provider/data_loader.py):
+    Dataset_Custom : train <=2021, val 2022-2023, test >=2024
+    HAR-Q (OLS)    : train <=2023,                test >=2024
 
     The validation window (2022-2023) is folded into the training sample
-    because HAR-Q is OLS with no hyperparameters to tune. The test window
-    (2024-2025) is IDENTICAL to the deep learning baseline, enabling a fair
-    out-of-sample comparison.
+    because HAR-Q is OLS with no hyperparameters to tune.
+
+------------------------------------------------------------------------------
+DATA SOURCE -- DIFFERENT FROM THE OTHER MODELS (read before publishing)
+------------------------------------------------------------------------------
+HAR-RV, LSTM and ModernTCN default to data/EURUSD-RV.csv. HAR-Q does NOT: it
+needs realized quarticity, and that file carries only RV. The sole RQ source in
+this repo is data/realized_volatility_with_rqq.csv, whose RV series is a
+DIFFERENT series from EURUSD-RV.csv (they disagree on most overlapping dates
+and their trading calendars differ), so HAR-Q stays on that file.
+
+    => HAR-Q numbers are NOT directly comparable to the other models.
+
+To put HAR-Q on the same footing, add an 'RQ' column (built from the same
+intraday returns as the EURUSD RV) to data/EURUSD-RV.csv and run:
+
+    python HAR_Q_run.py --data_path ./data/EURUSD-RV.csv
 
 ------------------------------------------------------------------------------
 IMPORTANT — DATA REQUIREMENT
@@ -67,11 +91,12 @@ HAC bandwidth (Patton & Sheppard, 2009; Bollerslev et al., 2016):
     h=5  → L=8
     h=22 → L=42
 
-Metrics   : MSE, MAE, QLIKE (Patton, 2011) — computed on ln(RV) scale
+Metrics   : MSE, MAE, QLIKE (Patton, 2011) — computed on the log scale of the
+            target, i.e. on ln(sum RV)
 
 Usage:
     python HAR_Q_run.py
-    python HAR_Q_run.py --data_path ./data/realized_volatility.csv
+    python HAR_Q_run.py --data_path ./data/realized_volatility_with_rqq.csv
     python HAR_Q_run.py --q_transform ratio
 ==============================================================================
 """
@@ -96,6 +121,8 @@ from   statsmodels.regression.linear_model import OLS
 from   statsmodels.stats.stattools         import durbin_watson
 from   statsmodels.stats.diagnostic        import acorr_ljungbox
 from   scipy                               import stats
+
+from utils.rv import pick_rv_column, to_log_rv, forward_log_sum
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -125,6 +152,11 @@ HORIZONS = {
 
 LAG_W    = 5    # weekly component window
 LAG_M    = 22   # monthly component window
+
+# First/last year actually present in the loaded file. Set by load_base_features
+# so printouts and figure captions follow the data instead of hardcoded years.
+SAMPLE_START_YEAR = None
+SAMPLE_END_YEAR   = None
 DPI_SAVE = 300
 
 # ── HAR-Q realized-quarticity settings ───────────────────────────────────────
@@ -216,8 +248,15 @@ def load_base_features(filepath: str) -> pd.DataFrame:
     raw.index.name = "date"
     raw = raw.sort_index()
 
-    col = "ln_RV" if "ln_RV" in raw.columns else raw.select_dtypes("number").columns[0]
+    col = pick_rv_column(raw.columns)
     s   = raw[col].astype(float).dropna()
+
+    ln_rv, keep = to_log_rv(s.values, col)
+    s = pd.Series(ln_rv, index=s.index)[keep]
+
+    global SAMPLE_START_YEAR, SAMPLE_END_YEAR
+    SAMPLE_START_YEAR = int(s.index.year.min())
+    SAMPLE_END_YEAR   = int(s.index.year.max())
 
     df = pd.DataFrame({"ln_RV": s})
     df["RV_d"] = df["ln_RV"].shift(1)
@@ -247,15 +286,28 @@ def load_base_features(filepath: str) -> pd.DataFrame:
 
 def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     """
-    Construct the h-day forward average log-RV as the dependent variable.
+    Construct the log of the h-day forward SUMMED RV as the dependent variable.
 
-        Y_t^(h) = (1/h) * Σ_{k=1}^{h}  ln(RV_{t+k})
+        Y_t^(h) = ln( Σ_{k=1}^{h}  RV_{t+k} )
+
+    Alignment note: this script lags its regressors by one day (RV_d =
+    ln(RV_{t-1}), see load_base_features), so the forecast window that sits
+    one step ahead of the information set is [t .. t+h-1] -- hence the
+    shift(-(h-1)) below, versus HAR_RV_run.py's shift(-h) with
+    contemporaneous regressors. Both are genuine 1-step-ahead forecasts with
+    the same information gap; only the row labelling differs.
+
+        h=1  -> Y_t = ln(RV_t)
+        h=5  -> Y_t = ln( RV_t + ... + RV_{t+4}  )
+        h=22 -> Y_t = ln( RV_t + ... + RV_{t+21} )
     """
     df = df_base.copy()
     if h == 1:
         df["Y_h"] = df["ln_RV"]
     else:
-        df["Y_h"] = df["ln_RV"].rolling(h).mean().shift(-(h - 1))
+        # forward_log_sum gives ln(sum RV[t+1 .. t+h]); shift back by one to
+        # land on this script's [t .. t+h-1] window.
+        df["Y_h"] = forward_log_sum(df["ln_RV"], h).shift(1)
     df = df.dropna(subset=["Y_h", "RV_d", "RV_w", "RV_m", "Q_raw"])
     return df
 
@@ -380,11 +432,11 @@ def print_split_info(train: pd.DataFrame, test: pd.DataFrame, h: int):
     print(f"  {'Train':<8} {len(train):>6}  "
           f"{str(train.index[0].date()):>12}  "
           f"{str(train.index[-1].date()):>12}  "
-          f"2010 – {TRAIN_END_YEAR}")
+          f"{SAMPLE_START_YEAR} – {TRAIN_END_YEAR}")
     print(f"  {'Test':<8} {len(test):>6}  "
           f"{str(test.index[0].date()):>12}  "
           f"{str(test.index[-1].date()):>12}  "
-          f"{TEST_START_YEAR} – 2025")
+          f"{TEST_START_YEAR} – {SAMPLE_END_YEAR}")
     print(f"  {THIN[:60]}")
     print(f"  Note: validation window (2022-2023) folded into train — OLS")
     print(f"        has no hyperparameters. Test window matches DL model.\n")
@@ -427,7 +479,8 @@ def print_estimation_table(result, h: int, q_bar: float):
     print(f"  AIC          : {result.aic:.3f}   BIC : {result.bic:.3f}")
 
 def print_metrics_by_horizon(all_metrics: dict):
-    print_section("OUT-OF-SAMPLE FORECAST EVALUATION — ALL HORIZONS  (Test Set  2024–2025)")
+    print_section(f"OUT-OF-SAMPLE FORECAST EVALUATION — ALL HORIZONS  "
+                  f"(Test Set  {TEST_START_YEAR}–{SAMPLE_END_YEAR})")
     print(f"  {'Metric':<10}", end="")
     for h in HORIZONS:
         print(f"  {HORIZONS[h]['label']:>20}", end="")
@@ -440,11 +493,11 @@ def print_metrics_by_horizon(all_metrics: dict):
             print(f"  {v:>20.6f}", end="")
         print()
     print(THIN)
-    print("  Note: All metrics on ln(RV) scale.  QLIKE: Patton (2011), smaller = better.")
+    print("  Note: MSE/MAE on the ln(sum RV) scale. QLIKE compares exp() of the\n        target, i.e. summed variance over the window; the ln(h) offset\n        cancels in its ratio, so it is comparable across conventions.")
 
 def print_diagnostics(diag: dict, h: int):
     hlabel = HORIZONS[h]["label"]
-    print_section(f"RESIDUAL DIAGNOSTICS  [h={h}, {hlabel}, Training Sample 2010–{TRAIN_END_YEAR}]")
+    print_section(f"RESIDUAL DIAGNOSTICS  [h={h}, {hlabel}, Training Sample {SAMPLE_START_YEAR}–{TRAIN_END_YEAR}]")
     print(f"  {'Statistic':<30} {'Value':>12}")
     print(THIN)
     for k, v in diag.items():
@@ -479,7 +532,7 @@ def figure_multi_horizon_forecast(results_dict):
         ax.set_ylabel(f"$\\bar{{\\ln(RV)}}^{{({h})}}$", fontsize=10)
         ax.set_title(
             f"{panel_letters[idx]}  {HORIZONS[h]['label']} — Out-of-Sample Forecast  "
-            f"({TEST_START_YEAR}–2025)",
+            f"({TEST_START_YEAR}–{SAMPLE_END_YEAR})",
             loc="left", pad=4)
         ax.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
@@ -490,7 +543,7 @@ def figure_multi_horizon_forecast(results_dict):
 
     fig.suptitle(
         f"HAR-Q Multi-Horizon Forecasts: h = 1, 5, 22  (Bollerslev et al., 2016)\n"
-        f"Train: 2010–{TRAIN_END_YEAR}  |  Test: {TEST_START_YEAR}–2025",
+        f"Train: {SAMPLE_START_YEAR}–{TRAIN_END_YEAR}  |  Test: {TEST_START_YEAR}–{SAMPLE_END_YEAR}",
         fontsize=12, fontweight="bold", y=1.01)
     fig.savefig(out_path("har_q_fig1_multihoriz_forecast.pdf"), bbox_inches="tight")
     fig.savefig(out_path("har_q_fig1_multihoriz_forecast.png"), dpi=DPI_SAVE, bbox_inches="tight")
@@ -522,7 +575,7 @@ def figure_loss_comparison(all_metrics: dict):
         ax.yaxis.set_minor_locator(AutoMinorLocator())
 
     fig.suptitle(
-        f"HAR-Q: Out-of-Sample Loss by Horizon — Test Set  {TEST_START_YEAR}–2025",
+        f"HAR-Q: Out-of-Sample Loss by Horizon — Test Set  {TEST_START_YEAR}–{SAMPLE_END_YEAR}",
         fontsize=12, fontweight="bold")
     fig.savefig(out_path("har_q_fig2_loss_comparison.pdf"), bbox_inches="tight")
     fig.savefig(out_path("har_q_fig2_loss_comparison.png"), dpi=DPI_SAVE, bbox_inches="tight")
@@ -606,7 +659,7 @@ def figure_residual_diagnostics_multihoriz(results_dict: dict):
         ax.legend(fontsize=8)
 
     fig.suptitle(
-        f"HAR-Q: ACF of Squared Residuals — Training Sample 2010–{TRAIN_END_YEAR} "
+        f"HAR-Q: ACF of Squared Residuals — Training Sample {SAMPLE_START_YEAR}–{TRAIN_END_YEAR} "
         f"(Vertical line = NW bandwidth)",
         fontsize=11, fontweight="bold")
     fig.savefig(out_path("har_q_fig4_acf_residuals.pdf"), bbox_inches="tight")
@@ -645,7 +698,7 @@ def figure_scatter_grid(results_dict: dict):
         ax.yaxis.set_minor_locator(AutoMinorLocator())
 
     fig.suptitle(
-        f"HAR-Q: Actual vs. Predicted — Test Set  {TEST_START_YEAR}–2025  (all horizons)",
+        f"HAR-Q: Actual vs. Predicted — Test Set  {TEST_START_YEAR}–{SAMPLE_END_YEAR}  (all horizons)",
         fontsize=12, fontweight="bold")
     fig.savefig(out_path("har_q_fig5_scatter_grid.pdf"), bbox_inches="tight")
     fig.savefig(out_path("har_q_fig5_scatter_grid.png"), dpi=DPI_SAVE, bbox_inches="tight")
@@ -709,7 +762,7 @@ def main(data_file: str = DATA_FILE):
     print(f"\n{SEP}")
     print("  HAR-Q MULTI-HORIZON MODEL  —  Bollerslev, Patton & Quaedvlieg (2016)")
     print("  EUR/USD Realized Volatility  |  Horizons: h = 1, 5, 22")
-    print(f"  Split: Train 2010–{TRAIN_END_YEAR}  |  Test {TEST_START_YEAR}–2025")
+    print(f"  Split: Train <={TRAIN_END_YEAR}  |  Test >={TEST_START_YEAR}")
     print(f"  Q-term: {Q_TRANSFORM}   (daily-lag measurement-error adjustment)")
     print(f"  (Split mirrors Dataset_Custom in data_loader.py for DL comparison)")
     print(SEP)
@@ -788,7 +841,7 @@ def main(data_file: str = DATA_FILE):
 
     # ── 10.6  Summary ─────────────────────────────────────────────────────────
     print(f"\n{SEP}")
-    print(f"  FINAL SUMMARY — OUT-OF-SAMPLE TEST SET  ({TEST_START_YEAR}–2025)")
+    print(f"  FINAL SUMMARY — OUT-OF-SAMPLE TEST SET  ({TEST_START_YEAR}–{SAMPLE_END_YEAR})")
     print(THIN)
     hdr = f"  {'Horizon':<14} {'NW Lag':>8} {'MSE':>12} {'MAE':>12} {'QLIKE':>12}"
     print(hdr)
@@ -808,8 +861,8 @@ def main(data_file: str = DATA_FILE):
     yesterday's RV is a noisy volatility estimate (large RQ).
 
   Split:
-    Train  2010 – {TRAIN_END_YEAR}  (year <= {TRAIN_END_YEAR}, val folded in)
-    Test   {TEST_START_YEAR} – 2025   (year >= {TEST_START_YEAR})
+    Train  {SAMPLE_START_YEAR} – {TRAIN_END_YEAR}  (year <= {TRAIN_END_YEAR}, val folded in)
+    Test   {TEST_START_YEAR} – {SAMPLE_END_YEAR}   (year >= {TEST_START_YEAR})
     Logic mirrors Dataset_Custom in data_loader.py — test window is
     IDENTICAL to the deep learning baseline for a fair comparison.
 
@@ -831,7 +884,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="HAR-Q multi-horizon realized-volatility model (Bollerslev, Patton & Quaedvlieg, 2016).")
     parser.add_argument("--data_path", type=str, default=DATA_FILE,
-                        help="Path to the CSV (date index + 'ln_RV' + realized-quarticity column).")
+                        help="Path to the CSV (date index + an 'RV' level or 'ln_RV' column, "
+                             "plus a realized-quarticity column).")
     parser.add_argument("--q_transform", type=str, default=Q_TRANSFORM,
                         choices=["sqrt", "ratio"],
                         help="HAR-Q Q-term: 'sqrt'=√RQ_{t-1} (canonical BPQ), "

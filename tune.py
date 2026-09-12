@@ -256,7 +256,7 @@ def build_base_config(tune_args: argparse.Namespace) -> argparse.Namespace:
     cfg.checkpoints  = tune_args.checkpoints
 
     # Aggregation mode
-    cfg.aggregate_mean = tune_args.aggregate_mean
+    cfg.aggregate_logsum = tune_args.aggregate_logsum
 
     # News-event conditioning (Study 2). event_fusion/past/future are fixed;
     # event_dim is searched (see sample_hyperparameters).
@@ -333,14 +333,15 @@ def parse_tune_args():
     p = argparse.ArgumentParser(description='Optuna HPO for ModernTCN')
 
     # Dataset (required)
-    p.add_argument('--data',      type=str, required=True, help='Dataset name, e.g. ETTh1')
-    p.add_argument('--root_path', type=str, required=True, help='Root path to data directory')
-    p.add_argument('--data_path', type=str, required=True, help='CSV filename, e.g. ETTh1.csv')
+    p.add_argument('--data',      type=str, default='custom', help='Dataset name, e.g. custom / custom_events')
+    p.add_argument('--root_path', type=str, default='./data/', help='Root path to data directory')
+    p.add_argument('--data_path', type=str, default='EURUSD-RV.csv', help='CSV filename')
     p.add_argument('--enc_in',    type=int, required=True, help='Number of input variables')
 
     # Task
     p.add_argument('--features',  type=str, default='M',    help='M / S / MS')
-    p.add_argument('--target',    type=str, default='OT',   help='Target column for S/MS')
+    p.add_argument('--target',    type=str, default='RV',
+                   help='Target column for S/MS; a level RV column is log-transformed on load')
     p.add_argument('--freq',      type=str, default='h',    help='Time feature frequency')
     p.add_argument('--embed',     type=str, default='timeF',help='Time embedding type')
     p.add_argument('--seq_len',   type=int, default=22,     help='Fallback input length (seq_len is searched over {22,35,70,180})')
@@ -364,8 +365,8 @@ def parse_tune_args():
                    help='Epochs before pruner starts evaluating a trial')
     p.add_argument('--reset', action='store_true',
                    help='Delete existing study DB and start fresh (use after changing search space)')
-    p.add_argument('--aggregate_mean', action='store_true', default=False,
-                   help='Predict the mean of the next pred_len steps (single-value output)')
+    p.add_argument('--aggregate_logsum', '--aggregate_mean', action='store_true',
+                   dest='aggregate_logsum', default=False, help='Predict the single aggregated target ln(sum_{k=1..h} RV_{t+k}) instead of each step individually (single-value output). --aggregate_mean is kept as a deprecated alias.')
 
     # News events (Study 2)
     p.add_argument('--use_events', action='store_true', default=False,

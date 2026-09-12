@@ -9,6 +9,11 @@
 # tune.py expands single tuned values into 4-stage lists (dims == dw_dims ==
 # [dim]*4, etc.), so that is reproduced below. --itr 5 sweeps seeds 2021..2025.
 #
+# !! Hyper-parameters below were tuned on the PREVIOUS dataset
+#    (realized_volatility.csv) under the PREVIOUS target (mean of ln RV).
+#    The data and target have since changed to data/EURUSD-RV.csv and
+#    Y_t^(h) = ln(sum_{k=1..h} RV_{t+k}); re-tune before publishing.
+#
 # Run from the ModernTCN-Long-term-forecasting/ directory:
 #     bash scripts/moderntcn.sh
 # In a notebook, prefix each block with '!' and run it as its own cell.
@@ -17,9 +22,9 @@ set -euo pipefail
 
 # ---- h = 1  (ModernTCN1) ----------------------------------------------------
 python run.py --is_training 1 --model_id ModernTCN_h1 --model ModernTCN \
-  --data custom --root_path ./data/ --data_path realized_volatility.csv \
-  --features S --target ln_RV --enc_in 1 --dec_in 1 --c_out 1 \
-  --aggregate_mean --seq_len 70 --pred_len 1 \
+  --data custom --root_path ./data/ --data_path EURUSD-RV.csv \
+  --features S --target RV --enc_in 1 --dec_in 1 --c_out 1 \
+  --aggregate_logsum --seq_len 70 --pred_len 1 \
   --patch_size 16 --patch_stride 8 --ffn_ratio 2 \
   --num_blocks 2 2 2 2 --large_size 27 27 27 27 --small_size 5 5 5 5 \
   --dims 32 32 32 32 --dw_dims 32 32 32 32 \
@@ -30,9 +35,9 @@ python run.py --is_training 1 --model_id ModernTCN_h1 --model ModernTCN \
 
 # ---- h = 5  (ModernTCN5) ----------------------------------------------------
 python run.py --is_training 1 --model_id ModernTCN_h5 --model ModernTCN \
-  --data custom --root_path ./data/ --data_path realized_volatility.csv \
-  --features S --target ln_RV --enc_in 1 --dec_in 1 --c_out 1 \
-  --aggregate_mean --seq_len 22 --pred_len 5 \
+  --data custom --root_path ./data/ --data_path EURUSD-RV.csv \
+  --features S --target RV --enc_in 1 --dec_in 1 --c_out 1 \
+  --aggregate_logsum --seq_len 22 --pred_len 5 \
   --patch_size 16 --patch_stride 8 --ffn_ratio 1 \
   --num_blocks 1 1 1 1 --large_size 13 13 13 13 --small_size 3 3 3 3 \
   --dims 128 128 128 128 --dw_dims 128 128 128 128 \
@@ -43,9 +48,9 @@ python run.py --is_training 1 --model_id ModernTCN_h5 --model ModernTCN \
 
 # ---- h = 22 (ModernTCN22) ---------------------------------------------------
 python run.py --is_training 1 --model_id ModernTCN_h22 --model ModernTCN \
-  --data custom --root_path ./data/ --data_path realized_volatility.csv \
-  --features S --target ln_RV --enc_in 1 --dec_in 1 --c_out 1 \
-  --aggregate_mean --seq_len 22 --pred_len 22 \
+  --data custom --root_path ./data/ --data_path EURUSD-RV.csv \
+  --features S --target RV --enc_in 1 --dec_in 1 --c_out 1 \
+  --aggregate_logsum --seq_len 22 --pred_len 22 \
   --patch_size 16 --patch_stride 2 --ffn_ratio 3 \
   --num_blocks 1 1 1 1 --large_size 51 51 51 51 --small_size 7 7 7 7 \
   --dims 256 256 256 256 --dw_dims 256 256 256 256 \

@@ -20,10 +20,10 @@ warnings.filterwarnings('ignore')
 class Exp_LSTM(Exp_Basic):
 
     def _build_model(self):
-        # When aggregate_mean is enabled the model head must output one value.
+        # When aggregate_logsum is enabled the model head must output one value.
         # Temporarily set pred_len=1 so the projection layer is sized correctly,
         # then restore the original value for the data loader.
-        if getattr(self.args, 'aggregate_mean', False):
+        if getattr(self.args, 'aggregate_logsum', False):
             orig = self.args.pred_len
             self.args.pred_len = 1
             model = LSTM.Model(self.args).float()
@@ -42,13 +42,22 @@ class Exp_LSTM(Exp_Basic):
         return nn.MSELoss()
 
     # ------------------------------------------------------------------
-    # Target helper: slice pred_len future steps and optionally mean-pool
+    # Target helper: slice pred_len future steps and optionally aggregate
     # ------------------------------------------------------------------
 
     def _get_target(self, batch_y, f_dim):
+        """
+        Slice the future window and, when aggregating, reduce it to
+
+            Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} )
+
+        The data channel holds ln(RV) (Dataset_Custom forbids scaling for
+        exactly this reason), so the sum of levels is a log-sum-exp over the
+        horizon axis. For h = 1 it reduces to ln(RV_{t+1}).
+        """
         y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-        if getattr(self.args, 'aggregate_mean', False):
-            y = y.mean(dim=1, keepdim=True)
+        if getattr(self.args, 'aggregate_logsum', False):
+            y = torch.logsumexp(y, dim=1, keepdim=True)
         return y
 
     # ------------------------------------------------------------------

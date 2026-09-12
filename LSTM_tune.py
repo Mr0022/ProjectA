@@ -6,13 +6,13 @@ Usage:
     python LSTM_tune.py \
         --data custom \
         --root_path ./data/ \
-        --data_path forex_log_realized_volatility.csv \
+        --data_path EURUSD-RV.csv \
         --features S \
-        --target EURUSD \
+        --target RV \
         --enc_in 1 \
         --seq_len 22 \
         --pred_len 5 \
-        --aggregate_mean \
+        --aggregate_logsum \
         --n_trials 50 \
         --train_epochs 30 \
         --patience 7
@@ -253,7 +253,7 @@ def build_base_config(tune_args: argparse.Namespace) -> argparse.Namespace:
     cfg.c_out     = tune_args.enc_in if tune_args.features == 'M' else 1
 
     # Aggregation mode
-    cfg.aggregate_mean = tune_args.aggregate_mean
+    cfg.aggregate_logsum = tune_args.aggregate_logsum
 
     # Training budget (reduced for speed during search)
     cfg.train_epochs = tune_args.train_epochs
@@ -312,20 +312,22 @@ def parse_tune_args():
     p = argparse.ArgumentParser(description='Optuna HPO for the LSTM forecaster')
 
     # Dataset
-    p.add_argument('--data',      type=str, required=True, help='Dataset name, e.g. custom / ETTh1')
-    p.add_argument('--root_path', type=str, required=True, help='Root path to data directory')
-    p.add_argument('--data_path', type=str, required=True, help='CSV filename')
+    p.add_argument('--data',      type=str, default='custom', help='Dataset name, e.g. custom / custom_events')
+    p.add_argument('--root_path', type=str, default='./data/', help='Root path to data directory')
+    p.add_argument('--data_path', type=str, default='EURUSD-RV.csv', help='CSV filename')
     p.add_argument('--enc_in',    type=int, required=True, help='Number of input variables')
 
     # Task
     p.add_argument('--features',  type=str, default='S',     help='M / S / MS')
-    p.add_argument('--target',    type=str, default='OT',    help='Target column for S/MS')
+    p.add_argument('--target',    type=str, default='RV',
+                   help='Target column for S/MS; a level RV column is log-transformed on load')
     p.add_argument('--freq',      type=str, default='h',     help='Time feature frequency')
     p.add_argument('--embed',     type=str, default='timeF', help='Time embedding type')
     p.add_argument('--seq_len',   type=int, default=22,      help='Fallback look-back window (seq_len is searched over {22,35,70,180})')
     p.add_argument('--label_len', type=int, default=0,       help='Label length (unused by LSTM; must be <= seq_len)')
     p.add_argument('--pred_len',  type=int, default=1,       help='Prediction horizon')
-    p.add_argument('--aggregate_mean', action='store_true', default=False,
+    p.add_argument('--aggregate_logsum', '--aggregate_mean', action='store_true',
+                   dest='aggregate_logsum',  default=False,
                    help='Predict the mean of the next pred_len steps (single-value output)')
 
     # Search-space choice sets

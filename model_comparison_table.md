@@ -1,3 +1,10 @@
+> **STALE — regenerate before use.** These numbers come from the previous
+> configuration: `data/realized_volatility.csv` with the mean-of-logs target
+> `(1/h)·Σ ln(RV)`, and they include HAR-LSTM and HAR-ModernTCN, which have
+> since been removed. The current setup is `data/EURUSD-RV.csv` with
+> `Y_t^(h) = ln(Σ_{k=1..h} RV_{t+k})`. Re-run `python run_results_table.py`
+> (after re-tuning) to refresh this file.
+
 | Model | h=1 MSE | h=1 MAE | h=1 QLIKE | h=5 MSE | h=5 MAE | h=5 QLIKE | h=22 MSE | h=22 MAE | h=22 QLIKE |
 |---|---|---|---|---|---|---|---|---|---|
 | HAR-RV | 0.2803 | 0.4009 | 0.1772 | 0.1283 | 0.2780 | 0.0694 | 0.1125 | 0.2706 | 0.0583 |

@@ -1,16 +1,17 @@
 """
 LSTM forecasting run script — mirrors run.py for ModernTCN.
 
-Example (univariate, aggregate-mean over 5 days):
+Forecast target (with --aggregate_logsum):
+
+    Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} )
+
+Example (univariate, 5-day horizon; the data defaults already point at
+data/EURUSD-RV.csv, which stores RV in levels and is logged on load):
 
     python LSTM_run.py \
         --is_training 1 \
-        --model_id forex_lstm \
-        --data custom \
-        --root_path ./data/ \
-        --data_path forex_log_realized_volatility.csv \
+        --model_id eurusd_lstm \
         --features S \
-        --target EURUSD \
         --seq_len 48 \
         --pred_len 5 \
         --enc_in 1 \
@@ -18,7 +19,7 @@ Example (univariate, aggregate-mean over 5 days):
         --num_layers 2 \
         --dropout 0.1 \
         --learning_rate 0.001 \
-        --aggregate_mean
+        --aggregate_logsum
 """
 
 import argparse
@@ -46,12 +47,13 @@ parser.add_argument('--is_training', type=int,  required=True,  help='1=train  0
 parser.add_argument('--model_id',    type=str,  required=True,  help='experiment name')
 
 # ── Dataset ──────────────────────────────────────────────────────────────────
-parser.add_argument('--data',        type=str,  required=True,  help='dataset type, e.g. custom / ETTh1')
+parser.add_argument('--data',        type=str,  default='custom', help='dataset type, e.g. custom / custom_events')
 parser.add_argument('--root_path',   type=str,  default='./data/')
-parser.add_argument('--data_path',   type=str,  default='forex_log_realized_volatility.csv')
+parser.add_argument('--data_path',   type=str,  default='EURUSD-RV.csv')
 parser.add_argument('--features',    type=str,  default='S',
                     help='M: multivariate→multivariate  S: univariate  MS: multivariate→univariate')
-parser.add_argument('--target',      type=str,  default='OT',   help='target column for S/MS')
+parser.add_argument('--target',      type=str,  default='RV',
+                    help='target column for S/MS; a level RV column is log-transformed on load')
 parser.add_argument('--freq',        type=str,  default='h',
                     help='time-feature frequency: s t h d b w m')
 parser.add_argument('--embed',       type=str,  default='timeF')
@@ -85,8 +87,9 @@ parser.add_argument('--c_out',  type=int, default=0,
                     help='output channels (0 = auto: 1 for S/MS, enc_in for M)')
 
 # ── Aggregation mode ─────────────────────────────────────────────────────────
-parser.add_argument('--aggregate_mean', action='store_true', default=False,
-                    help='predict the mean of the next pred_len steps (single output)')
+parser.add_argument('--aggregate_logsum', '--aggregate_mean', action='store_true',
+                    dest='aggregate_logsum', default=False,
+                    help='when pred_len>1, predict the single aggregated target ln(sum_{k=1..h} RV_{t+k}) instead of each step individually (single-value output). --aggregate_mean is kept as a deprecated alias for this flag.')
 
 # ── Training ─────────────────────────────────────────────────────────────────
 parser.add_argument('--train_epochs',  type=int,   default=100)
@@ -184,7 +187,7 @@ if __name__ == '__main__':
                 '_sl{seq_len}_pl{pred_len}'
                 '_hs{hidden_size}_nl{num_layers}'
                 '_bi{bidirectional}_rv{revin}'
-                '_agg{aggregate_mean}'
+                '_agg{aggregate_logsum}'
                 '_{des}_{ii}'
             ).format(**vars(args), ii=ii)
 
@@ -227,7 +230,7 @@ if __name__ == '__main__':
             '_sl{seq_len}_pl{pred_len}'
             '_hs{hidden_size}_nl{num_layers}'
             '_bi{bidirectional}_rv{revin}'
-            '_agg{aggregate_mean}'
+            '_agg{aggregate_logsum}'
             '_{des}_{ii}'
         ).format(**vars(args), ii=ii)
 
