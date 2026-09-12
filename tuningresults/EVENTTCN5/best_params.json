@@ -1,0 +1,19 @@
+{
+  "best_value": 0.08440566062927246,
+  "params": {
+    "seq_len": 35,
+    "patch_size": 32,
+    "patch_stride": 2,
+    "dim": 32,
+    "ffn_ratio": 3,
+    "large_size": 13,
+    "small_size": 5,
+    "num_blocks": 3,
+    "dropout": 0.0750931679204987,
+    "head_dropout": 0.36903420636104134,
+    "learning_rate": 0.004311298509350653,
+    "batch_size": 128,
+    "revin": 1,
+    "event_dim": 4
+  }
+}

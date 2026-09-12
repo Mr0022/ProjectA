@@ -1,0 +1,15 @@
+{
+  "best_value": 0.18224400281906128,
+  "params": {
+    "seq_len": 35,
+    "hidden_size": 64,
+    "num_layers": 3,
+    "dropout": 0.07676573564165186,
+    "head_dropout": 0.40397456078802163,
+    "bidirectional": false,
+    "revin": 1,
+    "learning_rate": 0.000840108158564423,
+    "batch_size": 256,
+    "pct_start": 0.30908316790372015
+  }
+}

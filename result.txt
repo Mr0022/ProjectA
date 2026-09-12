@@ -1,0 +1,447 @@
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.2411043345928192, mae:0.37782561779022217, rse:0.7820426821708679, qlike:0.15244346857070923
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.2649511694908142, mae:0.39172765612602234, rse:0.8198055624961853, qlike:0.17318710684776306
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.24113570153713226, mae:0.3778045177459717, rse:0.7820935249328613, qlike:0.15253545343875885
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_2_evchad8p1f1  
+mse:0.2696337103843689, mae:0.39778050780296326, rse:0.827018141746521, qlike:0.1756443977355957
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.2649495303630829, mae:0.3917151093482971, rse:0.81980299949646, qlike:0.17319804430007935
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_3_evchad8p1f1  
+mse:0.2689540386199951, mae:0.39729562401771545, rse:0.8259751796722412, qlike:0.17072105407714844
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_2_evchad8p1f1  
+mse:0.2696480453014374, mae:0.39781588315963745, rse:0.8270400762557983, qlike:0.17561550438404083
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_4_evchad8p1f1  
+mse:0.25724518299102783, mae:0.3775874376296997, rse:0.8077957630157471, qlike:0.17557929456233978
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.260378 +/- 0.011847 (std)
+mae: mean 0.388443 +/- 0.010086 (std)
+rse: mean 0.812527 +/- 0.018678 (std)
+qlike: mean 0.169515 +/- 0.009756 (std)
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_3_evchad8p1f1  
+mse:0.2689512073993683, mae:0.39729011058807373, rse:0.8259707689285278, qlike:0.1707235425710678
+
+OFAT_anchor_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_4_evchad8p1f1  
+mse:0.2572459280490875, mae:0.37758299708366394, rse:0.8077968955039978, qlike:0.17558671534061432
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.260386 +/- 0.011836 (std)
+mae: mean 0.388442 +/- 0.010099 (std)
+rse: mean 0.812541 +/- 0.018661 (std)
+qlike: mean 0.169532 +/- 0.009714 (std)
+
+OFAT_seq_len_22_ModernTCN_custom_events_ftS_sl22_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.2825680077075958, mae:0.39179861545562744, rse:0.8466218113899231, qlike:0.19778676331043243
+
+OFAT_seq_len_22_ModernTCN_custom_events_ftS_sl22_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.27520763874053955, mae:0.39635932445526123, rse:0.8355225324630737, qlike:0.18181674182415009
+
+OFAT_seq_len_22_ModernTCN_custom_events_ftS_sl22_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_2_evchad8p1f1  
+mse:0.2905529737472534, mae:0.3988969326019287, rse:0.858500599861145, qlike:0.20111896097660065
+
+OFAT_seq_len_22_ModernTCN_custom_events_ftS_sl22_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_3_evchad8p1f1  
+mse:0.2820819616317749, mae:0.39144814014434814, rse:0.8458932638168335, qlike:0.19346235692501068
+
+OFAT_seq_len_22_ModernTCN_custom_events_ftS_sl22_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_4_evchad8p1f1  
+mse:0.26937806606292725, mae:0.38287943601608276, rse:0.8266260027885437, qlike:0.187677800655365
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.279958 +/- 0.008032 (std)
+mae: mean 0.392276 +/- 0.006118 (std)
+rse: mean 0.842633 +/- 0.012094 (std)
+qlike: mean 0.192373 +/- 0.007753 (std)
+
+OFAT_seq_len_35_ModernTCN_custom_events_ftS_sl35_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.2788272500038147, mae:0.3860465884208679, rse:0.8409991264343262, qlike:0.20227372646331787
+
+OFAT_seq_len_35_ModernTCN_custom_events_ftS_sl35_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.27214592695236206, mae:0.38772112131118774, rse:0.8308619260787964, qlike:0.19144830107688904
+
+OFAT_seq_len_35_ModernTCN_custom_events_ftS_sl35_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_2_evchad8p1f1  
+mse:0.27972882986068726, mae:0.4055671691894531, rse:0.8423576951026917, qlike:0.18362806737422943
+
+OFAT_seq_len_35_ModernTCN_custom_events_ftS_sl35_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_3_evchad8p1f1  
+mse:0.26898613572120667, mae:0.3853186368942261, rse:0.8260244131088257, qlike:0.18403789401054382
+
+OFAT_seq_len_35_ModernTCN_custom_events_ftS_sl35_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_4_evchad8p1f1  
+mse:0.25360220670700073, mae:0.3822537660598755, rse:0.8020555973052979, qlike:0.17109358310699463
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.270658 +/- 0.010547 (std)
+mae: mean 0.389381 +/- 0.009262 (std)
+rse: mean 0.828460 +/- 0.016273 (std)
+qlike: mean 0.186496 +/- 0.011456 (std)
+
+OFAT_event_dim_4_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad4p1f1  
+mse:0.2646806240081787, mae:0.3833170533180237, rse:0.8193869590759277, qlike:0.18256725370883942
+
+OFAT_event_dim_4_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad4p1f1  
+mse:0.2618296146392822, mae:0.38123273849487305, rse:0.8149619102478027, qlike:0.18201053142547607
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.263255 +/- 0.002016 (std)
+mae: mean 0.382275 +/- 0.001474 (std)
+rse: mean 0.817174 +/- 0.003129 (std)
+qlike: mean 0.182289 +/- 0.000394 (std)
+
+OFAT_event_dim_16_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad16p1f1  
+mse:0.274678111076355, mae:0.4008939266204834, rse:0.8347184062004089, qlike:0.16967052221298218
+
+OFAT_event_dim_16_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad16p1f1  
+mse:0.23342078924179077, mae:0.35940754413604736, rse:0.7694806456565857, qlike:0.1611139327287674
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.254049 +/- 0.029173 (std)
+mae: mean 0.380151 +/- 0.029335 (std)
+rse: mean 0.802100 +/- 0.046130 (std)
+qlike: mean 0.165392 +/- 0.006050 (std)
+
+OFAT_dropout_0p0_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.2630036175251007, mae:0.387070894241333, rse:0.8167869448661804, qlike:0.16957539319992065
+
+OFAT_dropout_0p0_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.26186883449554443, mae:0.3873254656791687, rse:0.8150229454040527, qlike:0.18043075501918793
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.262436 +/- 0.000802 (std)
+mae: mean 0.387198 +/- 0.000180 (std)
+rse: mean 0.815905 +/- 0.001247 (std)
+qlike: mean 0.175003 +/- 0.007676 (std)
+
+OFAT_dropout_0p1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.2582624852657318, mae:0.3850889801979065, rse:0.809391438961029, qlike:0.17834454774856567
+
+OFAT_dropout_0p1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.2639997899532318, mae:0.3883368670940399, rse:0.8183323740959167, qlike:0.181657075881958
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.261131 +/- 0.004057 (std)
+mae: mean 0.386713 +/- 0.002297 (std)
+rse: mean 0.813862 +/- 0.006322 (std)
+qlike: mean 0.180001 +/- 0.002342 (std)
+
+OFAT_dropout_0p2_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.2586773633956909, mae:0.3844188451766968, rse:0.8100412487983704, qlike:0.16914720833301544
+
+OFAT_dropout_0p2_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.26210522651672363, mae:0.37967437505722046, rse:0.8153907060623169, qlike:0.1826091706752777
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.260391 +/- 0.002424 (std)
+mae: mean 0.382047 +/- 0.003355 (std)
+rse: mean 0.812716 +/- 0.003783 (std)
+qlike: mean 0.175878 +/- 0.009519 (std)
+
+OFAT_dropout_0p3_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.2539965510368347, mae:0.38169604539871216, rse:0.8026788830757141, qlike:0.16333331167697906
+
+OFAT_dropout_0p3_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.2539939880371094, mae:0.3934066891670227, rse:0.8026748299598694, qlike:0.16167572140693665
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.253995 +/- 0.000002 (std)
+mae: mean 0.387551 +/- 0.008281 (std)
+rse: mean 0.802677 +/- 0.000003 (std)
+qlike: mean 0.162505 +/- 0.001172 (std)
+
+OFAT_dropout_0p4_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.26440614461898804, mae:0.38770148158073425, rse:0.8189619183540344, qlike:0.16875627636909485
+
+OFAT_dropout_0p4_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.25403130054473877, mae:0.38444843888282776, rse:0.802733838558197, qlike:0.16683447360992432
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.259219 +/- 0.007336 (std)
+mae: mean 0.386075 +/- 0.002300 (std)
+rse: mean 0.810848 +/- 0.011475 (std)
+qlike: mean 0.167795 +/- 0.001359 (std)
+
+OFAT_dropout_0p5_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_0_evchad8p1f1  
+mse:0.25346970558166504, mae:0.37435686588287354, rse:0.8018459677696228, qlike:0.1749231517314911
+
+OFAT_dropout_0p5_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_ofat_1_evchad8p1f1  
+mse:0.26458895206451416, mae:0.38910549879074097, rse:0.8192450404167175, qlike:0.17679442465305328
+
+summary over 2 runs (seeds 2021..2022)
+mse: mean 0.259029 +/- 0.007862 (std)
+mae: mean 0.381731 +/- 0.010429 (std)
+rse: mean 0.810546 +/- 0.012303 (std)
+qlike: mean 0.175859 +/- 0.001323 (std)
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0_evchad16p1f1  
+mse:0.24869844317436218, mae:0.3707774877548218, rse:0.7942632436752319, qlike:0.17606866359710693
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1_evchad16p1f1  
+mse:0.2476932406425476, mae:0.38011839985847473, rse:0.7926564812660217, qlike:0.1593438684940338
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2_evchad16p1f1  
+mse:0.25634902715682983, mae:0.38752198219299316, rse:0.8063874840736389, qlike:0.16931265592575073
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_3_evchad16p1f1  
+mse:0.2588736414909363, mae:0.3803364634513855, rse:0.8103485703468323, qlike:0.17446841299533844
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_4_evchad16p1f1  
+mse:0.2523839473724365, mae:0.37963658571243286, rse:0.8001267910003662, qlike:0.16612905263900757
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.252800 +/- 0.004810 (std)
+mae: mean 0.379678 +/- 0.005945 (std)
+rse: mean 0.800757 +/- 0.007614 (std)
+qlike: mean 0.169065 +/- 0.006735 (std)
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb1_lk27_sk5_ffr1_ps16_str4_multiFalse_mergedFalse_test_0_evchad16p1f1  
+mse:0.25266626477241516, mae:0.37697339057922363, rse:0.8005741834640503, qlike:0.17033647000789642
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb1_lk27_sk5_ffr1_ps16_str4_multiFalse_mergedFalse_test_1_evchad16p1f1  
+mse:0.25687286257743835, mae:0.3760548532009125, rse:0.8072109818458557, qlike:0.17477039992809296
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb1_lk27_sk5_ffr1_ps16_str4_multiFalse_mergedFalse_test_2_evchad16p1f1  
+mse:0.258289635181427, mae:0.37844327092170715, rse:0.8094339966773987, qlike:0.17286747694015503
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb1_lk27_sk5_ffr1_ps16_str4_multiFalse_mergedFalse_test_3_evchad16p1f1  
+mse:0.25002917647361755, mae:0.37777113914489746, rse:0.7963853478431702, qlike:0.17186427116394043
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb1_lk27_sk5_ffr1_ps16_str4_multiFalse_mergedFalse_test_4_evchad16p1f1  
+mse:0.24808083474636078, mae:0.3762051463127136, rse:0.7932764291763306, qlike:0.1665828377008438
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.253188 +/- 0.004357 (std)
+mae: mean 0.377090 +/- 0.001020 (std)
+rse: mean 0.801376 +/- 0.006894 (std)
+qlike: mean 0.171284 +/- 0.003082 (std)
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0  
+mse:0.27990514039993286, mae:0.39308881759643555, rse:0.8426231145858765, qlike:0.19107738137245178
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1  
+mse:0.28206735849380493, mae:0.3967783749103546, rse:0.8458714485168457, qlike:0.1944352388381958
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2  
+mse:0.28602665662765503, mae:0.40126070380210876, rse:0.8517873883247375, qlike:0.18732434511184692
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_3  
+mse:0.2803316116333008, mae:0.3937622904777527, rse:0.8432648181915283, qlike:0.19173339009284973
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_4  
+mse:0.2765484154224396, mae:0.39455482363700867, rse:0.8375554084777832, qlike:0.19055701792240143
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.280976 +/- 0.003459 (std)
+mae: mean 0.395889 +/- 0.003309 (std)
+rse: mean 0.844220 +/- 0.005193 (std)
+qlike: mean 0.191025 +/- 0.002552 (std)
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0_evchad16p1f1  
+mse:0.24861054122447968, mae:0.37080493569374084, rse:0.7941229343414307, qlike:0.1759207844734192
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0_evchad16p1f1  
+mse:0.11190400272607803, mae:0.2531469762325287, rse:0.7496455311775208, qlike:0.0569184347987175
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1_evchad16p1f1  
+mse:0.10779029875993729, mae:0.2556576728820801, rse:0.735737681388855, qlike:0.058301251381635666
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2_evchad16p1f1  
+mse:0.11240634322166443, mae:0.25309765338897705, rse:0.7513262629508972, qlike:0.05885949730873108
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_3_evchad16p1f1  
+mse:0.10713018476963043, mae:0.25272542238235474, rse:0.7334812879562378, qlike:0.05538906902074814
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_4_evchad16p1f1  
+mse:0.10723895579576492, mae:0.25126031041145325, rse:0.7338535785675049, qlike:0.05747544392943382
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.109294 +/- 0.002630 (std)
+mae: mean 0.253178 +/- 0.001584 (std)
+rse: mean 0.740809 +/- 0.008895 (std)
+qlike: mean 0.057389 +/- 0.001344 (std)
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0_evchad32p1f1  
+mse:0.1078469455242157, mae:0.24529220163822174, rse:0.7359309196472168, qlike:0.0590171217918396
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1_evchad32p1f1  
+mse:0.10780462622642517, mae:0.25811898708343506, rse:0.7357865571975708, qlike:0.057274241000413895
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2_evchad32p1f1  
+mse:0.11233463883399963, mae:0.2565426230430603, rse:0.7510865330696106, qlike:0.057745225727558136
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_3_evchad32p1f1  
+mse:0.10507956147193909, mae:0.24740025401115417, rse:0.7264274954795837, qlike:0.05596795305609703
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_4_evchad32p1f1  
+mse:0.11382100731134415, mae:0.25666266679763794, rse:0.7560393214225769, qlike:0.06152495741844177
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.109377 +/- 0.003598 (std)
+mae: mean 0.252803 +/- 0.005974 (std)
+rse: mean 0.741054 +/- 0.012177 (std)
+qlike: mean 0.058306 +/- 0.002104 (std)
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0  
+mse:0.11841219663619995, mae:0.2661890983581543, rse:0.7711367011070251, qlike:0.06268681585788727
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1  
+mse:0.11452356725931168, mae:0.26452767848968506, rse:0.758368968963623, qlike:0.06241229921579361
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2  
+mse:0.11419731378555298, mae:0.2651960551738739, rse:0.7572879791259766, qlike:0.06331836432218552
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_3  
+mse:0.1173698753118515, mae:0.2639405131340027, rse:0.7677352428436279, qlike:0.0646270364522934
+
+ModernTCN_h1_ModernTCN_custom_ftS_sl70_pl5_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_4  
+mse:0.11567138880491257, mae:0.26182466745376587, rse:0.7621599435806274, qlike:0.066051185131073
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.116035 +/- 0.001818 (std)
+mae: mean 0.264336 +/- 0.001634 (std)
+rse: mean 0.763338 +/- 0.005976 (std)
+qlike: mean 0.063819 +/- 0.001512 (std)
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0_evchad16p1f1  
+mse:0.12092974781990051, mae:0.2827196419239044, rse:0.9013681411743164, qlike:0.06685343384742737
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1_evchad16p1f1  
+mse:0.24768435955047607, mae:0.3800780177116394, rse:0.7926422953605652, qlike:0.1593727171421051
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1_evchad16p1f1  
+mse:0.11858335882425308, mae:0.28187552094459534, rse:0.8925806879997253, qlike:0.061308156698942184
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2_evchad16p1f1  
+mse:0.11559905111789703, mae:0.27543044090270996, rse:0.8812776803970337, qlike:0.06280409544706345
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_3_evchad16p1f1  
+mse:0.11966615170240402, mae:0.2833991050720215, rse:0.8966465592384338, qlike:0.06544482707977295
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_4_evchad16p1f1  
+mse:0.11469705402851105, mae:0.2768712341785431, rse:0.8778327107429504, qlike:0.06109137088060379
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.117895 +/- 0.002661 (std)
+mae: mean 0.280059 +/- 0.003644 (std)
+rse: mean 0.889941 +/- 0.010052 (std)
+qlike: mean 0.063500 +/- 0.002555 (std)
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_0_evchad32p1f1  
+mse:0.12525787949562073, mae:0.29355308413505554, rse:0.9173564910888672, qlike:0.06986115872859955
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_1_evchad32p1f1  
+mse:0.12487247586250305, mae:0.2859799861907959, rse:0.9159440994262695, qlike:0.06854993849992752
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2_evchad32p1f1  
+mse:0.1182326003909111, mae:0.28134721517562866, rse:0.8912596702575684, qlike:0.062442246824502945
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_3_evchad32p1f1  
+mse:0.11683965474367142, mae:0.27796435356140137, rse:0.8859939575195312, qlike:0.06435751914978027
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl22_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_4_evchad32p1f1  
+mse:0.12289425730705261, mae:0.2820888161659241, rse:0.9086600542068481, qlike:0.06435438245534897
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.121619 +/- 0.003865 (std)
+mae: mean 0.284187 +/- 0.005961 (std)
+rse: mean 0.903843 +/- 0.014398 (std)
+qlike: mean 0.065913 +/- 0.003140 (std)
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_0_evchad16p1f1  
+mse:0.12372976541519165, mae:0.2796021103858948, rse:0.9117436408996582, qlike:0.07146115601062775
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_1_evchad16p1f1  
+mse:0.12088293582201004, mae:0.2752331495285034, rse:0.9011936783790588, qlike:0.0667213425040245
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_2_evchad16p1f1  
+mse:0.11304238438606262, mae:0.26919856667518616, rse:0.8714777231216431, qlike:0.06075115129351616
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_3_evchad16p1f1  
+mse:0.11153583228588104, mae:0.26495033502578735, rse:0.8656509518623352, qlike:0.06078755855560303
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_4_evchad16p1f1  
+mse:0.11732827126979828, mae:0.2730523347854614, rse:0.8878446221351624, qlike:0.06554362922906876
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.117304 +/- 0.005136 (std)
+mae: mean 0.272407 +/- 0.005614 (std)
+rse: mean 0.887582 +/- 0.019426 (std)
+qlike: mean 0.065053 +/- 0.004494 (std)
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_0_evchad8p1f1  
+mse:0.11108580231666565, mae:0.2675325274467468, rse:0.8639028668403625, qlike:0.057994794100522995
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_1_evchad8p1f1  
+mse:0.11364441365003586, mae:0.26848822832107544, rse:0.873795211315155, qlike:0.06280454993247986
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_2_evchad8p1f1  
+mse:0.12335330247879028, mae:0.28015512228012085, rse:0.9103554487228394, qlike:0.0705946758389473
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_3_evchad8p1f1  
+mse:0.12113723903894424, mae:0.27758508920669556, rse:0.9021410942077637, qlike:0.06982812285423279
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_4_evchad8p1f1  
+mse:0.12113228440284729, mae:0.276931494474411, rse:0.9021226167678833, qlike:0.06864720582962036
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.118071 +/- 0.005363 (std)
+mae: mean 0.274138 +/- 0.005732 (std)
+rse: mean 0.890463 +/- 0.020318 (std)
+qlike: mean 0.065974 +/- 0.005410 (std)
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_0_evchad16p1f1  
+mse:0.12372976541519165, mae:0.2796021103858948, rse:0.9117436408996582, qlike:0.07146115601062775
+
+ModernTCN_h1_ModernTCN_custom_events_ftS_sl70_pl1_dim32_nb2_lk27_sk5_ffr2_ps16_str8_multiFalse_mergedFalse_test_2_evchad16p1f1  
+mse:0.256337970495224, mae:0.3874701261520386, rse:0.8063700795173645, qlike:0.16936013102531433
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_0_evchad8p1f1  
+mse:0.11116898059844971, mae:0.26457005739212036, rse:0.864226222038269, qlike:0.05993073806166649
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_1_evchad8p1f1  
+mse:0.10853369534015656, mae:0.2635843753814697, rse:0.8539214730262756, qlike:0.05831300467252731
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_2_evchad8p1f1  
+mse:0.1202191412448883, mae:0.27638882398605347, rse:0.8987159132957458, qlike:0.06812972575426102
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_3_evchad8p1f1  
+mse:0.10724465548992157, mae:0.2609121799468994, rse:0.848835289478302, qlike:0.057401422411203384
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_4_evchad8p1f1  
+mse:0.11915504932403564, mae:0.2743542492389679, rse:0.894729733467102, qlike:0.06720848381519318
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.113264 +/- 0.006043 (std)
+mae: mean 0.267962 +/- 0.006933 (std)
+rse: mean 0.872086 +/- 0.023207 (std)
+qlike: mean 0.062197 +/- 0.005088 (std)
+
+EventTCN_h22_ModernTCN_custom_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_0  
+mse:0.12255990505218506, mae:0.28730639815330505, rse:0.9074230790138245, qlike:0.06932078301906586
+
+EventTCN_h22_ModernTCN_custom_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_1  
+mse:0.1116587221622467, mae:0.27217668294906616, rse:0.8661277294158936, qlike:0.061357393860816956
+
+EventTCN_h22_ModernTCN_custom_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_2  
+mse:0.11691312491893768, mae:0.2797636091709137, rse:0.8862724900245667, qlike:0.06497533619403839
+
+EventTCN_h22_ModernTCN_custom_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_3  
+mse:0.1159273013472557, mae:0.2723292112350464, rse:0.8825280070304871, qlike:0.06457027792930603
+
+EventTCN_h22_ModernTCN_custom_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_4  
+mse:0.11298288404941559, mae:0.2688416838645935, rse:0.8712483644485474, qlike:0.06179174408316612
+
+summary over 5 runs (seeds 2021..2025)
+mse: mean 0.116008 +/- 0.004237 (std)
+mae: mean 0.276084 +/- 0.007438 (std)
+rse: mean 0.882720 +/- 0.016045 (std)
+qlike: mean 0.064403 +/- 0.003187 (std)
+
+EventTCN_h22_ModernTCN_custom_events_ftS_sl35_pl22_dim32_nb1_lk31_sk5_ffr2_ps4_str4_multiFalse_mergedFalse_test_1_evchad16p1f1  
+mse:0.12088321149349213, mae:0.27523308992385864, rse:0.90119469165802, qlike:0.0667218565940857
+
