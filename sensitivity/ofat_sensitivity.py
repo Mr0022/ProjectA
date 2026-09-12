@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-OFAT (one-factor-at-a-time) hyperparameter-sensitivity harness for EventTCN, h=1.
+OFAT (one-factor-at-a-time) hyperparameter-sensitivity harness for ModernTCN.
+
+Runs at a chosen horizon (h = 1, 5 or 22), each anchored at that horizon's own
+tuned config. Results are written to a per-horizon CSV so the three studies stay
+independent and can be plotted separately.
 
 Every hyperparameter is anchored at the tuned best config (ANCHOR below) and
 ONE is swept at a time over the Optuna tuning-search grid.  Each swept point is
@@ -20,12 +24,18 @@ Design notes
 * patch_stride is clamped to ``min(patch_stride, patch_size)`` exactly as
   ``tune.py`` does, so the patch_size sweep never produces a stride > patch_size.
 
-Run from the ModernTCN-Long-term-forecasting/ directory:
+Target: Y_t^(h) = ln((1/h) * sum_{k=1..h} RV_{t+k}) on data/EURUSD-RV.csv
+(--aggregate_mean), the same target and test split every other model uses.
 
-    python sensitivity/ofat_sensitivity.py                       # full sweep
-    python sensitivity/ofat_sensitivity.py --params event_dim learning_rate
-    python sensitivity/ofat_sensitivity.py --quick               # 2 seeds x 15 epochs smoke test
-    python sensitivity/ofat_sensitivity.py --dry_run             # print the plan, train nothing
+Run from the repository root:
+
+    python sensitivity/ofat_sensitivity.py --pred_len 1           # full sweep, h=1
+    python sensitivity/ofat_sensitivity.py --pred_len 22 --params dropout learning_rate
+    python sensitivity/ofat_sensitivity.py --pred_len 5 --quick   # 2 seeds x 15 epochs
+    python sensitivity/ofat_sensitivity.py --pred_len 1 --dry_run # print the plan only
+
+Pass --use_events to study EventTCN (ModernTCN + the news-event calendar)
+instead; that adds event_dim to the sweep.
 """
 
 import argparse
@@ -37,25 +47,57 @@ import sys
 import time
 
 # ---------------------------------------------------------------------------
-# Anchor = the tuned best hyperparameters for EventTCN at h = 1.
+# Anchors = the tuned best hyperparameters per horizon, from
+# tuningresults/ModernTCN{1,5,22}/best_params.json.
 # (dim -> dims/dw_dims; num_blocks/large_size/small_size are repeated x4.)
+#
+# NOTE: these were tuned on the PREVIOUS dataset and target. The sweep is still
+# a valid local sensitivity study around them, but they are not guaranteed to be
+# the optimum for the current data/target -- re-run tune.py for that.
 # ---------------------------------------------------------------------------
-ANCHOR = {
-    "seq_len":       70,
-    "patch_size":    16,
-    "patch_stride":  8,
-    "ffn_ratio":     2,
-    "num_blocks":    2,
-    "large_size":    27,
-    "small_size":    5,
-    "dim":           32,
-    "dropout":       0.33157505058759384,
-    "head_dropout":  0.13413677333143775,
-    "revin":         1,
-    "learning_rate": 0.0063484758647924695,
-    "batch_size":    256,
-    "event_dim":     8,
+ANCHORS = {
+    1: {
+        "seq_len": 70, "patch_size": 16, "patch_stride": 8, "ffn_ratio": 2,
+        "num_blocks": 2, "large_size": 27, "small_size": 5, "dim": 32,
+        "dropout": 0.33157505058759384, "head_dropout": 0.13413677333143775,
+        "revin": 1, "learning_rate": 0.0063484758647924695, "batch_size": 256,
+        "event_dim": 8,
+    },
+    5: {
+        "seq_len": 22, "patch_size": 16, "patch_stride": 8, "ffn_ratio": 1,
+        "num_blocks": 1, "large_size": 13, "small_size": 3, "dim": 128,
+        "dropout": 0.4744918542935045, "head_dropout": 0.16435589854180058,
+        "revin": 1, "learning_rate": 9.048320833685613e-05, "batch_size": 256,
+        "event_dim": 8,
+    },
+    22: {
+        "seq_len": 22, "patch_size": 16, "patch_stride": 2, "ffn_ratio": 3,
+        "num_blocks": 1, "large_size": 51, "small_size": 7, "dim": 256,
+        "dropout": 0.3222005482423507, "head_dropout": 0.18550313066719137,
+        "revin": 1, "learning_rate": 0.0001385051157761346, "batch_size": 256,
+        "event_dim": 8,
+    },
 }
+HORIZONS = sorted(ANCHORS)
+
+# Set by main()/anchor_for() so the plotting module can import a concrete anchor.
+ANCHOR = ANCHORS[1]
+
+
+def anchor_for(pred_len):
+    """Return (and pin as the module-level ANCHOR) the anchor for a horizon."""
+    global ANCHOR
+    if pred_len not in ANCHORS:
+        raise SystemExit(f"no tuned anchor for h={pred_len}; have {HORIZONS}")
+    ANCHOR = ANCHORS[pred_len]
+    return ANCHOR
+
+
+def results_path(pred_len, use_events=False):
+    """Per-horizon results CSV, so the three studies never mix."""
+    kind = "eventtcn" if use_events else "moderntcn"
+    return os.path.join("sensitivity", f"ofat_{kind}_h{pred_len}.csv")
+
 
 # ---------------------------------------------------------------------------
 # OFAT grids -- the exact value sets searched by tune.py (continuous knobs get
@@ -79,8 +121,10 @@ GRIDS = {
     "event_dim":     [4, 8, 16],
 }
 
-# Canonical order used for CLI defaults and plotting.
-ORDER = list(GRIDS.keys())
+# Canonical order used for CLI defaults and plotting. event_dim only applies to
+# EventTCN, so it is not part of the plain-ModernTCN sweep.
+ORDER = [k for k in GRIDS if k != "event_dim"]
+ORDER_EVENTS = list(GRIDS.keys())
 
 METRICS = ["mse", "mae", "rse", "qlike"]
 
@@ -105,9 +149,9 @@ def value_key(v):
     return str(v)
 
 
-def build_cmd(param, value, itr, epochs, model_id):
+def build_cmd(param, value, itr, epochs, model_id, pred_len, use_events=False):
     """Assemble the run.py command for one OFAT point (all others = anchor)."""
-    cfg = dict(ANCHOR)
+    cfg = dict(anchor_for(pred_len))
     if param is not None:
         cfg[param] = value
     # mirror tune.py: stride never exceeds patch size
@@ -129,7 +173,7 @@ def build_cmd(param, value, itr, epochs, model_id):
         "--enc_in", "1", "--dec_in", "1", "--c_out", "1",
         "--aggregate_mean",
         "--seq_len", str(cfg["seq_len"]),
-        "--pred_len", "1",
+        "--pred_len", str(pred_len),
         "--patch_size", str(cfg["patch_size"]),
         "--patch_stride", str(cfg["patch_stride"]),
         "--ffn_ratio", str(cfg["ffn_ratio"]),
@@ -149,11 +193,11 @@ def build_cmd(param, value, itr, epochs, model_id):
         "--patience", "8",
         "--num_workers", "0",
         "--itr", str(itr),
-        "--use_events",
-        "--event_dim", str(cfg["event_dim"]),
-        "--event_fusion", "channel",
-        "--des", "ofat",
+        "--des", f"ofat{pred_len}",
     ]
+    if use_events:
+        cmd += ["--use_events", "--event_dim", str(cfg["event_dim"]),
+                "--event_fusion", "channel"]
     return cmd
 
 
@@ -196,10 +240,10 @@ def append_rows(csv_path, rows):
 # ---------------------------------------------------------------------------
 # Run one OFAT point
 # ---------------------------------------------------------------------------
-def run_point(param, value, itr, epochs, timeout, dry_run):
+def run_point(param, value, itr, epochs, timeout, dry_run, pred_len, use_events=False):
     tag = "anchor" if param is None else f"{param}_{value_key(value)}"
-    model_id = f"OFAT_{tag}".replace(".", "p").replace("-", "m")
-    cmd = build_cmd(param, value, itr, epochs, model_id)
+    model_id = f"OFAT_h{pred_len}_{tag}".replace(".", "p").replace("-", "m")
+    cmd = build_cmd(param, value, itr, epochs, model_id, pred_len, use_events)
 
     print(f"\n{'='*70}\n[OFAT] {tag}\n{' '.join(cmd)}\n{'='*70}", flush=True)
     if dry_run:
@@ -234,12 +278,17 @@ def run_point(param, value, itr, epochs, timeout, dry_run):
 # Main
 # ---------------------------------------------------------------------------
 def main():
-    ap = argparse.ArgumentParser(description="OFAT sensitivity sweep for EventTCN (h=1)")
-    ap.add_argument("--params", nargs="+", default=ORDER,
-                    choices=ORDER, help="which hyperparameters to sweep")
+    ap = argparse.ArgumentParser(description="OFAT sensitivity sweep for ModernTCN")
+    ap.add_argument("--pred_len", type=int, default=1, choices=HORIZONS,
+                    help="forecast horizon; each has its own tuned anchor and CSV")
+    ap.add_argument("--use_events", action="store_true",
+                    help="study EventTCN (adds the event calendar and event_dim)")
+    ap.add_argument("--params", nargs="+", default=None, choices=ORDER_EVENTS,
+                    help="which hyperparameters to sweep (default: all applicable)")
     ap.add_argument("--itr", type=int, default=5, help="seeds per point")
     ap.add_argument("--train_epochs", type=int, default=40)
-    ap.add_argument("--out", default="sensitivity/ofat_results.csv")
+    ap.add_argument("--out", default=None,
+                    help="results CSV (default: sensitivity/ofat_<kind>_h<H>.csv)")
     ap.add_argument("--timeout", type=int, default=3 * 3600,
                     help="per-config subprocess timeout (s)")
     ap.add_argument("--quick", action="store_true",
@@ -251,6 +300,14 @@ def main():
     if args.quick:
         args.itr, args.train_epochs = 2, 15
 
+    anchor = anchor_for(args.pred_len)
+    if args.params is None:
+        args.params = ORDER_EVENTS if args.use_events else ORDER
+    elif not args.use_events and "event_dim" in args.params:
+        raise SystemExit("event_dim only applies with --use_events")
+    if args.out is None:
+        args.out = results_path(args.pred_len, args.use_events)
+
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     done = load_done(args.out)
 
@@ -259,34 +316,37 @@ def main():
     if ("anchor", "") not in done:
         plan.append((None, None))
     for p in args.params:
-        grid = sorted(set(GRIDS[p]) | {ANCHOR[p]})
+        grid = sorted(set(GRIDS[p]) | {anchor[p]})
         for v in grid:
-            if v == ANCHOR[p]:
+            if v == anchor[p]:
                 continue                       # centre point == anchor, reused
             if (p, value_key(v)) in done:
                 continue
             plan.append((p, v))
 
-    print(f"OFAT plan: {len(plan)} config(s) to train "
+    kind = "EventTCN" if args.use_events else "ModernTCN"
+    print(f"OFAT plan [{kind}, h={args.pred_len}]: {len(plan)} config(s) to train "
           f"(itr={args.itr}, epochs={args.train_epochs}); "
-          f"already done: {len(done)} row-group(s).")
+          f"already done: {len(done)} row-group(s). -> {args.out}")
     for p, v in plan:
         print(f"   - {'anchor' if p is None else f'{p} = {v}'}")
 
     if args.dry_run:
         for p, v in plan:
-            run_point(p, v, args.itr, args.train_epochs, args.timeout, dry_run=True)
+            run_point(p, v, args.itr, args.train_epochs, args.timeout, True,
+                      args.pred_len, args.use_events)
         print("\n[dry-run] no training performed.")
         return
 
     for i, (p, v) in enumerate(plan, 1):
         print(f"\n########## [{i}/{len(plan)}] ##########")
-        rows = run_point(p, v, args.itr, args.train_epochs, args.timeout, dry_run=False)
+        rows = run_point(p, v, args.itr, args.train_epochs, args.timeout, False,
+                         args.pred_len, args.use_events)
         if rows:
             append_rows(args.out, rows)
 
     print(f"\nDone. Results in {args.out}")
-    print("Next:  python sensitivity/ofat_plots.py")
+    print(f"Next:  python sensitivity/ofat_plots.py --pred_len {args.pred_len}")
 
 
 if __name__ == "__main__":
