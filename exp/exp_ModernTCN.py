@@ -4,6 +4,8 @@ from models import ModernTCN
 from utils.tools import EarlyStopping, adjust_learning_rate, visual, test_params_flop
 from utils.metrics import metric
 
+import math
+
 import numpy as np
 import torch
 import torch.nn as nn
@@ -28,12 +30,12 @@ class Exp_Main(Exp_Basic):
         model_dict = {
             'ModernTCN': ModernTCN,
         }
-        # When aggregate_logsum is enabled the model head must output a single
-        # value (the predicted ln(sum RV)).  Temporarily set pred_len=1 so that
+        # When aggregate_mean is enabled the model head must output a single
+        # value (the predicted ln(mean RV)).  Temporarily set pred_len=1 so that
         # ModernTCN builds with target_window=1, then restore the original
         # value so the data loader still loads the full pred_len future steps
         # (needed to build the ground-truth target inside _get_target).
-        if getattr(self.args, 'aggregate_logsum', False):
+        if getattr(self.args, 'aggregate_mean', False):
             orig_pred_len = self.args.pred_len
             self.args.pred_len = 1
             model = model_dict[self.args.model].Model(self.args).float()
@@ -47,17 +49,24 @@ class Exp_Main(Exp_Basic):
 
     def _get_target(self, batch_y, f_dim):
         """
-        Slice the future window and, when aggregating, reduce it to
+        Slice the future window and, when aggregating, reduce it to ProjectC's
+        target -- the log of the horizon-AVERAGE variance:
 
-            Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} )
+            Y_t^(h) = ln( (1/h) * sum_{k=1..h} RV_{t+k} )
 
         The data channel holds ln(RV) (Dataset_Custom forbids scaling for
-        exactly this reason), so the sum of levels is a log-sum-exp over the
-        horizon axis. For h = 1 it reduces to ln(RV_{t+1}).
+        exactly this reason), so RV = exp(ln_RV) and
+
+            log(mean(RV)) == logsumexp(ln_RV) - log(h)
+
+        which aggregates in variance space (the additive, economically correct
+        space) while staying numerically stable. For h = 1 it reduces to
+        ln(RV_{t+1}).
         """
         y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-        if getattr(self.args, 'aggregate_logsum', False):
-            y = torch.logsumexp(y, dim=1, keepdim=True)
+        if getattr(self.args, 'aggregate_mean', False):
+            h = y.shape[1]
+            y = torch.logsumexp(y, dim=1, keepdim=True) - math.log(h)
         return y
 
     def _unpack_batch(self, batch):

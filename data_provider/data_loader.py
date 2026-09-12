@@ -53,10 +53,10 @@ class Dataset_Custom(Dataset):
         # exports) and market holidays that leak in as RV = 0 -- NaN or -inf
         # targets would silently poison windows and test metrics.
         #
-        # Everything downstream (the look-back window, and the ln(sum RV)
+        # Everything downstream (the look-back window, and the ln(mean RV)
         # target built in Exp_Main._get_target) assumes this column is ln(RV),
         # which is also why `scale` must stay False: log-sum-exp over a
-        # standardised series would not be ln(sum RV).
+        # standardised series would not be ln(mean RV).
         df_raw = prepare_rv_frame(df_raw, self.target, verbose=(self.set_type == 0))
 
         '''
@@ -83,7 +83,7 @@ class Dataset_Custom(Dataset):
 
         if self.scale:
             raise ValueError(
-                'scale=True is incompatible with the ln(sum RV) target: the '
+                'scale=True is incompatible with the ln(mean RV) target: the '
                 'horizon aggregation is a log-sum-exp over raw ln(RV) values, '
                 'which a StandardScaler would invalidate. Use RevIN (--revin 1) '
                 'for input normalisation instead.'

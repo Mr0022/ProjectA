@@ -3,7 +3,7 @@ Train+test every model at its Optuna-best hyperparameters (h = 1, 5, 22),
 parse the test-set MSE / MAE / QLIKE, add the HAR-RV baseline, and emit a
 comparison table (CSV + Markdown).
 
-Forecast target (all models): Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} ), on
+Forecast target (all models): Y_t^(h) = ln( (1/h) * sum_{k=1..h} RV_{t+k} ), on
 data/EURUSD-RV.csv.
 
 !! The hyperparameters below were tuned on the PREVIOUS dataset
@@ -28,39 +28,39 @@ common_tr = ['--lradj', 'TST', '--train_epochs', EPOCHS, '--patience', PATIENCE,
 
 # ---- best hyperparameters per (model, horizon) ----------------------------
 CONFIGS = {
- # ----- LSTM (custom, aggregated ln-sum target) -----
+ # ----- LSTM (custom, aggregated log-mean target) -----
  ('LSTM', 1): ['python','LSTM_run.py','--is_training','1','--model_id','LSTM_best_h1',
-   '--data','custom','--enc_in','1','--aggregate_logsum','--seq_len','22','--pred_len','1',
+   '--data','custom','--enc_in','1','--aggregate_mean','--seq_len','22','--pred_len','1',
    '--hidden_size','128','--num_layers','3','--dropout','0.07608933759269505',
    '--head_dropout','0.29636364107380875','--revin','1',
    '--learning_rate','0.006732273106345163','--batch_size','256','--pct_start','0.12174563991351338'],
  ('LSTM', 5): ['python','LSTM_run.py','--is_training','1','--model_id','LSTM_best_h5',
-   '--data','custom','--enc_in','1','--aggregate_logsum','--seq_len','22','--pred_len','5',
+   '--data','custom','--enc_in','1','--aggregate_mean','--seq_len','22','--pred_len','5',
    '--hidden_size','128','--num_layers','3','--dropout','0.06286059033500357',
    '--head_dropout','0.46748063314790966','--revin','1',
    '--learning_rate','0.00665668210175974','--batch_size','256','--pct_start','0.26239813663907'],
  ('LSTM', 22): ['python','LSTM_run.py','--is_training','1','--model_id','LSTM_best_h22',
-   '--data','custom','--enc_in','1','--aggregate_logsum','--seq_len','22','--pred_len','22',
+   '--data','custom','--enc_in','1','--aggregate_mean','--seq_len','22','--pred_len','22',
    '--hidden_size','256','--num_layers','3','--dropout','0.1384357769833385',
    '--head_dropout','0.32313582077506997','--bidirectional','--revin','0',
    '--learning_rate','0.0033776477597474404','--batch_size','256','--pct_start','0.19707901510276543'],
- # ----- ModernTCN (custom, aggregated ln-sum target) -----
+ # ----- ModernTCN (custom, aggregated log-mean target) -----
  ('ModernTCN', 1): ['python','run.py','--is_training','1','--model_id','ModernTCN_best_h1','--model','ModernTCN',
-   '--data','custom','--enc_in','1','--dec_in','1','--c_out','1','--aggregate_logsum','--seq_len','22','--pred_len','1',
+   '--data','custom','--enc_in','1','--dec_in','1','--c_out','1','--aggregate_mean','--seq_len','22','--pred_len','1',
    '--patch_size','16','--patch_stride','2','--ffn_ratio','3',
    '--num_blocks','3','3','3','3','--large_size','31','31','31','31','--small_size','5','5','5','5',
    '--dims','256','256','256','256','--dw_dims','256','256','256','256',
    '--dropout','0.0905459364171444','--head_dropout','0.13523654131380805','--revin','1',
    '--use_multi_scale','False','--pct_start','0.3','--learning_rate','4.0990314788088356e-05','--batch_size','256'],
  ('ModernTCN', 5): ['python','run.py','--is_training','1','--model_id','ModernTCN_best_h5','--model','ModernTCN',
-   '--data','custom','--enc_in','1','--dec_in','1','--c_out','1','--aggregate_logsum','--seq_len','22','--pred_len','5',
+   '--data','custom','--enc_in','1','--dec_in','1','--c_out','1','--aggregate_mean','--seq_len','22','--pred_len','5',
    '--patch_size','16','--patch_stride','4','--ffn_ratio','4',
    '--num_blocks','2','2','2','2','--large_size','51','51','51','51','--small_size','5','5','5','5',
    '--dims','256','256','256','256','--dw_dims','256','256','256','256',
    '--dropout','0.4085579485889118','--head_dropout','0.3912055316326212','--revin','1',
    '--use_multi_scale','False','--pct_start','0.3','--learning_rate','4.208053742775343e-05','--batch_size','256'],
  ('ModernTCN', 22): ['python','run.py','--is_training','1','--model_id','ModernTCN_best_h22','--model','ModernTCN',
-   '--data','custom','--enc_in','1','--dec_in','1','--c_out','1','--aggregate_logsum','--seq_len','22','--pred_len','22',
+   '--data','custom','--enc_in','1','--dec_in','1','--c_out','1','--aggregate_mean','--seq_len','22','--pred_len','22',
    '--patch_size','16','--patch_stride','4','--ffn_ratio','4',
    '--num_blocks','2','2','2','2','--large_size','51','51','51','51','--small_size','5','5','5','5',
    '--dims','32','32','32','32','--dw_dims','32','32','32','32',

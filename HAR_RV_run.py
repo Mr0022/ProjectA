@@ -19,19 +19,20 @@ Split logic mirrors Dataset_Custom (data_provider/data_loader.py) exactly:
     out-of-sample comparison.
 
 Target construction:
-    For horizon h, the dependent variable is the log of the SUMMED realized
-    variance over the forecast window:
+    For horizon h, the dependent variable is the log of the AVERAGE realized
+    variance over the forecast window -- ProjectC's convention:
 
-        Y_t^(h) = ln( Sum_{k=0}^{h-1}  RV_{t+k} )
+        Y_t^(h) = ln( (1/h) * Sum_{k=0}^{h-1}  RV_{t+k} )
 
     h=1  -> Y_t = ln(RV_t)
-    h=5  -> Y_t = ln( RV_t + ... + RV_{t+4}  )
-    h=22 -> Y_t = ln( RV_t + ... + RV_{t+21} )
+    h=5  -> Y_t = ln( (RV_t + ... + RV_{t+4})  / 5  )
+    h=22 -> Y_t = ln( (RV_t + ... + RV_{t+21}) / 22 )
 
-    This is the same target the deep baselines optimise (--aggregate_logsum
-    in run.py / LSTM_run.py, where it is a log-sum-exp over the ln(RV)
-    channel), so the comparison is like for like. It differs from the log of
-    the window MEAN by the constant ln(h), which the OLS intercept absorbs.
+    This is the same target the deep baselines optimise (--aggregate_mean in
+    run.py / LSTM_run.py, computed there as logsumexp(ln_RV) - log(h)), so
+    the comparison is like for like. Aggregating in variance space and then
+    logging keeps the three horizons on one scale; it differs from the log
+    of the window SUM only by the constant ln(h).
 
     The regressors (RV_d, RV_w, RV_m) are all lagged one day, so the
     information set ends at t-1 and predicting [t .. t+h-1] is a genuine
@@ -47,7 +48,7 @@ HAC bandwidth (Patton & Sheppard, 2009; Bollerslev et al., 2016):
     h=22 -> L=42
 
 Metrics   : MSE, MAE, QLIKE (Patton, 2011) -- computed on the log scale of
-            the target, i.e. on ln(sum RV)
+            the target, i.e. on ln(mean RV)
 
 Usage:
     python HAR_RV_run.py
@@ -76,7 +77,7 @@ from   statsmodels.stats.stattools         import durbin_watson
 from   statsmodels.stats.diagnostic        import acorr_ljungbox
 from   scipy                               import stats
 
-from utils.rv import pick_rv_column, to_log_rv, forward_log_sum
+from utils.rv import pick_rv_column, to_log_rv, forward_log_mean
 
 
 # ==============================================================================
@@ -210,9 +211,9 @@ def load_base_features(filepath: str) -> pd.DataFrame:
 
 def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     """
-    Construct the log of the h-day forward SUMMED RV as the dependent variable.
+    Construct the log of the h-day forward AVERAGE RV as the dependent variable.
 
-        Y_t^(h) = ln( Sum_{k=0}^{h-1}  RV_{t+k} )
+        Y_t^(h) = ln( (1/h) * Sum_{k=0}^{h-1}  RV_{t+k} )
 
     Window convention (ProjectC / HAR_Q_run.py): every regressor is shifted
     by one day, so the information set ends at t-1 while the target covers
@@ -220,8 +221,8 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     than the contemporaneous-regressor form:
 
         h=1  -> Y_t = ln(RV_t)
-        h=5  -> Y_t = ln( RV_t + ... + RV_{t+4}  )
-        h=22 -> Y_t = ln( RV_t + ... + RV_{t+21} )
+        h=5  -> Y_t = ln( (RV_t + ... + RV_{t+4})  / 5  )
+        h=22 -> Y_t = ln( (RV_t + ... + RV_{t+21}) / 22 )
 
     This indexing matters for the split, not for the forecasts: keying each
     forecast to the first day it covers (rather than the last day of its
@@ -229,9 +230,11 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     the same test forecasts -- and the same COUNT -- as Dataset_Custom's
     border arithmetic, which starts the test window at val_end - seq_len.
 
-    Note this is the log of a SUM, not the mean of logs. It exceeds the log
-    of the window mean by exactly ln(h) (absorbed by the OLS intercept), and
-    differs from the mean of logs by a Jensen gap that grows with h.
+    Note this is the log of a MEAN, not the mean of logs: aggregation happens
+    in variance space and the log is taken last (ProjectC's convention, and
+    what the deep models compute as logsumexp(ln_RV) - log(h)). It differs
+    from the log of the window SUM by exactly ln(h), which the OLS intercept
+    absorbs, and from the mean of logs by a Jensen gap that grows with h.
 
     Parameters
     ----------
@@ -246,9 +249,9 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     if h == 1:
         df["Y_h"] = df["ln_RV"]
     else:
-        # forward_log_sum gives ln(sum RV[t+1 .. t+h]); shift back by one to
+        # forward_log_mean gives ln(mean RV[t+1 .. t+h]); shift back by one to
         # land on the [t .. t+h-1] window this script indexes by.
-        df["Y_h"] = forward_log_sum(df["ln_RV"], h).shift(1)
+        df["Y_h"] = forward_log_mean(df["ln_RV"], h).shift(1)
     df = df.dropna(subset=["Y_h", "RV_d", "RV_w", "RV_m"])
     return df
 
@@ -440,7 +443,7 @@ def print_metrics_by_horizon(all_metrics: dict):
             print(f"  {v:>20.6f}", end="")
         print()
     print(THIN)
-    print("  Note: MSE/MAE on the ln(sum RV) scale. QLIKE compares exp() of the\n        target, i.e. summed variance over the window; the ln(h) offset\n        cancels in its ratio, so it is comparable across conventions.")
+    print("  Note: MSE/MAE on the ln(mean RV) scale. QLIKE compares exp() of the\n        target, i.e. average variance over the window; the ln(h) offset\n        cancels in its ratio, so it is comparable across conventions.")
 
 def print_diagnostics(diag: dict, h: int):
     hlabel = HORIZONS[h]["label"]

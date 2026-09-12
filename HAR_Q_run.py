@@ -21,13 +21,13 @@ This is the headline "HAR-Q" specification (daily lag only), NOT "HAR-Q-F"
 (which would also adjust the weekly and monthly lags).
 
 Target construction:
-    For horizon h, the dependent variable is the log of the SUMMED realized
+    For horizon h, the dependent variable is the log of the AVERAGE realized
     variance over the forecast window -- the same target as HAR-RV and the
-    deep baselines (--aggregate_logsum):
+    deep baselines (--aggregate_mean), and ProjectC's convention:
 
-        Y_t^(h) = ln( Sum_{k=1}^{h}  RV_{t+k} )
+        Y_t^(h) = ln( (1/h) * Sum_{k=1}^{h}  RV_{t+k} )
 
-    It differs from the log of the window MEAN by the constant ln(h), which
+    It differs from the log of the window SUM by the constant ln(h), which
     the OLS intercept absorbs.
 
 Split logic mirrors Dataset_Custom (data_provider/data_loader.py):
@@ -92,7 +92,7 @@ HAC bandwidth (Patton & Sheppard, 2009; Bollerslev et al., 2016):
     h=22 → L=42
 
 Metrics   : MSE, MAE, QLIKE (Patton, 2011) — computed on the log scale of the
-            target, i.e. on ln(sum RV)
+            target, i.e. on ln(mean RV)
 
 Usage:
     python HAR_Q_run.py
@@ -122,7 +122,7 @@ from   statsmodels.stats.stattools         import durbin_watson
 from   statsmodels.stats.diagnostic        import acorr_ljungbox
 from   scipy                               import stats
 
-from utils.rv import pick_rv_column, to_log_rv, forward_log_sum
+from utils.rv import pick_rv_column, to_log_rv, forward_log_mean
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -286,9 +286,9 @@ def load_base_features(filepath: str) -> pd.DataFrame:
 
 def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     """
-    Construct the log of the h-day forward SUMMED RV as the dependent variable.
+    Construct the log of the h-day forward AVERAGE RV as the dependent variable.
 
-        Y_t^(h) = ln( Σ_{k=0}^{h-1}  RV_{t+k} )
+        Y_t^(h) = ln( (1/h) * Σ_{k=0}^{h-1}  RV_{t+k} )
 
     Alignment note: this script lags its regressors by one day (RV_d =
     ln(RV_{t-1}), see load_base_features), so the forecast window that sits
@@ -298,16 +298,16 @@ def build_horizon_target(df_base: pd.DataFrame, h: int) -> pd.DataFrame:
     forecasts, and the same number of them, as Dataset_Custom.
 
         h=1  -> Y_t = ln(RV_t)
-        h=5  -> Y_t = ln( RV_t + ... + RV_{t+4}  )
-        h=22 -> Y_t = ln( RV_t + ... + RV_{t+21} )
+        h=5  -> Y_t = ln( (RV_t + ... + RV_{t+4})  / 5  )
+        h=22 -> Y_t = ln( (RV_t + ... + RV_{t+21}) / 22 )
     """
     df = df_base.copy()
     if h == 1:
         df["Y_h"] = df["ln_RV"]
     else:
-        # forward_log_sum gives ln(sum RV[t+1 .. t+h]); shift back by one to
+        # forward_log_mean gives ln(mean RV[t+1 .. t+h]); shift back by one to
         # land on this script's [t .. t+h-1] window.
-        df["Y_h"] = forward_log_sum(df["ln_RV"], h).shift(1)
+        df["Y_h"] = forward_log_mean(df["ln_RV"], h).shift(1)
     df = df.dropna(subset=["Y_h", "RV_d", "RV_w", "RV_m", "Q_raw"])
     return df
 
@@ -493,7 +493,7 @@ def print_metrics_by_horizon(all_metrics: dict):
             print(f"  {v:>20.6f}", end="")
         print()
     print(THIN)
-    print("  Note: MSE/MAE on the ln(sum RV) scale. QLIKE compares exp() of the\n        target, i.e. summed variance over the window; the ln(h) offset\n        cancels in its ratio, so it is comparable across conventions.")
+    print("  Note: MSE/MAE on the ln(mean RV) scale. QLIKE compares exp() of the\n        target, i.e. average variance over the window; the ln(h) offset\n        cancels in its ratio, so it is comparable across conventions.")
 
 def print_diagnostics(diag: dict, h: int):
     hlabel = HORIZONS[h]["label"]

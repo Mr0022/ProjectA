@@ -1,9 +1,9 @@
 """
 LSTM forecasting run script — mirrors run.py for ModernTCN.
 
-Forecast target (with --aggregate_logsum):
+Forecast target (with --aggregate_mean):
 
-    Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} )
+    Y_t^(h) = ln( (1/h) * sum_{k=1..h} RV_{t+k} )
 
 Example (univariate, 5-day horizon; the data defaults already point at
 data/EURUSD-RV.csv, which stores RV in levels and is logged on load):
@@ -19,7 +19,7 @@ data/EURUSD-RV.csv, which stores RV in levels and is logged on load):
         --num_layers 2 \
         --dropout 0.1 \
         --learning_rate 0.001 \
-        --aggregate_logsum
+        --aggregate_mean
 """
 
 import argparse
@@ -87,9 +87,9 @@ parser.add_argument('--c_out',  type=int, default=0,
                     help='output channels (0 = auto: 1 for S/MS, enc_in for M)')
 
 # ── Aggregation mode ─────────────────────────────────────────────────────────
-parser.add_argument('--aggregate_logsum', '--aggregate_mean', action='store_true',
-                    dest='aggregate_logsum', default=False,
-                    help='when pred_len>1, predict the single aggregated target ln(sum_{k=1..h} RV_{t+k}) instead of each step individually (single-value output). --aggregate_mean is kept as a deprecated alias for this flag.')
+parser.add_argument('--aggregate_mean', '--aggregate_logsum', action='store_true',
+                    dest='aggregate_mean', default=False,
+                    help='when pred_len>1, predict the single aggregated target ln((1/h) * sum_{k=1..h} RV_{t+k}) -- the log of the horizon-average variance -- instead of each step individually (single-value output). --aggregate_logsum is accepted as a deprecated alias.')
 
 # ── Training ─────────────────────────────────────────────────────────────────
 parser.add_argument('--train_epochs',  type=int,   default=100)
@@ -187,7 +187,7 @@ if __name__ == '__main__':
                 '_sl{seq_len}_pl{pred_len}'
                 '_hs{hidden_size}_nl{num_layers}'
                 '_bi{bidirectional}_rv{revin}'
-                '_agg{aggregate_logsum}'
+                '_agg{aggregate_mean}'
                 '_{des}_{ii}'
             ).format(**vars(args), ii=ii)
 
@@ -230,7 +230,7 @@ if __name__ == '__main__':
             '_sl{seq_len}_pl{pred_len}'
             '_hs{hidden_size}_nl{num_layers}'
             '_bi{bidirectional}_rv{revin}'
-            '_agg{aggregate_logsum}'
+            '_agg{aggregate_mean}'
             '_{des}_{ii}'
         ).format(**vars(args), ii=ii)
 

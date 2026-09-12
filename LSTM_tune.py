@@ -12,7 +12,7 @@ Usage:
         --enc_in 1 \
         --seq_len 22 \
         --pred_len 5 \
-        --aggregate_logsum \
+        --aggregate_mean \
         --n_trials 50 \
         --train_epochs 30 \
         --patience 7
@@ -253,7 +253,7 @@ def build_base_config(tune_args: argparse.Namespace) -> argparse.Namespace:
     cfg.c_out     = tune_args.enc_in if tune_args.features == 'M' else 1
 
     # Aggregation mode
-    cfg.aggregate_logsum = tune_args.aggregate_logsum
+    cfg.aggregate_mean = tune_args.aggregate_mean
 
     # Training budget (reduced for speed during search)
     cfg.train_epochs = tune_args.train_epochs
@@ -326,9 +326,9 @@ def parse_tune_args():
     p.add_argument('--seq_len',   type=int, default=22,      help='Fallback look-back window (seq_len is searched over {22,35,70,180})')
     p.add_argument('--label_len', type=int, default=0,       help='Label length (unused by LSTM; must be <= seq_len)')
     p.add_argument('--pred_len',  type=int, default=1,       help='Prediction horizon')
-    p.add_argument('--aggregate_logsum', '--aggregate_mean', action='store_true',
-                   dest='aggregate_logsum',  default=False,
-                   help='Predict the mean of the next pred_len steps (single-value output)')
+    p.add_argument('--aggregate_mean', '--aggregate_logsum', action='store_true',
+                   dest='aggregate_mean', default=False,
+                   help='Predict the single aggregated target ln((1/h) * sum_{k=1..h} RV_{t+k}) -- the log of the horizon-average variance -- instead of each step individually (single-value output). --aggregate_logsum is accepted as a deprecated alias.')
 
     # Search-space choice sets
     p.add_argument('--batch_choices',   type=_int_list, default=[64, 128, 256, 512],

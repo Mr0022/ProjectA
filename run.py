@@ -109,9 +109,9 @@ parser.add_argument('--loss', type=str, default='mse', help='loss function')
 parser.add_argument('--lradj', type=str, default='type3', help='adjust learning rate')
 parser.add_argument('--pct_start', type=float, default=0.3, help='pct_start')
 parser.add_argument('--use_amp', action='store_true', help='use automatic mixed precision training', default=False)
-parser.add_argument('--aggregate_logsum', '--aggregate_mean', action='store_true',
-                    dest='aggregate_logsum', default=False,
-                    help='when pred_len>1, predict the single aggregated target ln(sum_{k=1..h} RV_{t+k}) instead of each step individually (single-value output). --aggregate_mean is kept as a deprecated alias for this flag.')
+parser.add_argument('--aggregate_mean', '--aggregate_logsum', action='store_true',
+                    dest='aggregate_mean', default=False,
+                    help='when pred_len>1, predict the single aggregated target ln((1/h) * sum_{k=1..h} RV_{t+k}) -- the log of the horizon-average variance -- instead of each step individually (single-value output). --aggregate_logsum is accepted as a deprecated alias.')
 
 # news events
 parser.add_argument('--use_events', action='store_true', default=False,

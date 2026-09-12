@@ -7,14 +7,21 @@ Two conventions are fixed here so every model in the repo agrees:
    trading day. Source files may store either levels (a column named ``RV``) or
    logs (``ln_RV``); :func:`to_log_rv` normalises both to logs.
 
-2. **Forecast target.** The h-day target is the log of the SUM of realized
-   variance over the forecast window::
+2. **Forecast target.** The h-day target is the log of the MEAN realized
+   variance over the forecast window -- ProjectC's convention::
 
-       Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} )
+       Y_t^(h) = ln( (1/h) * sum_{k=1..h} RV_{t+k} )
+               = ln( sum_{k=1..h} RV_{t+k} ) - ln(h)
 
-   For h = 1 this is just ln(RV_{t+1}). For h > 1 it differs from the log of the
-   window MEAN by the constant ln(h), and from the mean of the logs (the
-   convention this repo used previously) by a Jensen gap that grows with h.
+   For h = 1 this is just ln(RV_{t+1}). Aggregation happens in variance space
+   (the additive, economically meaningful space) and is then logged, so it
+   differs from the mean of the logs by a Jensen gap that grows with h.
+
+   Because ln(mean) and ln(sum) differ only by the constant ln(h), every loss
+   used here is unaffected by the choice once a model has absorbed the offset:
+   MSE and MAE see identical errors, QLIKE's ratio cancels it, and for OLS it
+   is absorbed exactly by the intercept. The mean is used because it keeps the
+   three horizons on a comparable scale and matches ProjectC.
 """
 
 import numpy as np
@@ -107,14 +114,15 @@ def prepare_rv_frame(df, target, date_col="date", verbose=True):
 
 def forward_log_sum(ln_rv, h: int):
     """
-    Build the h-day forecast target Y_t^(h) = ln( sum_{k=1..h} RV_{t+k} ).
+    ln( sum_{k=1..h} RV_{t+k} ) -- the unnormalised form of the target.
 
     `ln_rv` is a pandas Series of ln(RV). The window [t+1 .. t+h] lies strictly
     in the future of row t, so the newest information the target uses is from
     t+1 and row t's own regressors (which may include RV_t) never leak.
 
-    h = 1 reduces to ln(RV_{t+1}). Entries whose window runs past the end of the
-    sample are NaN.
+    Prefer :func:`forward_log_mean`, which is the target this repo fits; this
+    helper exists because the two differ only by ln(h) and the sum is the
+    natural primitive.
     """
     if h < 1:
         raise ValueError(f"horizon h must be >= 1, got {h}")
@@ -122,13 +130,32 @@ def forward_log_sum(ln_rv, h: int):
     return np.log(rv.rolling(h).sum()).shift(-h)
 
 
-def log_sum_np(ln_rv_window, axis=-1):
+def forward_log_mean(ln_rv, h: int):
     """
-    ln( sum RV ) for a numpy array of ln(RV) values along `axis`.
+    Build the h-day forecast target Y_t^(h) = ln( (1/h) sum_{k=1..h} RV_{t+k} ).
 
-    Numerically this is a log-sum-exp; it is written that way so the helper is
-    safe for any RV scale, not just the O(0.1) daily values in this repo.
+    This is ProjectC's target: aggregate in variance space, then take the log.
+    Equivalently forward_log_sum(ln_rv, h) - ln(h).
+
+    h = 1 reduces to ln(RV_{t+1}). Entries whose window runs past the end of the
+    sample are NaN.
+    """
+    if h < 1:
+        raise ValueError(f"horizon h must be >= 1, got {h}")
+    rv = np.exp(ln_rv)
+    return np.log(rv.rolling(h).mean()).shift(-h)
+
+
+def log_mean_np(ln_rv_window, axis=-1):
+    """
+    ln( mean RV ) for a numpy array of ln(RV) values along `axis`.
+
+    Numerically this is a log-sum-exp minus ln(n); it is written that way so the
+    helper is safe for any RV scale, not just the O(0.1) daily values here. This
+    mirrors the deep models' `torch.logsumexp(y, dim=1) - math.log(h)`.
     """
     a = np.asarray(ln_rv_window, dtype=float)
+    n = a.shape[axis]
     m = np.max(a, axis=axis, keepdims=True)
-    return (m + np.log(np.sum(np.exp(a - m), axis=axis, keepdims=True))).squeeze(axis)
+    lse = (m + np.log(np.sum(np.exp(a - m), axis=axis, keepdims=True))).squeeze(axis)
+    return lse - np.log(n)

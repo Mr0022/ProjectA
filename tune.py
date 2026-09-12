@@ -256,7 +256,7 @@ def build_base_config(tune_args: argparse.Namespace) -> argparse.Namespace:
     cfg.checkpoints  = tune_args.checkpoints
 
     # Aggregation mode
-    cfg.aggregate_logsum = tune_args.aggregate_logsum
+    cfg.aggregate_mean = tune_args.aggregate_mean
 
     # News-event conditioning (Study 2). event_fusion/past/future are fixed;
     # event_dim is searched (see sample_hyperparameters).
@@ -365,8 +365,9 @@ def parse_tune_args():
                    help='Epochs before pruner starts evaluating a trial')
     p.add_argument('--reset', action='store_true',
                    help='Delete existing study DB and start fresh (use after changing search space)')
-    p.add_argument('--aggregate_logsum', '--aggregate_mean', action='store_true',
-                   dest='aggregate_logsum', default=False, help='Predict the single aggregated target ln(sum_{k=1..h} RV_{t+k}) instead of each step individually (single-value output). --aggregate_mean is kept as a deprecated alias.')
+    p.add_argument('--aggregate_mean', '--aggregate_logsum', action='store_true',
+                   dest='aggregate_mean', default=False,
+                   help='Predict the single aggregated target ln((1/h) * sum_{k=1..h} RV_{t+k}) -- the log of the horizon-average variance -- instead of each step individually (single-value output). --aggregate_logsum is accepted as a deprecated alias.')
 
     # News events (Study 2)
     p.add_argument('--use_events', action='store_true', default=False,

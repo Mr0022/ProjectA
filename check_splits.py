@@ -50,7 +50,7 @@ def har_counts(path, h):
     s = pd.Series(ln_rv, index=s.index)[keep]
 
     rv = np.exp(s)
-    y = s if h == 1 else np.log(rv.rolling(h).sum()).shift(-h).shift(1)
+    y = s if h == 1 else np.log(rv.rolling(h).mean()).shift(-h).shift(1)
     feat = s.shift(1).rolling(22).mean()          # RV_m is the binding lag
     ok = y.notna() & feat.notna()
     yr = s.index.year
