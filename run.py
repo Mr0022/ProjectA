@@ -118,8 +118,10 @@ parser.add_argument('--use_events', action='store_true', default=False,
                     help='condition on the daily macro news-event calendar: past events are '
                          'embedded and injected at the stem; the KNOWN future event schedule '
                          '(release calendar over the pred_len horizon) FiLM-conditions the head')
-parser.add_argument('--event_data_path', type=str, default='events.csv',
-                    help='event calendar csv inside root_path (a date column + numeric event columns)')
+parser.add_argument('--event_data_path', type=str, default='events_daily_features.csv',
+                    help='event calendar csv inside root_path (a date column + numeric event columns); '
+                         'built from the raw calendar by build_event_features.py. The older events.csv '
+                         'stops at 2025-04-07 and leaves most of the test period event-free.')
 parser.add_argument('--event_dim', type=int, default=8,
                     help='dimension of the learned event-type embedding (keep small: 4-16)')
 parser.add_argument('--event_past', type=str2bool, default=True,

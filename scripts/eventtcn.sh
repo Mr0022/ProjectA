@@ -8,7 +8,8 @@
 #
 # Events were tuned with --event_fusion channel (tune.py default) and event_dim
 # in {4,8,16}; event_past/event_future stay on (defaults). --use_events auto-
-# switches --data custom -> custom_events and reads data/events.csv.
+# switches --data custom -> custom_events and reads data/events_daily_features.csv
+# (built by build_event_features.py from data/events_daily.csv).
 #
 # NOTE on patch_stride: tune.py clamps stride = min(patch_stride, patch_size).
 # For h = 22 the JSON stores patch_stride 8 but patch_size 4, so the value that
