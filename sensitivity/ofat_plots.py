@@ -191,15 +191,15 @@ def fig_response(df, anchor, metric, params, out, title_tag=""):
                         xytext=(0, 9), ha="center", fontsize=7, color=MUTED)
 
         ax.set_title(PRETTY.get(p, p))
-        ax.set_ylabel(metric.upper())
+        ax.set_ylabel(f"test {metric.upper()}")
         ax.grid(axis="x", visible=False)
         for spine in ("top", "right"):
             ax.spines[spine].set_visible(False)
 
     fig.suptitle(
-        f"{title_tag} one-factor-at-a-time sensitivity  --  test {metric.upper()}"
+        f"{title_tag} one-factor-at-a-time sensitivity  --  TEST-set {metric.upper()}"
         f"\nline = seed mean, band = ±1 std, dots = individual seeds, "
-        f"◆ = tuned anchor",
+        f"◆ = anchor   |   validation is used only for early stopping",
         fontsize=11, y=1.005)
     fig.tight_layout()
     for ext in ("pdf", "png"):
@@ -233,9 +233,9 @@ def fig_tornado(df, anchor, metric, params, out, title_tag=""):
     ax.axvline(0, color=INK, lw=1.0)
     ax.set_yticks(ys)
     ax.set_yticklabels([PRETTY.get(p, p) for p, *_ in rows])
-    ax.set_xlabel(f"Δ test {metric.upper()} vs tuned anchor")
-    ax.set_title(f"Local sensitivity of {title_tag}: swing in {metric.upper()} "
-                 f"around the tuned anchor")
+    ax.set_xlabel(f"Δ test-set {metric.upper()} vs anchor")
+    ax.set_title(f"Local sensitivity of {title_tag}: swing in test-set "
+                 f"{metric.upper()} around the anchor")
     from matplotlib.patches import Patch
     ax.legend(handles=[Patch(color=BETTER, label="better than anchor"),
                        Patch(color=WORSE, label="worse than anchor")],
@@ -270,8 +270,9 @@ def fig_sensitivity_bar(df, anchor, metric, params, out, title_tag=""):
     ax.barh(ys, [r[1] for r in rows], color=BLUE, alpha=0.9, height=0.62)
     ax.set_yticks(ys)
     ax.set_yticklabels([PRETTY.get(p, p) for p, _ in rows])
-    ax.set_xlabel(f"{metric.upper()} range across grid, as % of anchor {metric.upper()}")
-    ax.set_title(f"How much each hyperparameter moves {title_tag} {metric.upper()}")
+    ax.set_xlabel(f"test-set {metric.upper()} range across grid, "
+                  f"as % of anchor {metric.upper()}")
+    ax.set_title(f"How much each hyperparameter moves {title_tag} test-set {metric.upper()}")
     ax.grid(axis="y", visible=False)
     for spine in ("top", "right", "left"):
         ax.spines[spine].set_visible(False)
@@ -309,7 +310,7 @@ def fig_event_dim(df, anchor, out, title_tag=""):
         ax.set_xticks(xpos)
         ax.set_xticklabels([str(int(v)) for v in vals])
         ax.set_xlabel("event_dim")
-        ax.set_ylabel(f"test {metric.upper()}")
+        ax.set_ylabel(f"test-set {metric.upper()}")
         ax.grid(axis="x", visible=False)
         for spine in ("top", "right"):
             ax.spines[spine].set_visible(False)
@@ -363,7 +364,8 @@ def fig_cross_horizon(per_h, metric, out, anchors=None):
                 color=HORIZON_HUE.get(h, BLUE), label=f"h = {h}")
     ax.set_yticks(ys)
     ax.set_yticklabels([PRETTY.get(p, p) for p in shared])
-    ax.set_xlabel(f"{metric.upper()} swing across the grid, as % of that horizon's anchor")
+    ax.set_xlabel(f"test-set {metric.upper()} swing across the grid, "
+                  f"as % of that horizon's anchor")
     ax.set_title("Which hyperparameters matter, by horizon\n"
                  "local OFAT sensitivity around each horizon's own tuned anchor",
                  fontsize=11)
