@@ -1,4 +1,2260 @@
 Date,Name,Impact,Currency
+2012-01-02,HCOB Manufacturing PMI,LOW,EUR
+2012-01-02,HCOB Manufacturing PMI,LOW,EUR
+2012-01-02,HCOB Manufacturing PMI,LOW,EUR
+2012-01-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-01-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-01-03,Unemployment Change,LOW,EUR
+2012-01-03,Unemployment Change,HIGH,EUR
+2012-01-03,Unemployment Rate s.a.,MEDIUM,EUR
+2012-01-03,Construction Spending (MoM),MEDIUM,USD
+2012-01-03,ISM Manufacturing PMI,MEDIUM,USD
+2012-01-03,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-01-03,FOMC Minutes,HIGH,USD
+2012-01-04,Consumer Spending (MoM),LOW,EUR
+2012-01-04,HCOB Services PMI,LOW,EUR
+2012-01-04,HCOB Services PMI,LOW,EUR
+2012-01-04,HCOB Services PMI,LOW,EUR
+2012-01-04,HCOB Services PMI,MEDIUM,EUR
+2012-01-04,HCOB Services PMI,MEDIUM,EUR
+2012-01-04,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-01-04,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-01-04,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-01-04,Consumer Price Index (MoM),LOW,EUR
+2012-01-04,Consumer Price Index (YoY),LOW,EUR
+2012-01-04,MBA Mortgage Applications,LOW,USD
+2012-01-04,Factory Orders (MoM),MEDIUM,USD
+2012-01-04,Total Vehicle Sales,LOW,USD
+2012-01-05,Retail Sales (MoM),MEDIUM,EUR
+2012-01-05,Retail Sales (YoY),MEDIUM,EUR
+2012-01-05,Consumer Confidence,LOW,EUR
+2012-01-05,Unemployment,LOW,EUR
+2012-01-05,Industrial New Orders (YoY),MEDIUM,EUR
+2012-01-05,Industrial New Orders s.a. (MoM),MEDIUM,EUR
+2012-01-05,Producer Price Index (MoM),LOW,EUR
+2012-01-05,Producer Price Index (YoY),MEDIUM,EUR
+2012-01-05,Challenger Job Cuts,LOW,USD
+2012-01-05,ADP Employment Change,MEDIUM,USD
+2012-01-05,Continuing Jobless Claims,LOW,USD
+2012-01-05,Initial Jobless Claims,LOW,USD
+2012-01-05,ISM Services PMI,MEDIUM,USD
+2012-01-05,EIA Crude Oil Stocks Change,LOW,USD
+2012-01-06,Consumer Confidence,MEDIUM,EUR
+2012-01-06,Economic Sentiment Indicator,LOW,EUR
+2012-01-06,Industrial Confidence,LOW,EUR
+2012-01-06,Retail Sales (MoM),MEDIUM,EUR
+2012-01-06,Retail Sales (YoY),MEDIUM,EUR
+2012-01-06,Unemployment Rate,MEDIUM,EUR
+2012-01-06,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-01-06,Factory Orders s.a. (MoM),MEDIUM,EUR
+2012-01-06,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-01-06,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-01-06,Average Weekly Hours,LOW,USD
+2012-01-06,Nonfarm Payrolls,HIGH,USD
+2012-01-06,Unemployment Rate,HIGH,USD
+2012-01-09,Current Account n.s.a.,LOW,EUR
+2012-01-09,Trade Balance s.a.,MEDIUM,EUR
+2012-01-09,"Exports, EUR",LOW,EUR
+2012-01-09,"Imports, EUR",LOW,EUR
+2012-01-09,Trade Balance EUR,LOW,EUR
+2012-01-09,Sentix Investor Confidence,MEDIUM,EUR
+2012-01-09,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-01-09,Industrial Production s.a. (MoM),LOW,EUR
+2012-01-09,Consumer Credit Change,MEDIUM,USD
+2012-01-10,Industrial Output (MoM),LOW,EUR
+2012-01-10,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-01-10,Wholesale Inventories,LOW,USD
+2012-01-11,Real GDP Growth,MEDIUM,EUR
+2012-01-11,Industrial Output Cal Adjusted (YoY),LOW,EUR
+2012-01-11,Public Deficit/GDP,LOW,EUR
+2012-01-11,MBA Mortgage Applications,LOW,USD
+2012-01-11,EIA Crude Oil Stocks Change,LOW,USD
+2012-01-11,Fed's Beige Book,HIGH,USD
+2012-01-12,Consumer Price Index (EU norm) (MoM),LOW,EUR
+2012-01-12,Consumer Price Index (EU norm) (YoY),LOW,EUR
+2012-01-12,Inflation ex-tobacco (MoM),LOW,EUR
+2012-01-12,Consumer Price Index (MoM),MEDIUM,EUR
+2012-01-12,Consumer Price Index (YoY),MEDIUM,EUR
+2012-01-12,Budget Balance,LOW,EUR
+2012-01-12,Current Account,LOW,EUR
+2012-01-12,Industrial Output s.a. (MoM),LOW,EUR
+2012-01-12,Industrial Output w.d.a (YoY),LOW,EUR
+2012-01-12,Industrial Production s.a. (MoM),LOW,EUR
+2012-01-12,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-01-12,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-01-12,ECB's President Draghi speech,HIGH,EUR
+2012-01-12,Continuing Jobless Claims,LOW,USD
+2012-01-12,Initial Jobless Claims,LOW,USD
+2012-01-12,Retail Sales (MoM),MEDIUM,USD
+2012-01-12,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-01-12,Business Inventories,MEDIUM,USD
+2012-01-12,Monthly Budget Statement,MEDIUM,USD
+2012-01-13,Consumer Price Index (MoM),LOW,EUR
+2012-01-13,Consumer Price Index (YoY),LOW,EUR
+2012-01-13,Harmonized Index of Consumer Prices (MoM),LOW,EUR
+2012-01-13,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-01-13,Trade Balance n.s.a.,MEDIUM,EUR
+2012-01-13,Trade Balance s.a.,MEDIUM,EUR
+2012-01-13,Export Price Index (MoM),LOW,USD
+2012-01-13,Goods and Services Trade Balance,MEDIUM,USD
+2012-01-13,Import Price Index (MoM),MEDIUM,USD
+2012-01-13,Import Price Index (YoY),LOW,USD
+2012-01-13,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-01-16,Wholesale Price Index (MoM),MEDIUM,EUR
+2012-01-16,Wholesale Price Index (YoY),MEDIUM,EUR
+2012-01-16,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-01-16,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-01-16,Consumer Price Index (MoM),LOW,EUR
+2012-01-16,Consumer Price Index (YoY),LOW,EUR
+2012-01-16,ECB's President Draghi speech,MEDIUM,EUR
+2012-01-17,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-01-17,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-01-17,Core Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-01-17,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-01-17,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-01-17,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-01-17,House Price Index (QoQ),LOW,EUR
+2012-01-17,Quarterly economic bulletin,LOW,EUR
+2012-01-17,NY Empire State Manufacturing Index,LOW,USD
+2012-01-18,Global Trade Balance,LOW,EUR
+2012-01-18,Trade Balance EU,LOW,EUR
+2012-01-18,Construction Output  s.a (MoM),LOW,EUR
+2012-01-18,Construction Output w.d.a (YoY),LOW,EUR
+2012-01-18,MBA Mortgage Applications,LOW,USD
+2012-01-18,Producer Price Index (MoM),LOW,USD
+2012-01-18,Producer Price Index (YoY),MEDIUM,USD
+2012-01-18,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-01-18,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-01-18,Net Long-Term TIC Flows,LOW,USD
+2012-01-18,Total Net TIC Flows,LOW,USD
+2012-01-18,Capacity Utilization,LOW,USD
+2012-01-18,Industrial Production (MoM),MEDIUM,USD
+2012-01-18,NAHB Housing Market Index,LOW,USD
+2012-01-19,Current Account n.s.a,LOW,EUR
+2012-01-19,Current Account s.a,LOW,EUR
+2012-01-19,ECB Monthly Report,HIGH,EUR
+2012-01-19,10-y Obligaciones Auction,LOW,EUR
+2012-01-19,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-01-19,Building Permits (MoM),LOW,USD
+2012-01-19,Consumer Price Index (MoM),MEDIUM,USD
+2012-01-19,Consumer Price Index (YoY),HIGH,USD
+2012-01-19,Consumer Price Index Core s.a,LOW,USD
+2012-01-19,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-01-19,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-01-19,Continuing Jobless Claims,LOW,USD
+2012-01-19,Housing Starts (MoM),MEDIUM,USD
+2012-01-19,Initial Jobless Claims,LOW,USD
+2012-01-19,Philadelphia Fed Manufacturing Survey,MEDIUM,USD
+2012-01-19,EIA Crude Oil Stocks Change,LOW,USD
+2012-01-20,Producer Price Index (MoM),MEDIUM,EUR
+2012-01-20,Producer Price Index (YoY),MEDIUM,EUR
+2012-01-20,Industrial Orders n.s.a (YoY),LOW,EUR
+2012-01-20,Industrial Orders s.a (MoM),LOW,EUR
+2012-01-20,Industrial Sales n.s.a. (YoY),LOW,EUR
+2012-01-20,Industrial Sales s.a. (MoM),LOW,EUR
+2012-01-20,Existing Home Sales (MoM),LOW,USD
+2012-01-20,Existing Home Sales Change (MoM),MEDIUM,USD
+2012-01-23,Business Climate in Manufacturing,LOW,EUR
+2012-01-23,EcoFin Meeting,MEDIUM,EUR
+2012-01-23,Consumer Confidence,MEDIUM,EUR
+2012-01-24,Trade Balance,LOW,EUR
+2012-01-24,HCOB Manufacturing PMI,LOW,EUR
+2012-01-24,HCOB Services PMI,LOW,EUR
+2012-01-24,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-01-24,HCOB Services PMI,MEDIUM,EUR
+2012-01-24,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-01-24,HCOB Services PMI,MEDIUM,EUR
+2012-01-24,Trade Balance non-EU,LOW,EUR
+2012-01-24,Industrial New Orders (YoY),MEDIUM,EUR
+2012-01-24,Industrial New Orders s.a. (MoM),LOW,EUR
+2012-01-24,Richmond Fed Manufacturing Index,LOW,USD
+2012-01-25,Producer Price Index (YoY),LOW,EUR
+2012-01-25,IFO – Business Climate,MEDIUM,EUR
+2012-01-25,IFO – Current Assessment,MEDIUM,EUR
+2012-01-25,IFO – Expectations,MEDIUM,EUR
+2012-01-25,Retail Sales n.s.a (YoY),LOW,EUR
+2012-01-25,Retail Sales s.a. (MoM),LOW,EUR
+2012-01-25,MBA Mortgage Applications,LOW,USD
+2012-01-25,ECB's President Draghi speech,MEDIUM,EUR
+2012-01-25,Housing Price Index (MoM),LOW,USD
+2012-01-25,Pending Home Sales (MoM),LOW,USD
+2012-01-25,EIA Crude Oil Stocks Change,LOW,USD
+2012-01-25,Fed Interest Rate Decision,HIGH,USD
+2012-01-25,FOMC Economic Projections,HIGH,USD
+2012-01-25,Fed's Monetary Policy Statement and Press Conference,HIGH,USD
+2012-01-26,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-01-26,Consumer Confidence,LOW,EUR
+2012-01-26,Consumer Confidence,LOW,EUR
+2012-01-26,Wage Inflation (MoM),LOW,EUR
+2012-01-26,Wage Inflation (YoY),LOW,EUR
+2012-01-26,Chicago Fed National Activity Index ,LOW,USD
+2012-01-26,Continuing Jobless Claims,LOW,USD
+2012-01-26,Durable Goods Orders,HIGH,USD
+2012-01-26,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-01-26,Initial Jobless Claims,LOW,USD
+2012-01-26,New Home Sales (MoM),MEDIUM,USD
+2012-01-26,New Home Sales Change (MoM),LOW,USD
+2012-01-27,Import Price Index (MoM),LOW,EUR
+2012-01-27,Retail Sales (YoY),LOW,EUR
+2012-01-27,Unemployment Survey,LOW,EUR
+2012-01-27,M3 Money Supply (3m),LOW,EUR
+2012-01-27,M3 Money Supply (YoY),LOW,EUR
+2012-01-27,Core Personal Consumption Expenditures (QoQ),MEDIUM,USD
+2012-01-27,Gross Domestic Product Annualized,MEDIUM,USD
+2012-01-27,Gross Domestic Product Price Index,MEDIUM,USD
+2012-01-27,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-01-30,EU Extraordinary Economic Summit,HIGH,EUR
+2012-01-30,Gross Domestic Product - Estimated (QoQ),LOW,EUR
+2012-01-30,Gross Domestic Product - Estimated (YoY),LOW,EUR
+2012-01-30,Business Confidence,LOW,EUR
+2012-01-30,Services Sentiment,LOW,EUR
+2012-01-30,Consumer Confidence,MEDIUM,EUR
+2012-01-30,Economic Sentiment Indicator,LOW,EUR
+2012-01-30,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-01-30,Core Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-01-30,Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-01-30,Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-01-30,Personal Income (MoM),MEDIUM,USD
+2012-01-30,Consumer Price Index (MoM),MEDIUM,EUR
+2012-01-30,Consumer Price Index (YoY),HIGH,EUR
+2012-01-30,Loan Officer Survey,LOW,USD
+2012-01-31,Retail Sales (MoM),MEDIUM,EUR
+2012-01-31,Retail Sales (YoY),MEDIUM,EUR
+2012-01-31,Consumer Spending (MoM),LOW,EUR
+2012-01-31,Producer Prices (MoM),LOW,EUR
+2012-01-31,Current Account Balance,LOW,EUR
+2012-01-31,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-01-31,Unemployment Change,HIGH,EUR
+2012-01-31,Unemployment Rate s.a.,HIGH,EUR
+2012-01-31,Unemployment Rate,HIGH,EUR
+2012-01-31,Producer Price Index (MoM),LOW,EUR
+2012-01-31,Producer Price Index (YoY),LOW,EUR
+2012-01-31,Employment Cost Index,LOW,USD
+2012-01-31,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-01-31,Chicago PMI,LOW,USD
+2012-01-31,Consumer Confidence,LOW,USD
+2012-02-01,HCOB Manufacturing PMI,LOW,EUR
+2012-02-01,HCOB Manufacturing PMI,LOW,EUR
+2012-02-01,HCOB Manufacturing PMI,LOW,EUR
+2012-02-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-02-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-02-01,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-02-01,MBA Mortgage Applications,LOW,USD
+2012-02-01,ADP Employment Change,MEDIUM,USD
+2012-02-01,Construction Spending (MoM),MEDIUM,USD
+2012-02-01,ISM Manufacturing PMI,MEDIUM,USD
+2012-02-01,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-02-01,EIA Crude Oil Stocks Change,LOW,USD
+2012-02-01,Total Vehicle Sales,LOW,USD
+2012-02-02,Unemployment Change,LOW,EUR
+2012-02-02,Producer Price Index (MoM),MEDIUM,EUR
+2012-02-02,Producer Price Index (YoY),HIGH,EUR
+2012-02-02,Challenger Job Cuts,LOW,USD
+2012-02-02,Continuing Jobless Claims,MEDIUM,USD
+2012-02-02,Initial Jobless Claims,MEDIUM,USD
+2012-02-02,Nonfarm Productivity,MEDIUM,USD
+2012-02-02,Unit Labor Costs,MEDIUM,USD
+2012-02-02,Fed's Chair Bernanke testifies,MEDIUM,USD
+2012-02-03,Consumer Price Index (MoM),LOW,EUR
+2012-02-03,Consumer Price Index (YoY),LOW,EUR
+2012-02-03,HCOB Services PMI,LOW,EUR
+2012-02-03,HCOB Services PMI,LOW,EUR
+2012-02-03,HCOB Services PMI,LOW,EUR
+2012-02-03,HCOB Services PMI,LOW,EUR
+2012-02-03,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-02-03,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-02-03,Retail Sales (MoM),MEDIUM,EUR
+2012-02-03,Retail Sales (YoY),MEDIUM,EUR
+2012-02-03,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-02-03,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-02-03,Average Weekly Hours,MEDIUM,USD
+2012-02-03,Nonfarm Payrolls,HIGH,USD
+2012-02-03,Unemployment Rate,HIGH,USD
+2012-02-03,Factory Orders (MoM),LOW,USD
+2012-02-03,ISM Services PMI,MEDIUM,USD
+2012-02-06,Sentix Investor Confidence,MEDIUM,EUR
+2012-02-06,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-02-06,Factory Orders s.a. (MoM),MEDIUM,EUR
+2012-02-07,"Exports, EUR",LOW,EUR
+2012-02-07,"Imports, EUR",LOW,EUR
+2012-02-07,Trade Balance EUR,LOW,EUR
+2012-02-07,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-02-07,Industrial Production s.a. (MoM),LOW,EUR
+2012-02-07,Fed's Chair Bernanke testifies,HIGH,USD
+2012-02-07,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-02-07,Consumer Credit Change,MEDIUM,USD
+2012-02-08,Current Account n.s.a.,LOW,EUR
+2012-02-08,Trade Balance s.a.,MEDIUM,EUR
+2012-02-08,Budget Balance,LOW,EUR
+2012-02-08,Industrial Output Cal Adjusted (YoY),LOW,EUR
+2012-02-08,MBA Mortgage Applications,LOW,USD
+2012-02-08,EIA Crude Oil Stocks Change,LOW,USD
+2012-02-09,Individual Investment (Current Year),LOW,EUR
+2012-02-09,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-02-09,ECB's President Draghi speech,HIGH,EUR
+2012-02-09,Continuing Jobless Claims,LOW,USD
+2012-02-09,Initial Jobless Claims,LOW,USD
+2012-02-09,Wholesale Inventories,LOW,USD
+2012-02-09,30-Year Bond Auction,LOW,USD
+2012-02-09,EcoFin Meeting,MEDIUM,EUR
+2012-02-10,Consumer Price Index (MoM),MEDIUM,EUR
+2012-02-10,Consumer Price Index (YoY),HIGH,EUR
+2012-02-10,Current Account,LOW,EUR
+2012-02-10,Industrial Output (MoM),LOW,EUR
+2012-02-10,Industrial Output s.a. (MoM),LOW,EUR
+2012-02-10,Industrial Output w.d.a (YoY),LOW,EUR
+2012-02-10,Goods and Services Trade Balance,MEDIUM,USD
+2012-02-10,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-02-10,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-02-10,Monthly Budget Statement,MEDIUM,USD
+2012-02-13,Wholesale Price Index (MoM),LOW,EUR
+2012-02-13,Wholesale Price Index (YoY),LOW,EUR
+2012-02-13,Barack Obama Press Conference,HIGH,USD
+2012-02-14,Nonfarm Payrolls (QoQ),LOW,EUR
+2012-02-14,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-02-14,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-02-14,Industrial Production s.a. (MoM),LOW,EUR
+2012-02-14,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-02-14,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-02-14,Export Price Index (MoM),LOW,USD
+2012-02-14,Import Price Index (MoM),LOW,USD
+2012-02-14,Import Price Index (YoY),LOW,USD
+2012-02-14,Retail Sales (MoM),MEDIUM,USD
+2012-02-14,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-02-14,Business Inventories,LOW,USD
+2012-02-14,Treasury's Geithner speech,MEDIUM,USD
+2012-02-14,NFIB Business Optimism Index,LOW,USD
+2012-02-14,Fed's Lockhart speech,LOW,USD
+2012-02-15,Gross Domestic Product (QoQ),LOW,EUR
+2012-02-15,Gross Domestic Product (QoQ),MEDIUM,EUR
+2012-02-15,Gross Domestic Product (YoY),MEDIUM,EUR
+2012-02-15,Gross Domestic Product w.d.a (YoY),MEDIUM,EUR
+2012-02-15,Consumer Price Index (MoM),LOW,EUR
+2012-02-15,Consumer Price Index (YoY),LOW,EUR
+2012-02-15,Harmonized Index of Consumer Prices (MoM),LOW,EUR
+2012-02-15,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-02-15,Gross Domestic Product (QoQ),LOW,EUR
+2012-02-15,Gross Domestic Product (YoY),LOW,EUR
+2012-02-15,Gross Domestic Product s.a. (QoQ),MEDIUM,EUR
+2012-02-15,Gross Domestic Product s.a. (YoY),MEDIUM,EUR
+2012-02-15,Trade Balance n.s.a.,LOW,EUR
+2012-02-15,Trade Balance s.a.,LOW,EUR
+2012-02-15,MBA Mortgage Applications,LOW,USD
+2012-02-15,Consumer Price Index Core s.a,LOW,USD
+2012-02-15,NY Empire State Manufacturing Index,LOW,USD
+2012-02-15,Net Long-Term TIC Flows,MEDIUM,USD
+2012-02-15,Total Net TIC Flows,LOW,USD
+2012-02-15,Capacity Utilization,LOW,USD
+2012-02-15,Industrial Production (MoM),MEDIUM,USD
+2012-02-15,NAHB Housing Market Index,LOW,USD
+2012-02-15,EIA Crude Oil Stocks Change,LOW,USD
+2012-02-15,Fed's Richard Fisher speech,LOW,USD
+2012-02-15,FOMC Minutes,HIGH,USD
+2012-02-16,Gross Domestic Product (QoQ),LOW,EUR
+2012-02-16,Gross Domestic Product (YoY),LOW,EUR
+2012-02-16,ECB Monthly Report,MEDIUM,EUR
+2012-02-16,Global Trade Balance,LOW,EUR
+2012-02-16,Trade Balance EU,LOW,EUR
+2012-02-16,Building Permits (MoM),MEDIUM,USD
+2012-02-16,Continuing Jobless Claims,LOW,USD
+2012-02-16,Housing Starts (MoM),MEDIUM,USD
+2012-02-16,Initial Jobless Claims,LOW,USD
+2012-02-16,Producer Price Index (MoM),LOW,USD
+2012-02-16,Producer Price Index (YoY),MEDIUM,USD
+2012-02-16,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-02-16,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-02-16,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-02-16,Philadelphia Fed Manufacturing Survey,LOW,USD
+2012-02-17,Producer Price Index (MoM),MEDIUM,EUR
+2012-02-17,Producer Price Index (YoY),MEDIUM,EUR
+2012-02-17,Current Account n.s.a,LOW,EUR
+2012-02-17,Current Account s.a,LOW,EUR
+2012-02-17,Construction Output  s.a (MoM),LOW,EUR
+2012-02-17,Construction Output w.d.a (YoY),LOW,EUR
+2012-02-17,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-02-17,Consumer Price Index (MoM),MEDIUM,USD
+2012-02-17,Consumer Price Index (YoY),HIGH,USD
+2012-02-17,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-02-17,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-02-20,Business Climate in Manufacturing,LOW,EUR
+2012-02-20,Industrial Orders n.s.a (YoY),LOW,EUR
+2012-02-20,Industrial Orders s.a (MoM),LOW,EUR
+2012-02-20,Industrial Sales n.s.a. (YoY),LOW,EUR
+2012-02-20,Industrial Sales s.a. (MoM),LOW,EUR
+2012-02-20,EU Finance Ministers Meeting,HIGH,EUR
+2012-02-21,Chicago Fed National Activity Index ,LOW,USD
+2012-02-21,Consumer Confidence,MEDIUM,EUR
+2012-02-21,2-Year Note Auction,LOW,USD
+2012-02-22,Consumer Price Index (EU norm) (MoM),LOW,EUR
+2012-02-22,Consumer Price Index (EU norm) (YoY),LOW,EUR
+2012-02-22,HCOB Services PMI,LOW,EUR
+2012-02-22,Inflation ex-tobacco (MoM),LOW,EUR
+2012-02-22,Trade Balance,LOW,EUR
+2012-02-22,HCOB Manufacturing PMI,LOW,EUR
+2012-02-22,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-02-22,HCOB Services PMI,MEDIUM,EUR
+2012-02-22,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-02-22,HCOB Services PMI,MEDIUM,EUR
+2012-02-22,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-02-22,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-02-22,Consumer Price Index (MoM),LOW,EUR
+2012-02-22,Consumer Price Index (YoY),LOW,EUR
+2012-02-22,Industrial New Orders (YoY),MEDIUM,EUR
+2012-02-22,Industrial New Orders s.a. (MoM),LOW,EUR
+2012-02-22,MBA Mortgage Applications,LOW,USD
+2012-02-22,Existing Home Sales (MoM),MEDIUM,USD
+2012-02-22,Existing Home Sales Change (MoM),MEDIUM,USD
+2012-02-23,IFO – Business Climate,MEDIUM,EUR
+2012-02-23,IFO – Current Assessment,MEDIUM,EUR
+2012-02-23,IFO – Expectations,MEDIUM,EUR
+2012-02-23,Consumer Confidence,LOW,EUR
+2012-02-23,Trade Balance non-EU,LOW,EUR
+2012-02-23,Continuing Jobless Claims,LOW,USD
+2012-02-23,Initial Jobless Claims,LOW,USD
+2012-02-23,Housing Price Index (MoM),MEDIUM,USD
+2012-02-23,EIA Crude Oil Stocks Change,LOW,USD
+2012-02-24,G20 Meeting,MEDIUM,EUR
+2012-02-24,Gross Domestic Product (QoQ),MEDIUM,EUR
+2012-02-24,Gross Domestic Product (YoY),MEDIUM,EUR
+2012-02-24,Gross Domestic Product w.d.a (YoY),MEDIUM,EUR
+2012-02-24,Producer Price Index (YoY),LOW,EUR
+2012-02-24,Consumer Confidence,LOW,EUR
+2012-02-24,Retail Sales n.s.a (YoY),LOW,EUR
+2012-02-24,Retail Sales s.a. (MoM),LOW,EUR
+2012-02-24,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-02-24,New Home Sales (MoM),MEDIUM,USD
+2012-02-24,New Home Sales Change (MoM),MEDIUM,USD
+2012-02-24,Fed's Bullard speech,LOW,USD
+2012-02-24,Fed's Dudley speech,LOW,USD
+2012-02-24,Philadelphia Fed's Plosser speech,LOW,USD
+2012-02-27,Producer Prices (MoM),LOW,EUR
+2012-02-27,M3 Money Supply (3m),LOW,EUR
+2012-02-27,M3 Money Supply (YoY),LOW,EUR
+2012-02-27,Business Confidence,LOW,EUR
+2012-02-27,Dallas Fed Manufacturing Business Index,MEDIUM,USD
+2012-02-27,Pending Home Sales (MoM),LOW,USD
+2012-02-28,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-02-28,Services Sentiment,LOW,EUR
+2012-02-28,Consumer Confidence,MEDIUM,EUR
+2012-02-28,Economic Sentiment Indicator,MEDIUM,EUR
+2012-02-28,Industrial Confidence,MEDIUM,EUR
+2012-02-28,10-y Bond Auction,LOW,EUR
+2012-02-28,Durable Goods Orders,HIGH,USD
+2012-02-28,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-02-28,Consumer Price Index (YoY),HIGH,EUR
+2012-02-28,Consumer Price Index (MoM),MEDIUM,EUR
+2012-02-28,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-02-28,Consumer Confidence,MEDIUM,USD
+2012-02-28,Richmond Fed Manufacturing Index,LOW,USD
+2012-02-29,Import Price Index (MoM),LOW,EUR
+2012-02-29,Consumer Spending (MoM),LOW,EUR
+2012-02-29,Current Account Balance,LOW,EUR
+2012-02-29,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-02-29,Unemployment Change,HIGH,EUR
+2012-02-29,Unemployment Rate s.a.,MEDIUM,EUR
+2012-02-29,Core Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-02-29,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-02-29,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-02-29,ECB LTRO Auction,HIGH,EUR
+2012-02-29,MBA Mortgage Applications,LOW,USD
+2012-02-29,Core Personal Consumption Expenditures (QoQ),HIGH,USD
+2012-02-29,Gross Domestic Product Annualized,HIGH,USD
+2012-02-29,Gross Domestic Product Price Index,HIGH,USD
+2012-02-29,Chicago PMI,LOW,USD
+2012-02-29,Fed's Chair Bernanke testifies,MEDIUM,USD
+2012-02-29,EIA Crude Oil Stocks Change,LOW,USD
+2012-02-29,Fed's Beige Book,MEDIUM,USD
+2012-03-01,EU Extraordinary Economic Summit,HIGH,EUR
+2012-03-01,ILO Unemployment,LOW,EUR
+2012-03-01,Unemployment,LOW,EUR
+2012-03-01,HCOB Manufacturing PMI,LOW,EUR
+2012-03-01,HCOB Manufacturing PMI,LOW,EUR
+2012-03-01,HCOB Manufacturing PMI,LOW,EUR
+2012-03-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-03-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-03-01,2-y Bond Auction,LOW,EUR
+2012-03-01,Unemployment Rate,HIGH,EUR
+2012-03-01,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-03-01,Personal Spending,MEDIUM,USD
+2012-03-01,Continuing Jobless Claims,LOW,USD
+2012-03-01,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-03-01,Core Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-03-01,Initial Jobless Claims,LOW,USD
+2012-03-01,Personal Consumption Expenditures - Price Index (MoM),LOW,USD
+2012-03-01,Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-03-01,Personal Income (MoM),LOW,USD
+2012-03-01,Construction Spending (MoM),MEDIUM,USD
+2012-03-01,ISM Manufacturing PMI,MEDIUM,USD
+2012-03-01,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-03-01,Fed's Chair Bernanke testifies,MEDIUM,USD
+2012-03-01,Fed's Lockhart speech,LOW,USD
+2012-03-01,Total Vehicle Sales,LOW,USD
+2012-03-02,EU Extraordinary Economic Summit,HIGH,EUR
+2012-03-02,Retail Sales (MoM),MEDIUM,EUR
+2012-03-02,Retail Sales (YoY),MEDIUM,EUR
+2012-03-02,Unemployment Change,LOW,EUR
+2012-03-02,Producer Price Index (MoM),MEDIUM,EUR
+2012-03-02,Producer Price Index (YoY),HIGH,EUR
+2012-03-05,HCOB Services PMI,LOW,EUR
+2012-03-05,HCOB Services PMI,LOW,EUR
+2012-03-05,HCOB Services PMI,LOW,EUR
+2012-03-05,HCOB Services PMI,MEDIUM,EUR
+2012-03-05,HCOB Services PMI,MEDIUM,EUR
+2012-03-05,Producer Price Index (MoM),LOW,EUR
+2012-03-05,Producer Price Index (YoY),LOW,EUR
+2012-03-05,Sentix Investor Confidence,MEDIUM,EUR
+2012-03-05,Retail Sales (MoM),MEDIUM,EUR
+2012-03-05,Retail Sales (YoY),MEDIUM,EUR
+2012-03-05,Factory Orders (MoM),MEDIUM,USD
+2012-03-05,ISM Services PMI,MEDIUM,USD
+2012-03-06,Gross Domestic Product s.a. (QoQ),MEDIUM,EUR
+2012-03-06,Gross Domestic Product s.a. (YoY),MEDIUM,EUR
+2012-03-07,Industrial Output Cal Adjusted (YoY),LOW,EUR
+2012-03-07,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-03-07,Factory Orders s.a. (MoM),MEDIUM,EUR
+2012-03-07,MBA Mortgage Applications,LOW,USD
+2012-03-07,ADP Employment Change,MEDIUM,USD
+2012-03-07,Nonfarm Productivity,MEDIUM,USD
+2012-03-07,Unit Labor Costs,LOW,USD
+2012-03-07,EIA Crude Oil Stocks Change,LOW,USD
+2012-03-07,Consumer Credit Change,MEDIUM,USD
+2012-03-08,Nonfarm Payrolls (QoQ),LOW,EUR
+2012-03-08,"Exports, EUR",LOW,EUR
+2012-03-08,"Imports, EUR",LOW,EUR
+2012-03-08,Trade Balance EUR,LOW,EUR
+2012-03-08,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-03-08,Industrial Production s.a. (MoM),LOW,EUR
+2012-03-08,Challenger Job Cuts,LOW,USD
+2012-03-08,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-03-08,ECB Press Conference,HIGH,EUR
+2012-03-08,Continuing Jobless Claims,LOW,USD
+2012-03-08,Initial Jobless Claims,LOW,USD
+2012-03-08,EIA Natural Gas Storage Change,LOW,USD
+2012-03-08,Federal Reserve releases Quarterly Flow of Funds Accounts,MEDIUM,USD
+2012-03-09,Consumer Price Index (MoM),MEDIUM,EUR
+2012-03-09,Consumer Price Index (YoY),MEDIUM,EUR
+2012-03-09,Current Account n.s.a.,LOW,EUR
+2012-03-09,Trade Balance s.a.,MEDIUM,EUR
+2012-03-09,Budget Balance,LOW,EUR
+2012-03-09,Industrial Output (MoM),LOW,EUR
+2012-03-09,Retail Sales (YoY),LOW,EUR
+2012-03-09,Industrial Output s.a. (MoM),LOW,EUR
+2012-03-09,Industrial Output w.d.a (YoY),LOW,EUR
+2012-03-09,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-03-09,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-03-09,Average Weekly Hours,LOW,USD
+2012-03-09,Goods and Services Trade Balance,MEDIUM,USD
+2012-03-09,Nonfarm Payrolls,HIGH,USD
+2012-03-09,Unemployment Rate,HIGH,USD
+2012-03-09,Wholesale Inventories,LOW,USD
+2012-03-12,EU Finance Ministers Meeting,HIGH,EUR
+2012-03-12,Wholesale Price Index (MoM),LOW,EUR
+2012-03-12,Wholesale Price Index (YoY),LOW,EUR
+2012-03-12,Gross Domestic Product (QoQ),LOW,EUR
+2012-03-12,Gross Domestic Product (YoY),LOW,EUR
+2012-03-12,Monthly Budget Statement,MEDIUM,USD
+2012-03-13,Consumer Price Index (EU norm) (MoM),LOW,EUR
+2012-03-13,Consumer Price Index (EU norm) (YoY),LOW,EUR
+2012-03-13,Inflation ex-tobacco (MoM),LOW,EUR
+2012-03-13,Current Account,LOW,EUR
+2012-03-13,Consumer Price Index (MoM),LOW,EUR
+2012-03-13,Consumer Price Index (YoY),LOW,EUR
+2012-03-13,Harmonized Index of Consumer Prices (MoM),LOW,EUR
+2012-03-13,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-03-13,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-03-13,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-03-13,Consumer Price Index (MoM),LOW,EUR
+2012-03-13,Consumer Price Index (YoY),LOW,EUR
+2012-03-13,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-03-13,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-03-13,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-03-13,NFIB Business Optimism Index,LOW,USD
+2012-03-13,Retail Sales (MoM),MEDIUM,USD
+2012-03-13,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-03-13,Business Inventories,LOW,USD
+2012-03-13,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-03-13,Bank Stress Test Results,HIGH,USD
+2012-03-13,Fed Interest Rate Decision,HIGH,USD
+2012-03-14,Core Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-03-14,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-03-14,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-03-14,Industrial Production s.a. (MoM),LOW,EUR
+2012-03-14,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-03-14,MBA Mortgage Applications,LOW,USD
+2012-03-14,Current Account,LOW,USD
+2012-03-14,Export Price Index (MoM),LOW,USD
+2012-03-14,Export Price Index (YoY),LOW,USD
+2012-03-14,Import Price Index (MoM),LOW,USD
+2012-03-14,Import Price Index (YoY),LOW,USD
+2012-03-14,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-03-14,EIA Crude Oil Stocks Change,LOW,USD
+2012-03-14,30-Year Bond Auction,LOW,USD
+2012-03-15,House price index,LOW,EUR
+2012-03-15,ECB Monthly Report,MEDIUM,EUR
+2012-03-15,Labor Cost Index,MEDIUM,EUR
+2012-03-15,Employment Change (QoQ),MEDIUM,EUR
+2012-03-15,Employment Change (YoY),MEDIUM,EUR
+2012-03-15,Continuing Jobless Claims,LOW,USD
+2012-03-15,Initial Jobless Claims,LOW,USD
+2012-03-15,NY Empire State Manufacturing Index,LOW,USD
+2012-03-15,Producer Price Index (MoM),LOW,USD
+2012-03-15,Producer Price Index (YoY),MEDIUM,USD
+2012-03-15,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-03-15,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-03-15,Net Long-Term TIC Flows,MEDIUM,USD
+2012-03-15,Total Net TIC Flows,LOW,USD
+2012-03-15,American Petroleum Institute Monthly Report ,LOW,USD
+2012-03-15,Philadelphia Fed Manufacturing Survey,MEDIUM,USD
+2012-03-15,EIA Natural Gas Storage Change,LOW,USD
+2012-03-16,Global Trade Balance,LOW,EUR
+2012-03-16,Trade Balance EU,LOW,EUR
+2012-03-16,Trade Balance n.s.a.,LOW,EUR
+2012-03-16,Trade Balance s.a.,LOW,EUR
+2012-03-16,Consumer Price Index (MoM),MEDIUM,USD
+2012-03-16,Consumer Price Index (YoY),HIGH,USD
+2012-03-16,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-03-16,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-03-16,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-03-16,Capacity Utilization,LOW,USD
+2012-03-16,Industrial Production (MoM),MEDIUM,USD
+2012-03-16,Consumer Price Index Core s.a,LOW,USD
+2012-03-16,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-03-19,Current Account n.s.a,LOW,EUR
+2012-03-19,Current Account s.a,LOW,EUR
+2012-03-19,Industrial Orders n.s.a (YoY),LOW,EUR
+2012-03-19,Industrial Orders s.a (MoM),LOW,EUR
+2012-03-19,Industrial Sales n.s.a. (YoY),LOW,EUR
+2012-03-19,Industrial Sales s.a. (MoM),LOW,EUR
+2012-03-19,Construction Output  s.a (MoM),LOW,EUR
+2012-03-19,Construction Output w.d.a (YoY),LOW,EUR
+2012-03-19,Fed's Dudley speech,LOW,USD
+2012-03-19,NAHB Housing Market Index,LOW,USD
+2012-03-19,Fed's Dudley speech,LOW,USD
+2012-03-20,Producer Price Index (MoM),MEDIUM,EUR
+2012-03-20,Producer Price Index (YoY),HIGH,EUR
+2012-03-20,Trade Balance,LOW,EUR
+2012-03-20,Building Permits (MoM),LOW,USD
+2012-03-20,Housing Starts (MoM),LOW,USD
+2012-03-20,Treasury's Geithner speech,MEDIUM,USD
+2012-03-20,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-03-21,2-year Notes Auction,LOW,EUR
+2012-03-21,MBA Mortgage Applications,LOW,USD
+2012-03-21,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-03-21,Existing Home Sales (MoM),LOW,USD
+2012-03-21,Existing Home Sales Change (MoM),MEDIUM,USD
+2012-03-21,EIA Crude Oil Stocks Change,LOW,USD
+2012-03-22,HCOB Manufacturing PMI,LOW,EUR
+2012-03-22,HCOB Services PMI,LOW,EUR
+2012-03-22,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-03-22,HCOB Services PMI,MEDIUM,EUR
+2012-03-22,Trade Balance non-EU,LOW,EUR
+2012-03-22,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-03-22,HCOB Services PMI,MEDIUM,EUR
+2012-03-22,Industrial New Orders (YoY),MEDIUM,EUR
+2012-03-22,Industrial New Orders s.a. (MoM),LOW,EUR
+2012-03-22,European Systemic Risk Board Meeting,HIGH,EUR
+2012-03-22,Continuing Jobless Claims,LOW,USD
+2012-03-22,Initial Jobless Claims,LOW,USD
+2012-03-22,Housing Price Index (MoM),LOW,USD
+2012-03-22,EIA Natural Gas Storage Change,LOW,USD
+2012-03-22,Consumer Confidence,MEDIUM,EUR
+2012-03-22,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-03-23,Business Climate in Manufacturing,LOW,EUR
+2012-03-23,Producer Price Index (YoY),LOW,EUR
+2012-03-23,Retail Sales n.s.a (YoY),LOW,EUR
+2012-03-23,Retail Sales s.a. (MoM),LOW,EUR
+2012-03-23,New Home Sales (MoM),MEDIUM,USD
+2012-03-23,New Home Sales Change (MoM),LOW,USD
+2012-03-23,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-03-26,IFO – Business Climate,MEDIUM,EUR
+2012-03-26,IFO – Current Assessment,MEDIUM,EUR
+2012-03-26,IFO – Expectations,MEDIUM,EUR
+2012-03-26,Consumer Confidence,LOW,EUR
+2012-03-26,Former Fed's Chair Bernanke speech,HIGH,USD
+2012-03-26,Chicago Fed National Activity Index ,LOW,USD
+2012-03-26,Pending Home Sales (MoM),LOW,USD
+2012-03-26,Dallas Fed Manufacturing Business Index,MEDIUM,USD
+2012-03-26,ECB's President Draghi speech,HIGH,EUR
+2012-03-27,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-03-27,Import Price Index (MoM),LOW,EUR
+2012-03-27,Consumer Confidence,LOW,EUR
+2012-03-27,Fed's Duke speech,LOW,USD
+2012-03-27,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-03-27,Consumer Confidence,MEDIUM,USD
+2012-03-27,Fed's Dudley speech,LOW,USD
+2012-03-27,Richmond Fed Manufacturing Index,LOW,USD
+2012-03-27,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-03-27,Fed's Richard Fisher speech,LOW,USD
+2012-03-27,2-Year Note Auction,LOW,USD
+2012-03-28,Fed's Bullard speech,LOW,USD
+2012-03-28,Gross Domestic Product (QoQ),LOW,EUR
+2012-03-28,M3 Money Supply (3m),LOW,EUR
+2012-03-28,M3 Money Supply (YoY),LOW,EUR
+2012-03-28,Private Loans (YoY),LOW,EUR
+2012-03-28,Business Confidence,LOW,EUR
+2012-03-28,MBA Mortgage Applications,LOW,USD
+2012-03-28,Consumer Price Index (MoM),MEDIUM,EUR
+2012-03-28,Consumer Price Index (YoY),MEDIUM,EUR
+2012-03-28,Durable Goods Orders,MEDIUM,USD
+2012-03-28,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-03-28,EIA Crude Oil Stocks Change,LOW,USD
+2012-03-28,5-Year Note Auction,LOW,USD
+2012-03-29,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-03-29,Unemployment Change,MEDIUM,EUR
+2012-03-29,Unemployment Rate s.a.,MEDIUM,EUR
+2012-03-29,Business Climate,LOW,EUR
+2012-03-29,Economic Sentiment Indicator,MEDIUM,EUR
+2012-03-29,Industrial Confidence,MEDIUM,EUR
+2012-03-29,Services Sentiment,LOW,EUR
+2012-03-29,10-y Bond Auction,LOW,EUR
+2012-03-29,5-y Bond Auction,LOW,EUR
+2012-03-29,Continuing Jobless Claims,LOW,USD
+2012-03-29,Core Personal Consumption Expenditures (QoQ),HIGH,USD
+2012-03-29,Gross Domestic Product Annualized,HIGH,USD
+2012-03-29,Gross Domestic Product Price Index,HIGH,USD
+2012-03-29,Initial Jobless Claims,LOW,USD
+2012-03-29,EIA Natural Gas Storage Change,LOW,USD
+2012-03-29,Consumer Confidence,MEDIUM,EUR
+2012-03-29,Kansas Fed Manufacturing Activity,LOW,USD
+2012-03-29,Fed's Lockhart speech,LOW,USD
+2012-03-29,Former Fed's Chair Bernanke speech,MEDIUM,USD
+2012-03-30,EcoFin Meeting,MEDIUM,EUR
+2012-03-30,Retail Sales (MoM),MEDIUM,EUR
+2012-03-30,Retail Sales (YoY),MEDIUM,EUR
+2012-03-30,Consumer Spending (MoM),LOW,EUR
+2012-03-30,Producer Prices (MoM),LOW,EUR
+2012-03-30,Retail Sales (YoY),LOW,EUR
+2012-03-30,Current Account Balance,LOW,EUR
+2012-03-30,Producer Price Index (MoM),LOW,EUR
+2012-03-30,Producer Price Index (YoY),LOW,EUR
+2012-03-30,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-03-30,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-03-30,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-03-30,Consumer Price Index (MoM),LOW,EUR
+2012-03-30,Consumer Price Index (YoY),LOW,EUR
+2012-03-30,Wage Inflation (MoM),LOW,EUR
+2012-03-30,Wage Inflation (YoY),LOW,EUR
+2012-03-30,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-03-30,Core Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-03-30,Personal Consumption Expenditures - Price Index (MoM),LOW,USD
+2012-03-30,Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-03-30,Personal Income (MoM),MEDIUM,USD
+2012-03-30,Personal Spending,LOW,USD
+2012-03-30,Chicago PMI,LOW,USD
+2012-03-30,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-03-31,EcoFin Meeting,MEDIUM,EUR
+2012-04-02,HCOB Manufacturing PMI,LOW,EUR
+2012-04-02,HCOB Manufacturing PMI,LOW,EUR
+2012-04-02,HCOB Manufacturing PMI,LOW,EUR
+2012-04-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-04-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-04-02,Unemployment,LOW,EUR
+2012-04-02,Unemployment Rate,HIGH,EUR
+2012-04-02,Construction Spending (MoM),MEDIUM,USD
+2012-04-02,ISM Manufacturing PMI,MEDIUM,USD
+2012-04-02,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-04-03,Unemployment Change,LOW,EUR
+2012-04-03,Producer Price Index (MoM),MEDIUM,EUR
+2012-04-03,Producer Price Index (YoY),HIGH,EUR
+2012-04-03,ISM-NY Business Conditions Index,LOW,USD
+2012-04-03,Factory Orders (MoM),MEDIUM,USD
+2012-04-03,52-Week Bill Auction,LOW,USD
+2012-04-03,FOMC Minutes,HIGH,USD
+2012-04-03,Total Vehicle Sales,LOW,USD
+2012-04-04,HCOB Services PMI,LOW,EUR
+2012-04-04,HCOB Services PMI,LOW,EUR
+2012-04-04,HCOB Services PMI,LOW,EUR
+2012-04-04,HCOB Services PMI,MEDIUM,EUR
+2012-04-04,HCOB Services PMI,MEDIUM,EUR
+2012-04-04,Public Deficit/GDP,LOW,EUR
+2012-04-04,Retail Sales (MoM),MEDIUM,EUR
+2012-04-04,Retail Sales (YoY),MEDIUM,EUR
+2012-04-04,3-y Bond Auction,LOW,EUR
+2012-04-04,4-y Bond Auction,LOW,EUR
+2012-04-04,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-04-04,Factory Orders s.a. (MoM),LOW,EUR
+2012-04-04,MBA Mortgage Applications,LOW,USD
+2012-04-04,10-y Bond Auction,MEDIUM,EUR
+2012-04-04,10-y Obligaciones Auction,LOW,EUR
+2012-04-04,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-04-04,ADP Employment Change,MEDIUM,USD
+2012-04-04,ECB Press Conference,HIGH,EUR
+2012-04-04,ISM Services PMI,MEDIUM,USD
+2012-04-04,EIA Crude Oil Stocks Change,LOW,USD
+2012-04-05,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-04-05,Industrial Production s.a. (MoM),LOW,EUR
+2012-04-05,Challenger Job Cuts,LOW,USD
+2012-04-05,Continuing Jobless Claims,LOW,USD
+2012-04-05,EIA Natural Gas Storage Change,LOW,USD
+2012-04-05,Initial Jobless Claims,LOW,USD
+2012-04-06,Budget Balance,LOW,EUR
+2012-04-06,"Exports, EUR",LOW,EUR
+2012-04-06,"Imports, EUR",LOW,EUR
+2012-04-06,Trade Balance EUR,LOW,EUR
+2012-04-06,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-04-06,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-04-06,Average Weekly Hours,LOW,USD
+2012-04-06,Nonfarm Payrolls,HIGH,USD
+2012-04-06,Unemployment Rate,HIGH,USD
+2012-04-06,Consumer Credit Change,MEDIUM,USD
+2012-04-09,Former Fed's Chair Bernanke speech,LOW,USD
+2012-04-10,Current Account n.s.a.,LOW,EUR
+2012-04-10,Exports (MoM),MEDIUM,EUR
+2012-04-10,Imports (MoM),MEDIUM,EUR
+2012-04-10,Trade Balance s.a.,MEDIUM,EUR
+2012-04-10,Industrial Output (MoM),LOW,EUR
+2012-04-10,Sentix Investor Confidence,MEDIUM,EUR
+2012-04-10,NFIB Business Optimism Index,LOW,USD
+2012-04-10,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-04-10,Wholesale Inventories,LOW,USD
+2012-04-10,Fed's Lockhart speech,LOW,USD
+2012-04-10,3-Year Note Auction,LOW,USD
+2012-04-11,Wholesale Price Index (MoM),LOW,EUR
+2012-04-11,Wholesale Price Index (YoY),LOW,EUR
+2012-04-11,Industrial Output Cal Adjusted (YoY),LOW,EUR
+2012-04-11,Fed's Yellen speech,MEDIUM,USD
+2012-04-11,MBA Mortgage Applications,LOW,USD
+2012-04-11,10-y Bond Auction,MEDIUM,EUR
+2012-04-11,Fed's Lockhart speech,LOW,USD
+2012-04-11,Export Price Index (YoY),LOW,USD
+2012-04-11,Import Price Index (MoM),LOW,USD
+2012-04-11,Import Price Index (YoY),LOW,USD
+2012-04-11,EIA Crude Oil Stocks Change,LOW,USD
+2012-04-11,Fed's Beige Book,MEDIUM,USD
+2012-04-11,Monthly Budget Statement,MEDIUM,USD
+2012-04-11,Fed's Bullard speech,LOW,USD
+2012-04-12,Consumer Price Index (EU norm) (MoM),LOW,EUR
+2012-04-12,Consumer Price Index (EU norm) (YoY),LOW,EUR
+2012-04-12,Inflation ex-tobacco (MoM),LOW,EUR
+2012-04-12,Current Account,LOW,EUR
+2012-04-12,ECB Monthly Report,HIGH,EUR
+2012-04-12,Industrial Production s.a. (MoM),LOW,EUR
+2012-04-12,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-04-12,3-y Bond Auction,LOW,EUR
+2012-04-12,10-y Bond Auction,LOW,EUR
+2012-04-12,Continuing Jobless Claims,LOW,USD
+2012-04-12,Goods and Services Trade Balance,MEDIUM,USD
+2012-04-12,Initial Jobless Claims,LOW,USD
+2012-04-12,Producer Price Index (MoM),LOW,USD
+2012-04-12,Producer Price Index (YoY),MEDIUM,USD
+2012-04-12,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-04-12,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-04-12,Fed's Lockhart speech,LOW,USD
+2012-04-12,EIA Natural Gas Storage Change,LOW,USD
+2012-04-12,30-Year Bond Auction,LOW,USD
+2012-04-12,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-04-13,Consumer Price Index (MoM),MEDIUM,EUR
+2012-04-13,Consumer Price Index (YoY),HIGH,EUR
+2012-04-13,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-04-13,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-04-13,Consumer Price Index (MoM),LOW,EUR
+2012-04-13,Consumer Price Index (YoY),LOW,EUR
+2012-04-13,Harmonized Index of Consumer Prices (MoM),LOW,EUR
+2012-04-13,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-04-13,Industrial Output s.a. (MoM),LOW,EUR
+2012-04-13,Industrial Output w.d.a (YoY),LOW,EUR
+2012-04-13,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-04-13,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-04-13,Consumer Price Index (MoM),LOW,EUR
+2012-04-13,Consumer Price Index (MoM),MEDIUM,USD
+2012-04-13,Consumer Price Index (YoY),HIGH,USD
+2012-04-13,Consumer Price Index Core s.a,LOW,USD
+2012-04-13,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-04-13,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-04-13,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-04-13,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-04-16,Global Trade Balance,LOW,EUR
+2012-04-16,Trade Balance EU,LOW,EUR
+2012-04-16,Trade Balance n.s.a.,LOW,EUR
+2012-04-16,Trade Balance s.a.,LOW,EUR
+2012-04-16,NY Empire State Manufacturing Index,LOW,USD
+2012-04-16,Retail Sales (MoM),MEDIUM,USD
+2012-04-16,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-04-16,Net Long-Term TIC Flows,MEDIUM,USD
+2012-04-16,Total Net TIC Flows,LOW,USD
+2012-04-16,Business Inventories,MEDIUM,USD
+2012-04-16,NAHB Housing Market Index,LOW,USD
+2012-04-16,Fed's Pianalto speech,MEDIUM,USD
+2012-04-16,Fed's Bullard speech,LOW,USD
+2012-04-17,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-04-17,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-04-17,Core Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-04-17,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-04-17,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-04-17,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-04-17,12-Month Letras Auction,LOW,EUR
+2012-04-17,Quarterly economic bulletin,LOW,EUR
+2012-04-17,ECB's President Draghi speech,HIGH,EUR
+2012-04-17,Building Permits (MoM),LOW,USD
+2012-04-17,Housing Starts (MoM),LOW,USD
+2012-04-17,Capacity Utilization,LOW,USD
+2012-04-17,Industrial Production (MoM),MEDIUM,USD
+2012-04-18,Trade Balance,LOW,EUR
+2012-04-18,Current Account n.s.a,LOW,EUR
+2012-04-18,Current Account s.a,LOW,EUR
+2012-04-18,2-year Notes Auction,LOW,EUR
+2012-04-18,Construction Output  s.a (MoM),LOW,EUR
+2012-04-18,Construction Output w.d.a (YoY),LOW,EUR
+2012-04-18,House Price Index (QoQ),LOW,EUR
+2012-04-18,MBA Mortgage Applications,LOW,USD
+2012-04-18,EIA Crude Oil Stocks Change,LOW,USD
+2012-04-19,G20 Meeting,HIGH,EUR
+2012-04-19,Industrial Orders n.s.a (YoY),LOW,EUR
+2012-04-19,Industrial Orders s.a (MoM),LOW,EUR
+2012-04-19,Industrial Sales n.s.a. (YoY),LOW,EUR
+2012-04-19,Industrial Sales s.a. (MoM),LOW,EUR
+2012-04-19,2-y Bond Auction,LOW,EUR
+2012-04-19,10-y Obligaciones Auction,LOW,EUR
+2012-04-19,Continuing Jobless Claims,LOW,USD
+2012-04-19,Initial Jobless Claims,LOW,USD
+2012-04-19,Consumer Confidence,MEDIUM,EUR
+2012-04-19,Existing Home Sales (MoM),MEDIUM,USD
+2012-04-19,Existing Home Sales Change (MoM),LOW,USD
+2012-04-19,Philadelphia Fed Manufacturing Survey,MEDIUM,USD
+2012-04-19,EIA Natural Gas Storage Change,LOW,USD
+2012-04-20,G20 Meeting,HIGH,EUR
+2012-04-20,IMF Meeting,MEDIUM,USD
+2012-04-20,Producer Price Index (MoM),MEDIUM,EUR
+2012-04-20,Producer Price Index (YoY),HIGH,EUR
+2012-04-20,IFO – Business Climate,MEDIUM,EUR
+2012-04-20,IFO – Current Assessment,MEDIUM,EUR
+2012-04-20,IFO – Expectations,MEDIUM,EUR
+2012-04-20,American Petroleum Institute Monthly Report ,LOW,USD
+2012-04-21,IMF Meeting,MEDIUM,USD
+2012-04-22,IMF Meeting,MEDIUM,USD
+2012-04-23,Business Climate in Manufacturing,LOW,EUR
+2012-04-23,HCOB Manufacturing PMI,LOW,EUR
+2012-04-23,HCOB Services PMI,LOW,EUR
+2012-04-23,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-04-23,HCOB Services PMI,MEDIUM,EUR
+2012-04-23,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-04-23,HCOB Services PMI,MEDIUM,EUR
+2012-04-23,Consumer Confidence,LOW,EUR
+2012-04-23,Trade Balance non-EU,LOW,EUR
+2012-04-24,Consumer Confidence,LOW,EUR
+2012-04-24,3-Month Letras Auction,LOW,EUR
+2012-04-24,6-Month Letras Auction,LOW,EUR
+2012-04-24,Wage Inflation (MoM),LOW,EUR
+2012-04-24,Wage Inflation (YoY),LOW,EUR
+2012-04-24,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-04-24,Consumer Confidence,MEDIUM,USD
+2012-04-24,Housing Price Index (MoM),LOW,USD
+2012-04-24,New Home Sales (MoM),MEDIUM,USD
+2012-04-24,New Home Sales Change (MoM),MEDIUM,USD
+2012-04-24,Richmond Fed Manufacturing Index,LOW,USD
+2012-04-24,2-Year Note Auction,LOW,USD
+2012-04-25,ECB's President Draghi speech,HIGH,EUR
+2012-04-25,Producer Price Index (YoY),LOW,EUR
+2012-04-25,30-y Bond Auction,LOW,EUR
+2012-04-25,MBA Mortgage Applications,LOW,USD
+2012-04-25,Durable Goods Orders,MEDIUM,USD
+2012-04-25,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-04-25,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-04-25,EIA Crude Oil Stocks Change,LOW,USD
+2012-04-25,Fed Interest Rate Decision,HIGH,USD
+2012-04-25,5-Year Note Auction,LOW,USD
+2012-04-25,FOMC Economic Projections,HIGH,USD
+2012-04-25,Fed's Monetary Policy Statement and Press Conference,HIGH,USD
+2012-04-25,Treasury's Geithner speech,MEDIUM,USD
+2012-04-26,ECB's President Draghi speech,HIGH,EUR
+2012-04-26,Business Confidence,LOW,EUR
+2012-04-26,Business Climate,MEDIUM,EUR
+2012-04-26,Consumer Confidence,MEDIUM,EUR
+2012-04-26,Economic Sentiment Indicator,MEDIUM,EUR
+2012-04-26,Industrial Confidence,MEDIUM,EUR
+2012-04-26,Services Sentiment,LOW,EUR
+2012-04-26,Consumer Price Index (YoY),HIGH,EUR
+2012-04-26,Consumer Price Index (MoM),MEDIUM,EUR
+2012-04-26,Chicago Fed National Activity Index ,LOW,USD
+2012-04-26,Continuing Jobless Claims,LOW,USD
+2012-04-26,Initial Jobless Claims,LOW,USD
+2012-04-26,Pending Home Sales (MoM),LOW,USD
+2012-04-26,EIA Natural Gas Storage Change,LOW,USD
+2012-04-26,Kansas Fed Manufacturing Activity,LOW,USD
+2012-04-27,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-04-27,Import Price Index (MoM),LOW,EUR
+2012-04-27,Import Price Index (YoY),LOW,EUR
+2012-04-27,Consumer Spending (MoM),LOW,EUR
+2012-04-27,Producer Prices (MoM),LOW,EUR
+2012-04-27,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-04-27,Retail Sales (YoY),LOW,EUR
+2012-04-27,Unemployment Survey,LOW,EUR
+2012-04-27,Retail Sales n.s.a (YoY),LOW,EUR
+2012-04-27,Retail Sales s.a. (MoM),LOW,EUR
+2012-04-27,10-y Bond Auction,LOW,EUR
+2012-04-27,5-y Bond Auction,LOW,EUR
+2012-04-27,Core Personal Consumption Expenditures (QoQ),HIGH,USD
+2012-04-27,Employment Cost Index,LOW,USD
+2012-04-27,Gross Domestic Product Annualized,HIGH,USD
+2012-04-27,Gross Domestic Product Price Index,HIGH,USD
+2012-04-27,Personal Consumption Expenditures Prices (QoQ),MEDIUM,USD
+2012-04-27,Michigan Consumer Sentiment Index,HIGH,USD
+2012-04-30,Retail Sales (MoM),MEDIUM,EUR
+2012-04-30,Retail Sales (YoY),MEDIUM,EUR
+2012-04-30,Current Account Balance,LOW,EUR
+2012-04-30,Gross Domestic Product - Estimated (QoQ),LOW,EUR
+2012-04-30,Gross Domestic Product - Estimated (YoY),LOW,EUR
+2012-04-30,M3 Money Supply (3m),LOW,EUR
+2012-04-30,M3 Money Supply (YoY),LOW,EUR
+2012-04-30,Private Loans (YoY),LOW,EUR
+2012-04-30,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-04-30,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-04-30,Consumer Price Index (MoM),LOW,EUR
+2012-04-30,Consumer Price Index (YoY),MEDIUM,EUR
+2012-04-30,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-04-30,Core Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-04-30,Personal Consumption Expenditures - Price Index (MoM),LOW,USD
+2012-04-30,Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-04-30,Personal Income (MoM),MEDIUM,USD
+2012-04-30,Personal Spending,MEDIUM,USD
+2012-04-30,Chicago PMI,LOW,USD
+2012-04-30,Dallas Fed Manufacturing Business Index,MEDIUM,USD
+2012-04-30,Loan Officer Survey,LOW,USD
+2012-05-01,Construction Spending (MoM),MEDIUM,USD
+2012-05-01,ISM Manufacturing PMI,MEDIUM,USD
+2012-05-01,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-05-01,Fed's Dudley speech,LOW,USD
+2012-05-01,52-Week Bill Auction,LOW,USD
+2012-05-01,Fed's Lockhart speech,LOW,USD
+2012-05-01,Philadelphia Fed's Plosser speech,LOW,USD
+2012-05-01,Total Vehicle Sales,LOW,USD
+2012-05-02,HCOB Manufacturing PMI,LOW,EUR
+2012-05-02,HCOB Manufacturing PMI,LOW,EUR
+2012-05-02,HCOB Manufacturing PMI,LOW,EUR
+2012-05-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-05-02,Unemployment Change,MEDIUM,EUR
+2012-05-02,Unemployment Rate s.a.,MEDIUM,EUR
+2012-05-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-05-02,Unemployment,LOW,EUR
+2012-05-02,Unemployment Rate,MEDIUM,EUR
+2012-05-02,Producer Price Index (MoM),LOW,EUR
+2012-05-02,Producer Price Index (YoY),LOW,EUR
+2012-05-02,MBA Mortgage Applications,LOW,USD
+2012-05-02,ADP Employment Change,MEDIUM,USD
+2012-05-02,ISM-NY Business Conditions Index,LOW,USD
+2012-05-02,Factory Orders (MoM),MEDIUM,USD
+2012-05-02,EIA Crude Oil Stocks Change,LOW,USD
+2012-05-02,Fed's Lacker speech,LOW,USD
+2012-05-03,Producer Price Index (MoM),MEDIUM,EUR
+2012-05-03,Producer Price Index (YoY),HIGH,EUR
+2012-05-03,3-y Bond Auction,LOW,EUR
+2012-05-03,5-y Bond Auction,LOW,EUR
+2012-05-03,10-y Bond Auction,MEDIUM,EUR
+2012-05-03,Challenger Job Cuts,LOW,USD
+2012-05-03,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-05-03,ECB's President Draghi speech,HIGH,EUR
+2012-05-03,Continuing Jobless Claims,LOW,USD
+2012-05-03,Initial Jobless Claims,LOW,USD
+2012-05-03,Nonfarm Productivity,LOW,USD
+2012-05-03,Unit Labor Costs,LOW,USD
+2012-05-03,ISM Services PMI,MEDIUM,USD
+2012-05-03,EIA Natural Gas Storage Change,LOW,USD
+2012-05-03,Fed's Lockhart speech,LOW,USD
+2012-05-03,Philadelphia Fed's Plosser speech,LOW,USD
+2012-05-04,Unemployment Change,LOW,EUR
+2012-05-04,HCOB Services PMI,LOW,EUR
+2012-05-04,HCOB Services PMI,LOW,EUR
+2012-05-04,HCOB Services PMI,LOW,EUR
+2012-05-04,HCOB Services PMI,MEDIUM,EUR
+2012-05-04,HCOB Services PMI,MEDIUM,EUR
+2012-05-04,Retail Sales (MoM),MEDIUM,EUR
+2012-05-04,Retail Sales (YoY),MEDIUM,EUR
+2012-05-04,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-05-04,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-05-04,Average Weekly Hours,LOW,USD
+2012-05-04,Nonfarm Payrolls,HIGH,USD
+2012-05-04,Unemployment Rate,HIGH,USD
+2012-05-04,Fed's Dudley speech,LOW,USD
+2012-05-07,Industrial Output Cal Adjusted (YoY),LOW,EUR
+2012-05-07,Sentix Investor Confidence,MEDIUM,EUR
+2012-05-07,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-05-07,Factory Orders s.a. (MoM),LOW,EUR
+2012-05-07,Consumer Credit Change,MEDIUM,USD
+2012-05-07,Fed's Lacker speech,LOW,USD
+2012-05-08,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-05-08,Industrial Production s.a. (MoM),LOW,EUR
+2012-05-08,NFIB Business Optimism Index,LOW,USD
+2012-05-08,ECB's President Draghi speech,HIGH,EUR
+2012-05-08,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-05-08,Philadelphia Fed's Plosser speech,LOW,USD
+2012-05-08,Fed's Richard Fisher speech,LOW,USD
+2012-05-08,3-Year Note Auction,LOW,USD
+2012-05-09,Current Account n.s.a.,LOW,EUR
+2012-05-09,Exports (MoM),MEDIUM,EUR
+2012-05-09,Imports (MoM),MEDIUM,EUR
+2012-05-09,Trade Balance s.a.,MEDIUM,EUR
+2012-05-09,"Exports, EUR",LOW,EUR
+2012-05-09,"Imports, EUR",LOW,EUR
+2012-05-09,Trade Balance EUR,LOW,EUR
+2012-05-09,MBA Mortgage Applications,LOW,USD
+2012-05-09,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-05-09,Wholesale Inventories,LOW,USD
+2012-05-09,EIA Crude Oil Stocks Change,LOW,USD
+2012-05-09,Fed's Pianalto speech,MEDIUM,USD
+2012-05-09,Philadelphia Fed's Plosser speech,LOW,USD
+2012-05-10,Budget Balance,LOW,EUR
+2012-05-10,Industrial Output (MoM),LOW,EUR
+2012-05-10,ECB Monthly Report,HIGH,EUR
+2012-05-10,Industrial Output s.a. (MoM),LOW,EUR
+2012-05-10,Industrial Output w.d.a (YoY),LOW,EUR
+2012-05-10,Individual Investment (Current Year),LOW,EUR
+2012-05-10,Continuing Jobless Claims,LOW,USD
+2012-05-10,Export Price Index (YoY),LOW,USD
+2012-05-10,Goods and Services Trade Balance,MEDIUM,USD
+2012-05-10,Import Price Index (MoM),LOW,USD
+2012-05-10,Import Price Index (YoY),LOW,USD
+2012-05-10,Initial Jobless Claims,LOW,USD
+2012-05-10,Former Fed's Chair Bernanke speech,LOW,USD
+2012-05-10,EIA Natural Gas Storage Change,LOW,USD
+2012-05-10,30-Year Bond Auction,LOW,USD
+2012-05-10,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-05-10,Monthly Budget Statement,MEDIUM,USD
+2012-05-10,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-05-11,Consumer Price Index (MoM),MEDIUM,EUR
+2012-05-11,Consumer Price Index (YoY),HIGH,EUR
+2012-05-11,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-05-11,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-05-11,Consumer Price Index (MoM),LOW,EUR
+2012-05-11,Consumer Price Index (YoY),LOW,EUR
+2012-05-11,Harmonized Index of Consumer Prices (MoM),LOW,EUR
+2012-05-11,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-05-11,European Commission releases Economic Growth Forecasts,HIGH,EUR
+2012-05-11,Producer Price Index (MoM),LOW,USD
+2012-05-11,Producer Price Index (YoY),MEDIUM,USD
+2012-05-11,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-05-11,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-05-11,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-05-14,Wholesale Price Index (MoM),LOW,EUR
+2012-05-14,Wholesale Price Index (YoY),LOW,EUR
+2012-05-14,Current Account,LOW,EUR
+2012-05-14,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-05-14,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-05-14,Consumer Price Index (MoM),LOW,EUR
+2012-05-14,Consumer Price Index (YoY),LOW,EUR
+2012-05-14,Industrial Production s.a. (MoM),LOW,EUR
+2012-05-14,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-05-14,3-y Bond Auction,LOW,EUR
+2012-05-14,12-Month Letras Auction,LOW,EUR
+2012-05-14,10-y Bond Auction,LOW,EUR
+2012-05-15,EcoFin Meeting,MEDIUM,EUR
+2012-05-15,Consumer Price Index (EU norm) (MoM),LOW,EUR
+2012-05-15,Consumer Price Index (EU norm) (YoY),LOW,EUR
+2012-05-15,Gross Domestic Product (QoQ),LOW,EUR
+2012-05-15,Inflation ex-tobacco (MoM),LOW,EUR
+2012-05-15,Gross Domestic Product (QoQ),HIGH,EUR
+2012-05-15,Gross Domestic Product (YoY),MEDIUM,EUR
+2012-05-15,Gross Domestic Product w.d.a (YoY),HIGH,EUR
+2012-05-15,Nonfarm Payrolls (QoQ),LOW,EUR
+2012-05-15,Gross Domestic Product (QoQ),LOW,EUR
+2012-05-15,Gross Domestic Product (YoY),LOW,EUR
+2012-05-15,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-05-15,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-05-15,Gross Domestic Product s.a. (QoQ),HIGH,EUR
+2012-05-15,Gross Domestic Product s.a. (YoY),HIGH,EUR
+2012-05-15,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-05-15,Consumer Price Index (MoM),MEDIUM,USD
+2012-05-15,Consumer Price Index (YoY),HIGH,USD
+2012-05-15,Consumer Price Index Core s.a,LOW,USD
+2012-05-15,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-05-15,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-05-15,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-05-15,NY Empire State Manufacturing Index,LOW,USD
+2012-05-15,Retail Sales (MoM),MEDIUM,USD
+2012-05-15,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-05-15,Net Long-Term TIC Flows,MEDIUM,USD
+2012-05-15,Total Net TIC Flows,LOW,USD
+2012-05-15,Fed's Duke speech,LOW,USD
+2012-05-15,Business Inventories,MEDIUM,USD
+2012-05-15,NAHB Housing Market Index,LOW,USD
+2012-05-16,Global Trade Balance,LOW,EUR
+2012-05-16,Trade Balance EU,LOW,EUR
+2012-05-16,Core Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-05-16,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-05-16,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-05-16,Trade Balance n.s.a.,LOW,EUR
+2012-05-16,Trade Balance s.a.,LOW,EUR
+2012-05-16,MBA Mortgage Applications,LOW,USD
+2012-05-16,10-y Bond Auction,MEDIUM,EUR
+2012-05-16,Building Permits (MoM),LOW,USD
+2012-05-16,Housing Starts (MoM),LOW,USD
+2012-05-16,Capacity Utilization,LOW,USD
+2012-05-16,Industrial Production (MoM),MEDIUM,USD
+2012-05-16,EIA Crude Oil Stocks Change,LOW,USD
+2012-05-16,Fed's Bullard speech,LOW,USD
+2012-05-16,FOMC Minutes,HIGH,USD
+2012-05-17,Gross Domestic Product (QoQ),LOW,EUR
+2012-05-17,Gross Domestic Product (YoY),LOW,EUR
+2012-05-17,3-y Bond Auction,LOW,EUR
+2012-05-17,4-y Bond Auction,LOW,EUR
+2012-05-17,Continuing Jobless Claims,LOW,USD
+2012-05-17,Initial Jobless Claims,LOW,USD
+2012-05-17,Treasury's Geithner speech,MEDIUM,USD
+2012-05-17,Philadelphia Fed Manufacturing Survey,MEDIUM,USD
+2012-05-17,EIA Natural Gas Storage Change,LOW,USD
+2012-05-17,Fed's Bullard speech,LOW,USD
+2012-05-18,Producer Price Index (MoM),MEDIUM,EUR
+2012-05-18,Producer Price Index (YoY),HIGH,EUR
+2012-05-18,Trade Balance,LOW,EUR
+2012-05-18,Industrial Orders n.s.a (YoY),LOW,EUR
+2012-05-18,Industrial Orders s.a (MoM),LOW,EUR
+2012-05-18,Industrial Sales n.s.a. (YoY),LOW,EUR
+2012-05-18,Industrial Sales s.a. (MoM),LOW,EUR
+2012-05-18,American Petroleum Institute Monthly Report ,LOW,USD
+2012-05-21,Construction Output  s.a (MoM),LOW,EUR
+2012-05-21,Construction Output w.d.a (YoY),LOW,EUR
+2012-05-21,Fed's Lockhart speech,LOW,USD
+2012-05-21,Chicago Fed National Activity Index ,LOW,USD
+2012-05-22,3-Month Letras Auction,LOW,EUR
+2012-05-22,6-Month Letras Auction,LOW,EUR
+2012-05-22,Fed's Lockhart speech,LOW,USD
+2012-05-22,Consumer Confidence,MEDIUM,EUR
+2012-05-22,Existing Home Sales (MoM),MEDIUM,USD
+2012-05-22,Existing Home Sales Change (MoM),MEDIUM,USD
+2012-05-22,Richmond Fed Manufacturing Index,LOW,USD
+2012-05-22,2-Year Note Auction,LOW,USD
+2012-05-23,Current Account n.s.a,LOW,EUR
+2012-05-23,Current Account s.a,LOW,EUR
+2012-05-23,Consumer Confidence,LOW,EUR
+2012-05-23,2-year Notes Auction,LOW,EUR
+2012-05-23,Trade Balance non-EU,LOW,EUR
+2012-05-23,MBA Mortgage Applications,LOW,USD
+2012-05-23,Housing Price Index (MoM),LOW,USD
+2012-05-23,New Home Sales (MoM),MEDIUM,USD
+2012-05-23,New Home Sales Change (MoM),LOW,USD
+2012-05-23,EIA Crude Oil Stocks Change,LOW,USD
+2012-05-23,5-Year Note Auction,LOW,USD
+2012-05-23,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-05-23,European Council Meeting,LOW,EUR
+2012-05-24,Gross Domestic Product (QoQ),MEDIUM,EUR
+2012-05-24,Gross Domestic Product (YoY),MEDIUM,EUR
+2012-05-24,Gross Domestic Product w.d.a (YoY),MEDIUM,EUR
+2012-05-24,Business Climate in Manufacturing,LOW,EUR
+2012-05-24,HCOB Manufacturing PMI,LOW,EUR
+2012-05-24,HCOB Services PMI,LOW,EUR
+2012-05-24,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-05-24,HCOB Services PMI,MEDIUM,EUR
+2012-05-24,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-05-24,HCOB Services PMI,MEDIUM,EUR
+2012-05-24,IFO – Business Climate,MEDIUM,EUR
+2012-05-24,IFO – Current Assessment,MEDIUM,EUR
+2012-05-24,IFO – Expectations,MEDIUM,EUR
+2012-05-24,Continuing Jobless Claims,LOW,USD
+2012-05-24,Durable Goods Orders,MEDIUM,USD
+2012-05-24,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-05-24,Initial Jobless Claims,LOW,USD
+2012-05-24,ECB's President Draghi speech,MEDIUM,EUR
+2012-05-24,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-05-24,EIA Natural Gas Storage Change,LOW,USD
+2012-05-24,Kansas Fed Manufacturing Activity,LOW,USD
+2012-05-24,Fed's Dudley speech,LOW,USD
+2012-05-24,Treasury's Geithner speech,MEDIUM,USD
+2012-05-25,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-05-25,Consumer Confidence,LOW,EUR
+2012-05-25,Retail Sales n.s.a (YoY),LOW,EUR
+2012-05-25,Retail Sales s.a. (MoM),LOW,EUR
+2012-05-25,Producer Price Index (YoY),LOW,EUR
+2012-05-25,Wage Inflation (MoM),LOW,EUR
+2012-05-25,Wage Inflation (YoY),LOW,EUR
+2012-05-25,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-05-28,Business Confidence,LOW,EUR
+2012-05-29,Import Price Index (MoM),LOW,EUR
+2012-05-29,Import Price Index (YoY),LOW,EUR
+2012-05-29,Retail Sales (YoY),LOW,EUR
+2012-05-29,Consumer Price Index (YoY),HIGH,EUR
+2012-05-29,Consumer Price Index (MoM),MEDIUM,EUR
+2012-05-29,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-05-29,Consumer Confidence,MEDIUM,USD
+2012-05-29,Dallas Fed Manufacturing Business Index,MEDIUM,USD
+2012-05-29,6-Month Bill Auction,LOW,USD
+2012-05-30,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-05-30,M3 Money Supply (3m),LOW,EUR
+2012-05-30,M3 Money Supply (YoY),LOW,EUR
+2012-05-30,Private Loans (YoY),LOW,EUR
+2012-05-30,Producer Price Index (MoM),LOW,EUR
+2012-05-30,Producer Price Index (YoY),LOW,EUR
+2012-05-30,Business Climate,MEDIUM,EUR
+2012-05-30,Consumer Confidence,MEDIUM,EUR
+2012-05-30,Economic Sentiment Indicator,LOW,EUR
+2012-05-30,Industrial Confidence,LOW,EUR
+2012-05-30,Services Sentiment,LOW,EUR
+2012-05-30,10-y Bond Auction,LOW,EUR
+2012-05-30,5-y Bond Auction,LOW,EUR
+2012-05-30,MBA Mortgage Applications,LOW,USD
+2012-05-30,Pending Home Sales (MoM),LOW,USD
+2012-05-30,4-Week Bill Auction,LOW,USD
+2012-05-30,52-Week Bill Auction,LOW,USD
+2012-05-30,ECB's President Draghi speech,MEDIUM,EUR
+2012-05-30,Fed's Richard Fisher speech,MEDIUM,USD
+2012-05-30,Fed's Dudley speech,LOW,USD
+2012-05-31,Retail Sales (MoM),MEDIUM,EUR
+2012-05-31,Retail Sales (YoY),MEDIUM,EUR
+2012-05-31,Consumer Spending (MoM),LOW,EUR
+2012-05-31,Producer Prices (MoM),LOW,EUR
+2012-05-31,ECB's President Draghi speech,HIGH,EUR
+2012-05-31,Unemployment Change,HIGH,EUR
+2012-05-31,Unemployment Rate s.a.,MEDIUM,EUR
+2012-05-31,Current Account Balance,LOW,EUR
+2012-05-31,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-05-31,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-05-31,Consumer Price Index (MoM),LOW,EUR
+2012-05-31,Consumer Price Index (YoY),LOW,EUR
+2012-05-31,Challenger Job Cuts,LOW,USD
+2012-05-31,ADP Employment Change,MEDIUM,USD
+2012-05-31,Continuing Jobless Claims,LOW,USD
+2012-05-31,Core Personal Consumption Expenditures (QoQ),MEDIUM,USD
+2012-05-31,Gross Domestic Product Annualized,HIGH,USD
+2012-05-31,Gross Domestic Product Price Index,MEDIUM,USD
+2012-05-31,Initial Jobless Claims,LOW,USD
+2012-05-31,Personal Consumption Expenditures Prices (QoQ),MEDIUM,USD
+2012-05-31,Irish Stability Treaty Vote,HIGH,EUR
+2012-05-31,Chicago PMI,LOW,USD
+2012-05-31,EIA Natural Gas Storage Change,LOW,USD
+2012-05-31,EIA Crude Oil Stocks Change,LOW,USD
+2012-06-01,HCOB Manufacturing PMI,LOW,EUR
+2012-06-01,HCOB Manufacturing PMI,LOW,EUR
+2012-06-01,HCOB Manufacturing PMI,LOW,EUR
+2012-06-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-06-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-06-01,Unemployment,LOW,EUR
+2012-06-01,Unemployment Rate,MEDIUM,EUR
+2012-06-01,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-06-01,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-06-01,Average Weekly Hours,LOW,USD
+2012-06-01,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-06-01,Core Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-06-01,Nonfarm Payrolls,HIGH,USD
+2012-06-01,Personal Consumption Expenditures - Price Index (MoM),LOW,USD
+2012-06-01,Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-06-01,Personal Income (MoM),MEDIUM,USD
+2012-06-01,Personal Spending,MEDIUM,USD
+2012-06-01,Unemployment Rate,HIGH,USD
+2012-06-01,Construction Spending (MoM),MEDIUM,USD
+2012-06-01,ISM Manufacturing PMI,MEDIUM,USD
+2012-06-01,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-06-01,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-06-01,Total Vehicle Sales,LOW,USD
+2012-06-03,G20 Meeting,LOW,EUR
+2012-06-03,G8 Meeting,LOW,EUR
+2012-06-03,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-06-04,Unemployment Change,LOW,EUR
+2012-06-04,Sentix Investor Confidence,MEDIUM,EUR
+2012-06-04,Producer Price Index (MoM),MEDIUM,EUR
+2012-06-04,Producer Price Index (YoY),HIGH,EUR
+2012-06-04,ISM-NY Business Conditions Index,LOW,USD
+2012-06-04,Factory Orders (MoM),MEDIUM,USD
+2012-06-04,6-Month Bill Auction,LOW,USD
+2012-06-05,HCOB Services PMI,HIGH,EUR
+2012-06-05,HCOB Services PMI,LOW,EUR
+2012-06-05,HCOB Services PMI,LOW,EUR
+2012-06-05,HCOB Services PMI,MEDIUM,EUR
+2012-06-05,HCOB Composite PMI,MEDIUM,EUR
+2012-06-05,HCOB Services PMI,MEDIUM,EUR
+2012-06-05,Retail Sales (MoM),MEDIUM,EUR
+2012-06-05,Retail Sales (YoY),HIGH,EUR
+2012-06-05,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-06-05,Factory Orders s.a. (MoM),MEDIUM,EUR
+2012-06-05,G7 Meeting,MEDIUM,EUR
+2012-06-05,ISM Services PMI,MEDIUM,USD
+2012-06-05,4-Week Bill Auction,LOW,USD
+2012-06-06,Industrial Output Cal Adjusted (YoY),MEDIUM,EUR
+2012-06-06,Gross Domestic Product s.a. (QoQ),HIGH,EUR
+2012-06-06,Gross Domestic Product s.a. (YoY),HIGH,EUR
+2012-06-06,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-06-06,Industrial Production s.a. (MoM),LOW,EUR
+2012-06-06,Fed's Yellen speech,MEDIUM,USD
+2012-06-06,MBA Mortgage Applications,LOW,USD
+2012-06-06,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-06-06,Fed's Lockhart speech,LOW,USD
+2012-06-06,ECB Press Conference,HIGH,EUR
+2012-06-06,Nonfarm Productivity,LOW,USD
+2012-06-06,Unit Labor Costs,LOW,USD
+2012-06-06,EIA Crude Oil Stocks Change,LOW,USD
+2012-06-06,Fed's Beige Book,MEDIUM,USD
+2012-06-06,Fed's Dudley speech,LOW,USD
+2012-06-06,Fed's Williams speech,MEDIUM,USD
+2012-06-06,Fed's Evans speech,LOW,USD
+2012-06-07,ILO Unemployment,MEDIUM,EUR
+2012-06-07,10-y Obligaciones Auction,LOW,EUR
+2012-06-07,2-y Bond Auction,LOW,EUR
+2012-06-07,4-y Bond Auction,LOW,EUR
+2012-06-07,10-y Bond Auction,MEDIUM,EUR
+2012-06-07,Continuing Jobless Claims,LOW,USD
+2012-06-07,Initial Jobless Claims,LOW,USD
+2012-06-07,Fed's Chair Bernanke testifies,HIGH,USD
+2012-06-07,EIA Natural Gas Storage Change,LOW,USD
+2012-06-07,Federal Reserve releases Quarterly Flow of Funds Accounts,MEDIUM,USD
+2012-06-07,Fed's Lockhart speech,LOW,USD
+2012-06-07,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-06-07,Consumer Credit Change,MEDIUM,USD
+2012-06-07,Fed's Richard Fisher speech,LOW,USD
+2012-06-08,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-06-08,Current Account n.s.a.,LOW,EUR
+2012-06-08,Exports (MoM),LOW,EUR
+2012-06-08,Imports (MoM),LOW,EUR
+2012-06-08,Trade Balance s.a.,MEDIUM,EUR
+2012-06-08,Budget Balance,MEDIUM,EUR
+2012-06-08,"Exports, EUR",LOW,EUR
+2012-06-08,"Imports, EUR",LOW,EUR
+2012-06-08,Trade Balance EUR,MEDIUM,EUR
+2012-06-08,Industrial Output s.a. (MoM),LOW,EUR
+2012-06-08,Industrial Output w.d.a (YoY),LOW,EUR
+2012-06-08,Goods and Services Trade Balance,MEDIUM,USD
+2012-06-08,Wholesale Inventories,LOW,USD
+2012-06-11,Industrial Output (MoM),LOW,EUR
+2012-06-11,Gross Domestic Product (QoQ),LOW,EUR
+2012-06-11,Gross Domestic Product (YoY),LOW,EUR
+2012-06-11,6-Month Bill Auction,LOW,USD
+2012-06-11,Fed's Lockhart speech,LOW,USD
+2012-06-12,Fed's Evans speech,LOW,USD
+2012-06-12,Nonfarm Payrolls (QoQ),MEDIUM,EUR
+2012-06-12,NFIB Business Optimism Index,LOW,USD
+2012-06-12,Export Price Index (MoM),LOW,USD
+2012-06-12,Export Price Index (YoY),LOW,USD
+2012-06-12,Import Price Index (MoM),LOW,USD
+2012-06-12,Import Price Index (YoY),LOW,USD
+2012-06-12,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-06-12,EU Financial Stability Review,MEDIUM,EUR
+2012-06-12,4-Week Bill Auction,LOW,USD
+2012-06-12,Fed's Tarullo speech,LOW,USD
+2012-06-12,3-Year Note Auction,LOW,USD
+2012-06-12,Monthly Budget Statement,MEDIUM,USD
+2012-06-13,Consumer Price Index (EU norm) (MoM),MEDIUM,EUR
+2012-06-13,Consumer Price Index (EU norm) (YoY),MEDIUM,EUR
+2012-06-13,Inflation ex-tobacco (MoM),MEDIUM,EUR
+2012-06-13,Consumer Price Index (MoM),MEDIUM,EUR
+2012-06-13,Consumer Price Index (YoY),HIGH,EUR
+2012-06-13,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-06-13,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-06-13,Current Account,MEDIUM,EUR
+2012-06-13,Consumer Price Index (MoM),MEDIUM,EUR
+2012-06-13,Consumer Price Index (YoY),LOW,EUR
+2012-06-13,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-06-13,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-06-13,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-06-13,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-06-13,Consumer Price Index (MoM),LOW,EUR
+2012-06-13,Consumer Price Index (YoY),LOW,EUR
+2012-06-13,Industrial Production s.a. (MoM),LOW,EUR
+2012-06-13,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-06-13,10-y Bond Auction,MEDIUM,EUR
+2012-06-13,MBA Mortgage Applications,LOW,USD
+2012-06-13,Producer Price Index (MoM),LOW,USD
+2012-06-13,Producer Price Index (YoY),MEDIUM,USD
+2012-06-13,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-06-13,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-06-13,Retail Sales (MoM),HIGH,USD
+2012-06-13,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-06-13,Business Inventories,MEDIUM,USD
+2012-06-13,EIA Crude Oil Stocks Change,LOW,USD
+2012-06-13,10-Year Note Auction,MEDIUM,USD
+2012-06-14,Wholesale Price Index (MoM),LOW,EUR
+2012-06-14,Wholesale Price Index (YoY),LOW,EUR
+2012-06-14,Merkel speaks in the Bundestag,HIGH,EUR
+2012-06-14,House price index,LOW,EUR
+2012-06-14,ECB Monthly Report,HIGH,EUR
+2012-06-14,Core Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-06-14,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-06-14,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-06-14,3-y Bond Auction,LOW,EUR
+2012-06-14,Labor Cost Index,MEDIUM,EUR
+2012-06-14,OPEC Meeting,LOW,USD
+2012-06-14,Consumer Price Index (MoM),MEDIUM,USD
+2012-06-14,Consumer Price Index (YoY),HIGH,USD
+2012-06-14,Consumer Price Index Core s.a,LOW,USD
+2012-06-14,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-06-14,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-06-14,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-06-14,Continuing Jobless Claims,LOW,USD
+2012-06-14,Current Account,LOW,USD
+2012-06-14,Initial Jobless Claims,LOW,USD
+2012-06-14,German Buba President Weidmann speech,MEDIUM,EUR
+2012-06-14,Hollande-Monti Meeting,MEDIUM,EUR
+2012-06-14,EIA Natural Gas Storage Change,LOW,USD
+2012-06-14,30-Year Bond Auction,LOW,USD
+2012-06-15,ECB's President Draghi speech,HIGH,EUR
+2012-06-15,Global Trade Balance,LOW,EUR
+2012-06-15,Trade Balance EU,LOW,EUR
+2012-06-15,Employment Change (QoQ),LOW,EUR
+2012-06-15,Employment Change (YoY),LOW,EUR
+2012-06-15,Trade Balance n.s.a.,LOW,EUR
+2012-06-15,Trade Balance s.a.,LOW,EUR
+2012-06-15,NY Empire State Manufacturing Index,LOW,USD
+2012-06-15,Net Long-Term TIC Flows,MEDIUM,USD
+2012-06-15,Total Net TIC Flows,LOW,USD
+2012-06-15,Capacity Utilization,LOW,USD
+2012-06-15,Industrial Production (MoM),MEDIUM,USD
+2012-06-15,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-06-17,Second Round French Legislative Elections,LOW,EUR
+2012-06-18,G20 Meeting,HIGH,EUR
+2012-06-18,ECB's Asmussen speech,LOW,EUR
+2012-06-18,NAHB Housing Market Index,LOW,USD
+2012-06-18,3-Month Bill Auction,LOW,USD
+2012-06-18,6-Month Bill Auction,LOW,USD
+2012-06-19,G20 Meeting,HIGH,EUR
+2012-06-19,Business Climate in Manufacturing,LOW,EUR
+2012-06-19,12-Month Letras Auction,LOW,EUR
+2012-06-19,18-Month Letras Auction ,LOW,EUR
+2012-06-19,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-06-19,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-06-19,Construction Output  s.a (MoM),LOW,EUR
+2012-06-19,Construction Output w.d.a (YoY),LOW,EUR
+2012-06-19,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-06-19,Building Permits (MoM),MEDIUM,USD
+2012-06-19,Housing Starts (MoM),MEDIUM,USD
+2012-06-19,4-Week Bill Auction,LOW,USD
+2012-06-20,Producer Price Index (MoM),MEDIUM,EUR
+2012-06-20,Producer Price Index (YoY),HIGH,EUR
+2012-06-20,Trade Balance,LOW,EUR
+2012-06-20,Industrial Orders n.s.a (YoY),LOW,EUR
+2012-06-20,Industrial Orders s.a (MoM),LOW,EUR
+2012-06-20,Industrial Sales n.s.a. (YoY),LOW,EUR
+2012-06-20,Industrial Sales s.a. (MoM),LOW,EUR
+2012-06-20,2-year Notes Auction,LOW,EUR
+2012-06-20,MBA Mortgage Applications,LOW,USD
+2012-06-20,EIA Crude Oil Stocks Change,LOW,USD
+2012-06-20,Fed Interest Rate Decision,HIGH,USD
+2012-06-20,FOMC Economic Projections,HIGH,USD
+2012-06-20,Fed's Monetary Policy Statement and Press Conference,HIGH,USD
+2012-06-21,HCOB Manufacturing PMI,LOW,EUR
+2012-06-21,HCOB Services PMI,LOW,EUR
+2012-06-21,ECB Mid-Month Meeting,LOW,EUR
+2012-06-21,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-06-21,HCOB Services PMI,MEDIUM,EUR
+2012-06-21,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-06-21,HCOB Services PMI,MEDIUM,EUR
+2012-06-21,Current Account n.s.a,LOW,EUR
+2012-06-21,Current Account s.a,LOW,EUR
+2012-06-21,Trade Balance non-EU,LOW,EUR
+2012-06-21,5-y Bond Auction,LOW,EUR
+2012-06-21,3-y Bond Auction,LOW,EUR
+2012-06-21,2-y Bond Auction,LOW,EUR
+2012-06-21,7-year bond auction,MEDIUM,EUR
+2012-06-21,European Systemic Risk Board Meeting,HIGH,EUR
+2012-06-21,Continuing Jobless Claims,LOW,USD
+2012-06-21,Initial Jobless Claims,LOW,USD
+2012-06-21,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-06-21,Consumer Confidence,MEDIUM,EUR
+2012-06-21,Existing Home Sales (MoM),LOW,USD
+2012-06-21,Existing Home Sales Change (MoM),MEDIUM,USD
+2012-06-21,Housing Price Index (MoM),MEDIUM,USD
+2012-06-21,Philadelphia Fed Manufacturing Survey,MEDIUM,USD
+2012-06-21,EIA Natural Gas Storage Change,LOW,USD
+2012-06-21,EcoFin Meeting,MEDIUM,EUR
+2012-06-21,Audit of Spanish Banks,MEDIUM,EUR
+2012-06-21,ECB's President Draghi speech,LOW,EUR
+2012-06-22,EcoFin Meeting,MEDIUM,EUR
+2012-06-22,EU Leaders Special Summit,HIGH,EUR
+2012-06-22,IFO – Business Climate,MEDIUM,EUR
+2012-06-22,IFO – Current Assessment,MEDIUM,EUR
+2012-06-22,IFO – Expectations,MEDIUM,EUR
+2012-06-22,Consumer Confidence,LOW,EUR
+2012-06-22,American Petroleum Institute Monthly Report ,LOW,USD
+2012-06-25,Producer Price Index (YoY),LOW,EUR
+2012-06-25,Spain Formal Request for Banking Rescue,LOW,EUR
+2012-06-25,Chicago Fed National Activity Index ,LOW,USD
+2012-06-25,ECB announces Bond Purchases,LOW,EUR
+2012-06-25,New Home Sales (MoM),MEDIUM,USD
+2012-06-25,New Home Sales Change (MoM),LOW,USD
+2012-06-25,Dallas Fed Manufacturing Business Index,LOW,USD
+2012-06-25,3-Month Bill Auction,LOW,USD
+2012-06-25,6-Month Bill Auction,LOW,USD
+2012-06-25,ECB's Asmussen speech,LOW,EUR
+2012-06-26,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-06-26,Consumer Confidence,LOW,EUR
+2012-06-26,Retail Sales n.s.a (YoY),LOW,EUR
+2012-06-26,Retail Sales s.a. (MoM),LOW,EUR
+2012-06-26,3-Month Letras Auction,LOW,EUR
+2012-06-26,6-Month Letras Auction,LOW,EUR
+2012-06-26,Wage Inflation (MoM),LOW,EUR
+2012-06-26,Wage Inflation (YoY),LOW,EUR
+2012-06-26,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-06-26,Consumer Confidence,MEDIUM,USD
+2012-06-26,Richmond Fed Manufacturing Index,LOW,USD
+2012-06-26,4-Week Bill Auction,LOW,USD
+2012-06-26,52-Week Bill Auction,LOW,USD
+2012-06-26,2-Year Note Auction,LOW,USD
+2012-06-27,Import Price Index (MoM),LOW,EUR
+2012-06-27,Import Price Index (YoY),LOW,EUR
+2012-06-27,Retail Sales (YoY),LOW,EUR
+2012-06-27,Business Confidence,LOW,EUR
+2012-06-27,MBA Mortgage Applications,LOW,USD
+2012-06-27,ECB's Noyer speech,LOW,EUR
+2012-06-27,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-06-27,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-06-27,Consumer Price Index (MoM),MEDIUM,EUR
+2012-06-27,Consumer Price Index (YoY),HIGH,EUR
+2012-06-27,Durable Goods Orders,HIGH,USD
+2012-06-27,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-06-27,Pending Home Sales (MoM),LOW,USD
+2012-06-27,EIA Crude Oil Stocks Change,LOW,USD
+2012-06-27,5-Year Note Auction,LOW,USD
+2012-06-28,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-06-28,Unemployment Change,HIGH,EUR
+2012-06-28,Unemployment Rate s.a.,MEDIUM,EUR
+2012-06-28,Producer Price Index (MoM),LOW,EUR
+2012-06-28,Producer Price Index (YoY),LOW,EUR
+2012-06-28,Business Climate,MEDIUM,EUR
+2012-06-28,Consumer Confidence,MEDIUM,EUR
+2012-06-28,Economic Sentiment Indicator,LOW,EUR
+2012-06-28,Industrial Confidence,LOW,EUR
+2012-06-28,Services Sentiment,LOW,EUR
+2012-06-28,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-06-28,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-06-28,Consumer Price Index (MoM),LOW,EUR
+2012-06-28,Consumer Price Index (YoY),LOW,EUR
+2012-06-28,10-y Bond Auction,LOW,EUR
+2012-06-28,European Council Meeting,HIGH,EUR
+2012-06-28,Continuing Jobless Claims,LOW,USD
+2012-06-28,Core Personal Consumption Expenditures (QoQ),HIGH,USD
+2012-06-28,Gross Domestic Product Annualized,HIGH,USD
+2012-06-28,Gross Domestic Product Price Index,HIGH,USD
+2012-06-28,Initial Jobless Claims,LOW,USD
+2012-06-28,Personal Consumption Expenditures Prices (QoQ),MEDIUM,USD
+2012-06-28,EIA Natural Gas Storage Change,LOW,USD
+2012-06-28,Kansas Fed Manufacturing Activity,LOW,USD
+2012-06-28,Fed's Pianalto speech,LOW,USD
+2012-06-28,Fed's Richard Fisher speech,LOW,USD
+2012-06-29,Gross Domestic Product (QoQ),LOW,EUR
+2012-06-29,Retail Sales (MoM),LOW,EUR
+2012-06-29,Retail Sales (YoY),MEDIUM,EUR
+2012-06-29,Consumer Spending (MoM),LOW,EUR
+2012-06-29,Producer Prices (MoM),LOW,EUR
+2012-06-29,M3 Money Supply (3m),LOW,EUR
+2012-06-29,M3 Money Supply (YoY),LOW,EUR
+2012-06-29,Private Loans (YoY),LOW,EUR
+2012-06-29,Current Account Balance,LOW,EUR
+2012-06-29,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-06-29,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-06-29,Core Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-06-29,Personal Consumption Expenditures - Price Index (MoM),LOW,USD
+2012-06-29,Personal Consumption Expenditures - Price Index (YoY),LOW,USD
+2012-06-29,Personal Income (MoM),MEDIUM,USD
+2012-06-29,Personal Spending,MEDIUM,USD
+2012-06-29,Fed's Bullard speech,LOW,USD
+2012-06-29,Chicago PMI,LOW,USD
+2012-06-29,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-06-29,European Council Meeting,HIGH,EUR
+2012-07-02,Unemployment Change,LOW,EUR
+2012-07-02,HCOB Manufacturing PMI,LOW,EUR
+2012-07-02,HCOB Manufacturing PMI,LOW,EUR
+2012-07-02,HCOB Manufacturing PMI,LOW,EUR
+2012-07-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-07-02,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-07-02,Unemployment,LOW,EUR
+2012-07-02,Unemployment Rate,MEDIUM,EUR
+2012-07-02,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-07-02,Construction Spending (MoM),MEDIUM,USD
+2012-07-02,ISM Manufacturing PMI,HIGH,USD
+2012-07-02,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-07-02,3-Month Bill Auction,LOW,USD
+2012-07-02,6-Month Bill Auction,LOW,USD
+2012-07-02,Fed's Williams speech,MEDIUM,USD
+2012-07-03,Producer Price Index (MoM),MEDIUM,EUR
+2012-07-03,Producer Price Index (YoY),HIGH,EUR
+2012-07-03,Barroso and Juncker speak to European Parliament,LOW,EUR
+2012-07-03,ECB's Noyer speech,LOW,EUR
+2012-07-03,Redbook Index (MoM),LOW,USD
+2012-07-03,Redbook Index (YoY),LOW,USD
+2012-07-03,ISM-NY Business Conditions Index,LOW,USD
+2012-07-03,Factory Orders (MoM),MEDIUM,USD
+2012-07-03,4-Week Bill Auction,LOW,USD
+2012-07-03,Total Vehicle Sales,LOW,USD
+2012-07-04,HCOB Services PMI,LOW,EUR
+2012-07-04,HCOB Services PMI,LOW,EUR
+2012-07-04,HCOB Services PMI,LOW,EUR
+2012-07-04,HCOB Services PMI,MEDIUM,EUR
+2012-07-04,HCOB Composite PMI,MEDIUM,EUR
+2012-07-04,HCOB Services PMI,MEDIUM,EUR
+2012-07-04,Retail Sales (MoM),MEDIUM,EUR
+2012-07-04,Retail Sales (YoY),HIGH,EUR
+2012-07-04,Public Deficit/GDP,LOW,EUR
+2012-07-05,10-y Obligaciones Auction,LOW,EUR
+2012-07-05,3-y Bond Auction,LOW,EUR
+2012-07-05,4-y Bond Auction,LOW,EUR
+2012-07-05,10-y Bond Auction,LOW,EUR
+2012-07-05,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-07-05,Factory Orders s.a. (MoM),MEDIUM,EUR
+2012-07-05,MBA Mortgage Applications,LOW,USD
+2012-07-05,Challenger Job Cuts,LOW,USD
+2012-07-05,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-07-05,ADP Employment Change,MEDIUM,USD
+2012-07-05,ECB Press Conference,HIGH,EUR
+2012-07-05,Continuing Jobless Claims,LOW,USD
+2012-07-05,Initial Jobless Claims,LOW,USD
+2012-07-05,ISM Services PMI,MEDIUM,USD
+2012-07-05,EIA Crude Oil Stocks Change,LOW,USD
+2012-07-06,Budget Balance,LOW,EUR
+2012-07-06,"Exports, EUR",LOW,EUR
+2012-07-06,"Imports, EUR",LOW,EUR
+2012-07-06,Trade Balance EUR,LOW,EUR
+2012-07-06,Industrial Output Cal Adjusted (YoY),LOW,EUR
+2012-07-06,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-07-06,Industrial Production s.a. (MoM),LOW,EUR
+2012-07-06,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-07-06,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-07-06,Average Weekly Hours,LOW,USD
+2012-07-06,EIA Natural Gas Storage Change,LOW,USD
+2012-07-06,Nonfarm Payrolls,HIGH,USD
+2012-07-06,Unemployment Rate,HIGH,USD
+2012-07-09,Fed's Evans speech,LOW,USD
+2012-07-09,Current Account n.s.a.,LOW,EUR
+2012-07-09,Exports (MoM),LOW,EUR
+2012-07-09,Imports (MoM),LOW,EUR
+2012-07-09,Trade Balance s.a.,MEDIUM,EUR
+2012-07-09,Sentix Investor Confidence,MEDIUM,EUR
+2012-07-09,ECB's President Draghi speech,HIGH,EUR
+2012-07-09,European Council Meeting,MEDIUM,EUR
+2012-07-09,3-Month Bill Auction,LOW,USD
+2012-07-09,6-Month Bill Auction,LOW,USD
+2012-07-09,Fed's Williams speech,MEDIUM,USD
+2012-07-09,Consumer Credit Change,MEDIUM,USD
+2012-07-10,EcoFin Meeting,MEDIUM,EUR
+2012-07-10,ECB's Noyer speech,LOW,EUR
+2012-07-10,Industrial Output (MoM),LOW,EUR
+2012-07-10,Industrial Output w.d.a (YoY),LOW,EUR
+2012-07-10,German Constitutional Court discusses Motions to stop ESM,MEDIUM,EUR
+2012-07-10,Industrial Output s.a. (MoM),LOW,EUR
+2012-07-10,Fed's Bullard speech,LOW,USD
+2012-07-10,NFIB Business Optimism Index,LOW,USD
+2012-07-10,Redbook Index (MoM),LOW,USD
+2012-07-10,Redbook Index (YoY),LOW,USD
+2012-07-10,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-07-10,4-Week Bill Auction,LOW,USD
+2012-07-10,3-Year Note Auction,LOW,USD
+2012-07-11,Consumer Price Index (MoM),MEDIUM,EUR
+2012-07-11,Consumer Price Index (YoY),HIGH,EUR
+2012-07-11,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-07-11,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-07-11,Current Account,LOW,EUR
+2012-07-11,10-y Bond Auction,MEDIUM,EUR
+2012-07-11,MBA Mortgage Applications,LOW,USD
+2012-07-11,ECB Rate On Deposit Facility,MEDIUM,EUR
+2012-07-11,Goods and Services Trade Balance,MEDIUM,USD
+2012-07-11,Wholesale Inventories,LOW,USD
+2012-07-11,EIA Crude Oil Stocks Change,LOW,USD
+2012-07-11,10-Year Note Auction,MEDIUM,USD
+2012-07-11,FOMC Minutes,HIGH,USD
+2012-07-12,Consumer Price Index (EU norm) (MoM),LOW,EUR
+2012-07-12,Consumer Price Index (EU norm) (YoY),LOW,EUR
+2012-07-12,Inflation ex-tobacco (MoM),LOW,EUR
+2012-07-12,Wholesale Price Index (MoM),LOW,EUR
+2012-07-12,Wholesale Price Index (YoY),LOW,EUR
+2012-07-12,ECB Monthly Report,HIGH,EUR
+2012-07-12,Industrial Production s.a. (MoM),LOW,EUR
+2012-07-12,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-07-12,ECB's President Draghi speech,MEDIUM,EUR
+2012-07-12,Continuing Jobless Claims,LOW,USD
+2012-07-12,Export Price Index (MoM),LOW,USD
+2012-07-12,Export Price Index (YoY),LOW,USD
+2012-07-12,Import Price Index (MoM),LOW,USD
+2012-07-12,Import Price Index (YoY),LOW,USD
+2012-07-12,Initial Jobless Claims,LOW,USD
+2012-07-12,EIA Natural Gas Storage Change,LOW,USD
+2012-07-12,30-Year Bond Auction,LOW,USD
+2012-07-12,Monthly Budget Statement,MEDIUM,USD
+2012-07-12,Fed's Williams speech,MEDIUM,USD
+2012-07-13,Consumer Price Index (MoM),LOW,EUR
+2012-07-13,Consumer Price Index (YoY),LOW,EUR
+2012-07-13,Harmonized Index of Consumer Prices (MoM),LOW,EUR
+2012-07-13,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-07-13,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-07-13,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-07-13,Consumer Price Index (MoM),LOW,EUR
+2012-07-13,Consumer Price Index (YoY),LOW,EUR
+2012-07-13,3-y Bond Auction,LOW,EUR
+2012-07-13,10-y Bond Auction,LOW,EUR
+2012-07-13,Producer Price Index (MoM),LOW,USD
+2012-07-13,Producer Price Index (YoY),MEDIUM,USD
+2012-07-13,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-07-13,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-07-13,Michigan Consumer Sentiment Index,HIGH,USD
+2012-07-13,Fed's Lockhart speech,LOW,USD
+2012-07-16,Global Trade Balance,LOW,EUR
+2012-07-16,Trade Balance EU,LOW,EUR
+2012-07-16,Core Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-07-16,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-07-16,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-07-16,Trade Balance n.s.a.,LOW,EUR
+2012-07-16,Trade Balance s.a.,LOW,EUR
+2012-07-16,NY Empire State Manufacturing Index,LOW,USD
+2012-07-16,Retail Sales (MoM),HIGH,USD
+2012-07-16,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-07-16,Business Inventories,MEDIUM,USD
+2012-07-16,3-Month Bill Auction,LOW,USD
+2012-07-16,6-Month Bill Auction,LOW,USD
+2012-07-16,Fed's George speech,LOW,USD
+2012-07-17,Trade Balance,LOW,EUR
+2012-07-17,12-Month Letras Auction,LOW,EUR
+2012-07-17,18-Month Letras Auction ,LOW,EUR
+2012-07-17,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-07-17,ZEW Survey – Economic Sentiment,HIGH,EUR
+2012-07-17,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-07-17,Quarterly economic bulletin,LOW,EUR
+2012-07-17,Consumer Price Index (MoM),MEDIUM,USD
+2012-07-17,Consumer Price Index (YoY),HIGH,USD
+2012-07-17,Consumer Price Index Core s.a,LOW,USD
+2012-07-17,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-07-17,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-07-17,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-07-17,Redbook Index (MoM),LOW,USD
+2012-07-17,Redbook Index (YoY),LOW,USD
+2012-07-17,Net Long-Term TIC Flows,MEDIUM,USD
+2012-07-17,Total Net TIC Flows,LOW,USD
+2012-07-17,Capacity Utilization,LOW,USD
+2012-07-17,Industrial Production (MoM),MEDIUM,USD
+2012-07-17,Fed's Chair Bernanke testifies,HIGH,USD
+2012-07-17,NAHB Housing Market Index,LOW,USD
+2012-07-17,ECB's Asmussen speech,LOW,EUR
+2012-07-17,4-Week Bill Auction,LOW,USD
+2012-07-17,Fed's Pianalto speech,LOW,USD
+2012-07-18,Construction Output  s.a (MoM),LOW,EUR
+2012-07-18,Construction Output w.d.a (YoY),LOW,EUR
+2012-07-18,2-year Notes Auction,LOW,EUR
+2012-07-18,House Price Index (QoQ),LOW,EUR
+2012-07-18,MBA Mortgage Applications,LOW,USD
+2012-07-18,Building Permits (MoM),MEDIUM,USD
+2012-07-18,Housing Starts (MoM),LOW,USD
+2012-07-18,Treasury's Geithner speech,MEDIUM,USD
+2012-07-18,Fed's Chair Bernanke testifies,HIGH,USD
+2012-07-18,EIA Crude Oil Stocks Change,LOW,USD
+2012-07-18,Fed's Beige Book,MEDIUM,USD
+2012-07-19,Current Account n.s.a,LOW,EUR
+2012-07-19,Current Account s.a,LOW,EUR
+2012-07-19,Industrial Orders n.s.a (YoY),LOW,EUR
+2012-07-19,Industrial Orders s.a (MoM),LOW,EUR
+2012-07-19,Industrial Sales n.s.a. (YoY),LOW,EUR
+2012-07-19,Industrial Sales s.a. (MoM),LOW,EUR
+2012-07-19,ECB Mid-Month Meeting,HIGH,EUR
+2012-07-19,5-y Bond Auction,MEDIUM,EUR
+2012-07-19,2-y Bond Auction,MEDIUM,EUR
+2012-07-19,7-year bond auction,MEDIUM,EUR
+2012-07-19,Bundestag votes on the Spanish Bailout,MEDIUM,EUR
+2012-07-19,Continuing Jobless Claims,LOW,USD
+2012-07-19,Initial Jobless Claims,LOW,USD
+2012-07-19,Existing Home Sales (MoM),LOW,USD
+2012-07-19,Existing Home Sales Change (MoM),MEDIUM,USD
+2012-07-19,Philadelphia Fed Manufacturing Survey,MEDIUM,USD
+2012-07-19,EIA Natural Gas Storage Change,LOW,USD
+2012-07-20,Producer Price Index (MoM),MEDIUM,EUR
+2012-07-20,Producer Price Index (YoY),HIGH,EUR
+2012-07-20,Finnish Parliament votes on the Spanish Bailout,MEDIUM,EUR
+2012-07-20,EcoFin Meeting,MEDIUM,EUR
+2012-07-20,American Petroleum Institute Monthly Report ,LOW,USD
+2012-07-23,Chicago Fed National Activity Index ,LOW,USD
+2012-07-23,Consumer Confidence,MEDIUM,EUR
+2012-07-23,3-Month Bill Auction,LOW,USD
+2012-07-23,6-Month Bill Auction,LOW,USD
+2012-07-23,Fed's Raskin speech,LOW,USD
+2012-07-24,Business Climate in Manufacturing,LOW,EUR
+2012-07-24,HCOB Manufacturing PMI,LOW,EUR
+2012-07-24,HCOB Services PMI,LOW,EUR
+2012-07-24,Producer Price Index (YoY),LOW,EUR
+2012-07-24,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-07-24,HCOB Services PMI,MEDIUM,EUR
+2012-07-24,HCOB Composite PMI,MEDIUM,EUR
+2012-07-24,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-07-24,HCOB Services PMI,MEDIUM,EUR
+2012-07-24,Trade Balance non-EU,LOW,EUR
+2012-07-24,6-Month Letras Auction,LOW,EUR
+2012-07-24,3-Month Letras Auction,LOW,EUR
+2012-07-24,Troika visits Greece,HIGH,EUR
+2012-07-24,Former Fed's Chair Bernanke speech,LOW,USD
+2012-07-24,Redbook Index (MoM),LOW,USD
+2012-07-24,Redbook Index (YoY),LOW,USD
+2012-07-24,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-07-24,Housing Price Index (MoM),LOW,USD
+2012-07-24,Richmond Fed Manufacturing Index,LOW,USD
+2012-07-24,4-Week Bill Auction,LOW,USD
+2012-07-24,52-Week Bill Auction,LOW,USD
+2012-07-24,2-Year Note Auction,LOW,USD
+2012-07-25,IFO – Business Climate,MEDIUM,EUR
+2012-07-25,IFO – Current Assessment,MEDIUM,EUR
+2012-07-25,IFO – Expectations,MEDIUM,EUR
+2012-07-25,Consumer Confidence,LOW,EUR
+2012-07-25,30-y Bond Auction,LOW,EUR
+2012-07-25,MBA Mortgage Applications,LOW,USD
+2012-07-25,New Home Sales (MoM),MEDIUM,USD
+2012-07-25,New Home Sales Change (MoM),LOW,USD
+2012-07-25,EIA Crude Oil Stocks Change,LOW,USD
+2012-07-25,5-Year Note Auction,LOW,USD
+2012-07-26,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-07-26,Import Price Index (MoM),LOW,EUR
+2012-07-26,Import Price Index (YoY),LOW,EUR
+2012-07-26,M3 Money Supply (3m),LOW,EUR
+2012-07-26,M3 Money Supply (YoY),LOW,EUR
+2012-07-26,Private Loans (YoY),LOW,EUR
+2012-07-26,Retail Sales n.s.a (YoY),LOW,EUR
+2012-07-26,Retail Sales s.a. (MoM),LOW,EUR
+2012-07-26,Wage Inflation (MoM),LOW,EUR
+2012-07-26,Wage Inflation (YoY),LOW,EUR
+2012-07-26,ECB's President Draghi speech,HIGH,EUR
+2012-07-26,Continuing Jobless Claims,LOW,USD
+2012-07-26,Durable Goods Orders,HIGH,USD
+2012-07-26,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-07-26,Initial Jobless Claims,LOW,USD
+2012-07-26,Pending Home Sales (MoM),LOW,USD
+2012-07-26,Treasury's Geithner speech,MEDIUM,USD
+2012-07-26,EIA Natural Gas Storage Change,LOW,USD
+2012-07-26,Kansas Fed Manufacturing Activity,LOW,USD
+2012-07-27,Consumer Confidence,LOW,EUR
+2012-07-27,Unemployment Survey,LOW,EUR
+2012-07-27,Business Confidence,LOW,EUR
+2012-07-27,Consumer Price Index (MoM),MEDIUM,EUR
+2012-07-27,Consumer Price Index (YoY),HIGH,EUR
+2012-07-27,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-07-27,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-07-27,Core Personal Consumption Expenditures (QoQ),MEDIUM,USD
+2012-07-27,Gross Domestic Product Annualized,HIGH,USD
+2012-07-27,Gross Domestic Product Price Index,HIGH,USD
+2012-07-27,Personal Consumption Expenditures Prices (QoQ),MEDIUM,USD
+2012-07-27,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-07-30,Gross Domestic Product - Estimated (QoQ),LOW,EUR
+2012-07-30,Gross Domestic Product - Estimated (YoY),LOW,EUR
+2012-07-30,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-07-30,Business Climate,MEDIUM,EUR
+2012-07-30,Consumer Confidence,MEDIUM,EUR
+2012-07-30,Economic Sentiment Indicator,LOW,EUR
+2012-07-30,Industrial Confidence,LOW,EUR
+2012-07-30,Services Sentiment,LOW,EUR
+2012-07-30,10-y Bond Auction,LOW,EUR
+2012-07-30,5-y Bond Auction,LOW,EUR
+2012-07-30,Dallas Fed Manufacturing Business Index,LOW,USD
+2012-07-30,3-Month Bill Auction,LOW,USD
+2012-07-30,6-Month Bill Auction,LOW,USD
+2012-07-31,Retail Sales (MoM),MEDIUM,EUR
+2012-07-31,Retail Sales (YoY),LOW,EUR
+2012-07-31,Consumer Spending (MoM),LOW,EUR
+2012-07-31,Producer Prices (MoM),LOW,EUR
+2012-07-31,Retail Sales (YoY),LOW,EUR
+2012-07-31,Unemployment Change,MEDIUM,EUR
+2012-07-31,Unemployment Rate s.a.,MEDIUM,EUR
+2012-07-31,Current Account Balance,LOW,EUR
+2012-07-31,Unemployment,LOW,EUR
+2012-07-31,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-07-31,Unemployment Rate,MEDIUM,EUR
+2012-07-31,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-07-31,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-07-31,Consumer Price Index (MoM),LOW,EUR
+2012-07-31,Consumer Price Index (YoY),LOW,EUR
+2012-07-31,Producer Price Index (MoM),LOW,EUR
+2012-07-31,Producer Price Index (YoY),LOW,EUR
+2012-07-31,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-07-31,Core Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-07-31,Employment Cost Index,LOW,USD
+2012-07-31,Personal Consumption Expenditures - Price Index (MoM),LOW,USD
+2012-07-31,Personal Consumption Expenditures - Price Index (YoY),MEDIUM,USD
+2012-07-31,Personal Income (MoM),MEDIUM,USD
+2012-07-31,Personal Spending,MEDIUM,USD
+2012-07-31,Redbook Index (MoM),LOW,USD
+2012-07-31,Redbook Index (YoY),LOW,USD
+2012-07-31,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-07-31,Chicago PMI,LOW,USD
+2012-07-31,Consumer Confidence,MEDIUM,USD
+2012-07-31,4-Week Bill Auction,LOW,USD
+2012-08-01,European Council Meeting,MEDIUM,EUR
+2012-08-01,HCOB Manufacturing PMI,LOW,EUR
+2012-08-01,HCOB Manufacturing PMI,LOW,EUR
+2012-08-01,HCOB Manufacturing PMI,LOW,EUR
+2012-08-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-08-01,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-08-01,MBA Mortgage Applications,LOW,USD
+2012-08-01,ADP Employment Change,MEDIUM,USD
+2012-08-01,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-08-01,Construction Spending (MoM),MEDIUM,USD
+2012-08-01,ISM Manufacturing PMI,MEDIUM,USD
+2012-08-01,ISM Manufacturing Prices Paid,MEDIUM,USD
+2012-08-01,EIA Crude Oil Stocks Change,LOW,USD
+2012-08-01,Fed Interest Rate Decision,HIGH,USD
+2012-08-01,Fed Monetary Policy Statement,HIGH,USD
+2012-08-01,Total Vehicle Sales,LOW,USD
+2012-08-02,Unemployment Change,LOW,EUR
+2012-08-02,2-y Bond Auction,HIGH,EUR
+2012-08-02,Producer Price Index (MoM),MEDIUM,EUR
+2012-08-02,Producer Price Index (YoY),HIGH,EUR
+2012-08-02,10-y Obligaciones Auction,HIGH,EUR
+2012-08-02,4-y Bond Auction,MEDIUM,EUR
+2012-08-02,Challenger Job Cuts,LOW,USD
+2012-08-02,ECB Main Refinancing Operations Rate,HIGH,EUR
+2012-08-02,ECB's President Draghi speech,HIGH,EUR
+2012-08-02,Continuing Jobless Claims,LOW,USD
+2012-08-02,Initial Jobless Claims,LOW,USD
+2012-08-02,ISM-NY Business Conditions Index,LOW,USD
+2012-08-02,Factory Orders (MoM),MEDIUM,USD
+2012-08-02,EIA Natural Gas Storage Change,LOW,USD
+2012-08-02,Press Conference with Mario Monti and Mariano Rajoy,MEDIUM,EUR
+2012-08-03,HCOB Services PMI,LOW,EUR
+2012-08-03,HCOB Services PMI,LOW,EUR
+2012-08-03,HCOB Services PMI,LOW,EUR
+2012-08-03,HCOB Services PMI,MEDIUM,EUR
+2012-08-03,HCOB Composite PMI,MEDIUM,EUR
+2012-08-03,HCOB Services PMI,MEDIUM,EUR
+2012-08-03,Retail Sales (MoM),MEDIUM,EUR
+2012-08-03,Retail Sales (YoY),MEDIUM,EUR
+2012-08-03,Average Hourly Earnings (MoM),MEDIUM,USD
+2012-08-03,Average Hourly Earnings (YoY),MEDIUM,USD
+2012-08-03,Average Weekly Hours,LOW,USD
+2012-08-03,Nonfarm Payrolls,HIGH,USD
+2012-08-03,Unemployment Rate,HIGH,USD
+2012-08-03,ISM Services PMI,MEDIUM,USD
+2012-08-06,Sentix Investor Confidence,MEDIUM,EUR
+2012-08-06,Former Fed's Chair Bernanke speech,HIGH,USD
+2012-08-06,Loan Officer Survey,LOW,USD
+2012-08-06,3-Month Bill Auction,LOW,USD
+2012-08-06,6-Month Bill Auction,LOW,USD
+2012-08-07,Industrial Output s.a. (MoM),LOW,EUR
+2012-08-07,Industrial Output w.d.a (YoY),LOW,EUR
+2012-08-07,Gross Domestic Product (QoQ),LOW,EUR
+2012-08-07,Gross Domestic Product (YoY),MEDIUM,EUR
+2012-08-07,Factory Orders n.s.a. (YoY),MEDIUM,EUR
+2012-08-07,Factory Orders s.a. (MoM),MEDIUM,EUR
+2012-08-07,Redbook Index (MoM),LOW,USD
+2012-08-07,Redbook Index (YoY),LOW,USD
+2012-08-07,4-Week Bill Auction,LOW,USD
+2012-08-07,Former Fed's Chair Bernanke speech,LOW,USD
+2012-08-07,Consumer Credit Change,MEDIUM,USD
+2012-08-08,Current Account n.s.a.,LOW,EUR
+2012-08-08,Exports (MoM),LOW,EUR
+2012-08-08,Imports (MoM),LOW,EUR
+2012-08-08,Trade Balance s.a.,MEDIUM,EUR
+2012-08-08,"Exports, EUR",LOW,EUR
+2012-08-08,"Imports, EUR",LOW,EUR
+2012-08-08,Trade Balance EUR,LOW,EUR
+2012-08-08,Industrial Output Cal Adjusted (YoY),LOW,EUR
+2012-08-08,10-y Bond Auction,MEDIUM,EUR
+2012-08-08,Industrial Production n.s.a. w.d.a. (YoY),MEDIUM,EUR
+2012-08-08,Industrial Production s.a. (MoM),LOW,EUR
+2012-08-08,MBA Mortgage Applications,LOW,USD
+2012-08-08,Nonfarm Productivity,LOW,USD
+2012-08-08,Unit Labor Costs,LOW,USD
+2012-08-08,EIA Crude Oil Stocks Change,LOW,USD
+2012-08-08,10-Year Note Auction,MEDIUM,USD
+2012-08-09,ECB Monthly Report,HIGH,EUR
+2012-08-09,Global Trade Balance,LOW,EUR
+2012-08-09,Trade Balance EU,LOW,EUR
+2012-08-09,Continuing Jobless Claims,LOW,USD
+2012-08-09,Goods and Services Trade Balance,MEDIUM,USD
+2012-08-09,Initial Jobless Claims,LOW,USD
+2012-08-09,Wholesale Inventories,LOW,USD
+2012-08-09,EIA Natural Gas Storage Change,LOW,USD
+2012-08-09,30-Year Bond Auction,LOW,USD
+2012-08-10,Consumer Price Index (MoM),MEDIUM,EUR
+2012-08-10,Consumer Price Index (YoY),HIGH,EUR
+2012-08-10,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-08-10,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-08-10,Budget Balance,MEDIUM,EUR
+2012-08-10,Industrial Output (MoM),LOW,EUR
+2012-08-10,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-08-10,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-08-10,Consumer Price Index (MoM),LOW,EUR
+2012-08-10,Import Price Index (MoM),LOW,USD
+2012-08-10,Import Price Index (YoY),LOW,USD
+2012-08-10,Export Price Index (YoY),LOW,USD
+2012-08-10,Export Price Index (MoM),LOW,USD
+2012-08-10,Monthly Budget Statement,MEDIUM,USD
+2012-08-13,Wholesale Price Index (MoM),LOW,EUR
+2012-08-13,Wholesale Price Index (YoY),LOW,EUR
+2012-08-13,Current Account,LOW,EUR
+2012-08-13,3-Month Bill Auction,LOW,USD
+2012-08-13,6-Month Bill Auction,LOW,USD
+2012-08-14,Consumer Price Index (EU norm) (MoM),LOW,EUR
+2012-08-14,Consumer Price Index (EU norm) (YoY),LOW,EUR
+2012-08-14,Gross Domestic Product (QoQ),LOW,EUR
+2012-08-14,Inflation ex-tobacco (MoM),LOW,EUR
+2012-08-14,Gross Domestic Product (QoQ),HIGH,EUR
+2012-08-14,Gross Domestic Product (YoY),HIGH,EUR
+2012-08-14,Gross Domestic Product w.d.a (YoY),HIGH,EUR
+2012-08-14,Nonfarm Payrolls (QoQ),LOW,EUR
+2012-08-14,Consumer Price Index (MoM),LOW,EUR
+2012-08-14,Consumer Price Index (YoY),LOW,EUR
+2012-08-14,Harmonized Index of Consumer Prices (MoM),LOW,EUR
+2012-08-14,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-08-14,ZEW Survey – Current Situation,MEDIUM,EUR
+2012-08-14,ZEW Survey – Economic Sentiment,HIGH,EUR
+2012-08-14,Gross Domestic Product s.a. (QoQ),HIGH,EUR
+2012-08-14,Gross Domestic Product s.a. (YoY),HIGH,EUR
+2012-08-14,Industrial Production s.a. (MoM),LOW,EUR
+2012-08-14,Industrial Production w.d.a. (YoY),MEDIUM,EUR
+2012-08-14,ZEW Survey – Economic Sentiment,MEDIUM,EUR
+2012-08-14,NFIB Business Optimism Index,LOW,USD
+2012-08-14,Producer Price Index (MoM),LOW,USD
+2012-08-14,Producer Price Index (YoY),MEDIUM,USD
+2012-08-14,Producer Price Index ex Food & Energy (MoM),LOW,USD
+2012-08-14,Producer Price Index ex Food & Energy (YoY),MEDIUM,USD
+2012-08-14,Retail Sales (MoM),HIGH,USD
+2012-08-14,Retail Sales ex Autos (MoM),MEDIUM,USD
+2012-08-14,Redbook Index (MoM),LOW,USD
+2012-08-14,Redbook Index (YoY),LOW,USD
+2012-08-14,Business Inventories,MEDIUM,USD
+2012-08-14,RealClearMarkets/TIPP Economic Optimism (MoM),LOW,USD
+2012-08-14,4-Week Bill Auction,LOW,USD
+2012-08-15,MBA Mortgage Applications,LOW,USD
+2012-08-15,Consumer Price Index (MoM),MEDIUM,USD
+2012-08-15,Consumer Price Index (YoY),HIGH,USD
+2012-08-15,Consumer Price Index Core s.a,LOW,USD
+2012-08-15,Consumer Price Index ex Food & Energy (MoM),MEDIUM,USD
+2012-08-15,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+2012-08-15,Consumer Price Index n.s.a (MoM),LOW,USD
+2012-08-15,NY Empire State Manufacturing Index,LOW,USD
+2012-08-15,Net Long-Term TIC Flows,MEDIUM,USD
+2012-08-15,Total Net TIC Flows,LOW,USD
+2012-08-15,Capacity Utilization,LOW,USD
+2012-08-15,Industrial Production (MoM),MEDIUM,USD
+2012-08-15,NAHB Housing Market Index,LOW,USD
+2012-08-15,EIA Crude Oil Stocks Change,LOW,USD
+2012-08-16,Fed Minneapolis's Kocherlakota speech,LOW,USD
+2012-08-16,Trade Balance,LOW,EUR
+2012-08-16,Core Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-08-16,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-08-16,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-08-16,Building Permits (MoM),MEDIUM,USD
+2012-08-16,Continuing Jobless Claims,LOW,USD
+2012-08-16,Housing Starts (MoM),LOW,USD
+2012-08-16,Initial Jobless Claims,MEDIUM,USD
+2012-08-16,Philadelphia Fed Manufacturing Survey,MEDIUM,USD
+2012-08-16,EIA Natural Gas Storage Change,LOW,USD
+2012-08-17,Fed Minneapolis's Kocherlakota speech,MEDIUM,USD
+2012-08-17,Producer Price Index (MoM),MEDIUM,EUR
+2012-08-17,Producer Price Index (YoY),HIGH,EUR
+2012-08-17,Current Account n.s.a,LOW,EUR
+2012-08-17,Current Account s.a,LOW,EUR
+2012-08-17,Trade Balance n.s.a.,LOW,EUR
+2012-08-17,Trade Balance s.a.,LOW,EUR
+2012-08-17,Michigan Consumer Sentiment Index,HIGH,USD
+2012-08-17,American Petroleum Institute Monthly Report ,LOW,USD
+2012-08-20,Construction Output  s.a (MoM),LOW,EUR
+2012-08-20,Construction Output w.d.a (YoY),LOW,EUR
+2012-08-20,Chicago Fed National Activity Index ,MEDIUM,USD
+2012-08-20,3-Month Bill Auction,LOW,USD
+2012-08-20,6-Month Bill Auction,LOW,USD
+2012-08-21,12-Month Letras Auction,LOW,EUR
+2012-08-21,18-Month Letras Auction ,LOW,EUR
+2012-08-21,Fed's Lockhart speech,LOW,USD
+2012-08-21,Redbook Index (MoM),LOW,USD
+2012-08-21,Redbook Index (YoY),LOW,USD
+2012-08-21,4-Week Bill Auction,LOW,USD
+2012-08-21,52-Week Bill Auction,LOW,USD
+2012-08-22,2-year Notes Auction,LOW,EUR
+2012-08-22,MBA Mortgage Applications,LOW,USD
+2012-08-22,Existing Home Sales (MoM),MEDIUM,USD
+2012-08-22,Existing Home Sales Change (MoM),LOW,USD
+2012-08-22,EIA Crude Oil Stocks Change,LOW,USD
+2012-08-22,Samaras - Juncker Meeting,MEDIUM,EUR
+2012-08-22,FOMC Minutes,HIGH,USD
+2012-08-23,Gross Domestic Product (QoQ),HIGH,EUR
+2012-08-23,Gross Domestic Product (YoY),HIGH,EUR
+2012-08-23,Gross Domestic Product w.d.a (YoY),HIGH,EUR
+2012-08-23,HCOB Manufacturing PMI,LOW,EUR
+2012-08-23,HCOB Services PMI,LOW,EUR
+2012-08-23,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-08-23,HCOB Services PMI,MEDIUM,EUR
+2012-08-23,HCOB Composite PMI,MEDIUM,EUR
+2012-08-23,HCOB Manufacturing PMI,MEDIUM,EUR
+2012-08-23,HCOB Services PMI,MEDIUM,EUR
+2012-08-23,Continuing Jobless Claims,LOW,USD
+2012-08-23,Initial Jobless Claims,MEDIUM,USD
+2012-08-23,S&P Global Manufacturing PMI,MEDIUM,USD
+2012-08-23,Consumer Confidence,MEDIUM,EUR
+2012-08-23,Housing Price Index (MoM),LOW,USD
+2012-08-23,New Home Sales (MoM),MEDIUM,USD
+2012-08-23,New Home Sales Change (MoM),LOW,USD
+2012-08-23,EIA Natural Gas Storage Change,LOW,USD
+2012-08-23,Hollande - Merkel Meeting,LOW,EUR
+2012-08-24,Producer Price Index (YoY),LOW,EUR
+2012-08-24,Samaras - Merkel Meeting,HIGH,EUR
+2012-08-24,Durable Goods Orders,HIGH,USD
+2012-08-24,Durable Goods Orders ex Transportation,MEDIUM,USD
+2012-08-25,Samaras - Hollande Meeting,HIGH,EUR
+2012-08-27,Import Price Index (MoM),LOW,EUR
+2012-08-27,Import Price Index (YoY),LOW,EUR
+2012-08-27,IFO – Business Climate,MEDIUM,EUR
+2012-08-27,IFO – Current Assessment,MEDIUM,EUR
+2012-08-27,IFO – Expectations,MEDIUM,EUR
+2012-08-27,Fed's Evans speech,LOW,USD
+2012-08-27,Pending Home Sales (YoY),LOW,USD
+2012-08-27,Dallas Fed Manufacturing Business Index,LOW,USD
+2012-08-27,3-Month Bill Auction,LOW,USD
+2012-08-27,6-Month Bill Auction,LOW,USD
+2012-08-27,ECB's Asmussen speech,MEDIUM,EUR
+2012-08-27,Fed's Pianalto speech,LOW,USD
+2012-08-28,Republican National Convention,LOW,USD
+2012-08-28,GfK Consumer Confidence Survey,MEDIUM,EUR
+2012-08-28,Gross Domestic Product (QoQ),LOW,EUR
+2012-08-28,Gross Domestic Product (YoY),LOW,EUR
+2012-08-28,M3 Money Supply (3m),LOW,EUR
+2012-08-28,M3 Money Supply (YoY),LOW,EUR
+2012-08-28,Private Loans (YoY),LOW,EUR
+2012-08-28,6-Month Letras Auction,LOW,EUR
+2012-08-28,3-Month Letras Auction,LOW,EUR
+2012-08-28,Rajoy - Van Rompuy Meeting,LOW,EUR
+2012-08-28,Redbook Index (MoM),LOW,USD
+2012-08-28,Redbook Index (YoY),LOW,USD
+2012-08-28,S&P/Case-Shiller Home Price Indices (YoY),LOW,USD
+2012-08-28,Consumer Confidence,HIGH,USD
+2012-08-28,Richmond Fed Manufacturing Index,LOW,USD
+2012-08-28,4-Week Bill Auction,LOW,USD
+2012-08-28,2-Year Note Auction,LOW,USD
+2012-08-29,Business Climate in Manufacturing,LOW,EUR
+2012-08-29,Retail Sales n.s.a (YoY),LOW,EUR
+2012-08-29,Retail Sales s.a. (MoM),LOW,EUR
+2012-08-29,Individual Investment (Current Year),LOW,EUR
+2012-08-29,Consumer Confidence,LOW,EUR
+2012-08-29,MBA Mortgage Applications,LOW,USD
+2012-08-29,Consumer Price Index (MoM),MEDIUM,EUR
+2012-08-29,Consumer Price Index (YoY),LOW,EUR
+2012-08-29,Harmonized Index of Consumer Prices (MoM),MEDIUM,EUR
+2012-08-29,Harmonized Index of Consumer Prices (YoY),HIGH,EUR
+2012-08-29,Core Personal Consumption Expenditures (QoQ),MEDIUM,USD
+2012-08-29,Gross Domestic Product Annualized,HIGH,USD
+2012-08-29,Gross Domestic Product Price Index,HIGH,USD
+2012-08-29,Pending Home Sales (MoM),LOW,USD
+2012-08-29,EIA Crude Oil Stocks Change,LOW,USD
+2012-08-29,5-Year Note Auction,LOW,USD
+2012-08-29,Fed's Beige Book,HIGH,USD
+2012-08-30,Jackson Hole Symposium,HIGH,USD
+2012-08-30,Harmonized Index of Consumer Prices (YoY),LOW,EUR
+2012-08-30,Unemployment Change,HIGH,EUR
+2012-08-30,Unemployment Rate s.a.,MEDIUM,EUR
+2012-08-30,Wage Inflation (YoY),LOW,EUR
+2012-08-30,Wage Inflation (MoM),LOW,EUR
+2012-08-30,Barroso speaks at European Forum Alpbach,LOW,EUR
+2012-08-30,Business Climate,MEDIUM,EUR
+2012-08-30,Consumer Confidence,MEDIUM,EUR
+2012-08-30,Economic Sentiment Indicator,LOW,EUR
+2012-08-30,Industrial Confidence,LOW,EUR
+2012-08-30,Services Sentiment,LOW,EUR
+2012-08-30,Business Confidence,LOW,EUR
+2012-08-30,10-y Bond Auction,LOW,EUR
+2012-08-30,5-y Bond Auction,LOW,EUR
+2012-08-30,Rajoy-Hollande Meeting,MEDIUM,EUR
+2012-08-30,Continuing Jobless Claims,LOW,USD
+2012-08-30,Core Personal Consumption Expenditures - Price Index (MoM),MEDIUM,USD
+2012-08-30,Core Personal Consumption Expenditures - Price Index (YoY),HIGH,USD
+2012-08-30,Initial Jobless Claims,MEDIUM,USD
+2012-08-30,Personal Consumption Expenditures - Price Index (MoM),LOW,USD
+2012-08-30,Personal Consumption Expenditures - Price Index (YoY),LOW,USD
+2012-08-30,Personal Income (MoM),MEDIUM,USD
+2012-08-30,Personal Spending,MEDIUM,USD
+2012-08-30,EIA Natural Gas Storage Change,LOW,USD
+2012-08-30,Kansas Fed Manufacturing Activity,LOW,USD
+2012-08-30,ECB's Asmussen speech,LOW,EUR
+2012-08-31,Jackson Hole Symposium,HIGH,USD
+2012-08-31,Retail Sales (MoM),MEDIUM,EUR
+2012-08-31,Retail Sales (YoY),MEDIUM,EUR
+2012-08-31,Current Account Balance,LOW,EUR
+2012-08-31,Retail Sales (YoY),LOW,EUR
+2012-08-31,Unemployment,LOW,EUR
+2012-08-31,Harmonized Index of Consumer Prices (YoY),MEDIUM,EUR
+2012-08-31,Unemployment Rate,MEDIUM,EUR
+2012-08-31,Consumer Price Index (EU Norm) (MoM),LOW,EUR
+2012-08-31,Consumer Price Index (EU Norm) (YoY),LOW,EUR
+2012-08-31,Consumer Price Index (MoM),LOW,EUR
+2012-08-31,Consumer Price Index (YoY),LOW,EUR
+2012-08-31,Producer Price Index (MoM),LOW,EUR
+2012-08-31,Producer Price Index (YoY),LOW,EUR
+2012-08-31,Chicago PMI,LOW,USD
+2012-08-31,Michigan Consumer Sentiment Index,MEDIUM,USD
+2012-08-31,Factory Orders (MoM),MEDIUM,USD
+2012-08-31,Fed's Chair Bernanke speaks at Jackson Hole,HIGH,USD
 2012-09-01,Jackson Hole Symposium,HIGH,USD
 2012-09-03,HCOB Manufacturing PMI,LOW,EUR
 2012-09-03,HCOB Manufacturing PMI,LOW,EUR
