@@ -262,14 +262,40 @@ def parse_metrics(text, itr):
 
 
 def load_done(csv_path):
-    """Return set of (param, value_key) already recorded."""
-    done = set()
+    """Map (param, value_key) -> (itr, epochs) it was recorded at.
+
+    The training budget is part of the key's identity: a point trained for 3
+    epochs is NOT interchangeable with one trained for 40, and silently reusing
+    it makes the anchor -- the centre of every panel -- disagree with a fresh
+    run of the same config.
+    """
+    done = {}
     if not os.path.exists(csv_path):
         return done
     with open(csv_path, newline="") as f:
         for r in csv.DictReader(f):
-            done.add((r["param"], r["value"]))
+            try:
+                budget = (int(r.get("itr") or 0), int(r.get("epochs") or 0))
+            except ValueError:
+                budget = (0, 0)
+            done[(r["param"], r["value"])] = budget
     return done
+
+
+def drop_rows(csv_path, keys):
+    """Remove every row whose (param, value) is in `keys`, in place."""
+    if not keys or not os.path.exists(csv_path):
+        return
+    with open(csv_path, newline="") as f:
+        rows = list(csv.reader(f))
+    header, body = rows[0], rows[1:]
+    keep = [r for r in body if (r[0], r[1]) not in keys]
+    with open(csv_path, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(header)
+        w.writerows(keep)
+    print(f"[refresh] dropped {len(body) - len(keep)} row(s) for "
+          f"{len(keys)} stale point(s)")
 
 
 def append_rows(csv_path, rows):
@@ -346,6 +372,9 @@ def main():
                     help="per-config subprocess timeout (s)")
     ap.add_argument("--quick", action="store_true",
                     help="smoke test: 2 seeds, 15 epochs")
+    ap.add_argument("--refresh", action="store_true",
+                    help="retrain points recorded at a different --itr/--train_epochs "
+                         "instead of keeping them (drops their old rows first)")
     ap.add_argument("--dry_run", action="store_true",
                     help="print the plan and the commands, train nothing")
     args = ap.parse_args()
@@ -369,16 +398,32 @@ def main():
     if not args.dry_run:
         save_anchor(args.out, anchor, args.pred_len)
 
-    # Build the full plan (anchor first, then each swept point).
+    # Build the full plan (anchor first, then each swept point). A point counts
+    # as done only if it was trained at the CURRENT budget.
+    budget = (args.itr, args.train_epochs)
+    stale = {k for k, b in done.items() if b != budget}
+    if args.refresh and stale:
+        if args.dry_run:
+            # never mutate the CSV on a dry run -- just report what would go
+            print(f"[dry-run] --refresh would drop {len(stale)} stale point(s) "
+                  f"and retrain them")
+        else:
+            drop_rows(args.out, stale)
+            done = load_done(args.out)
+            stale = set()
+
+    def is_done(key):
+        return key in done and (args.refresh is False or done[key] == budget)
+
     plan = []
-    if ("anchor", "") not in done:
+    if not is_done(("anchor", "")):
         plan.append((None, None))
     for p in args.params:
         grid = sorted(set(GRIDS[p]) | {anchor[p]})
         for v in grid:
             if v == anchor[p]:
                 continue                       # centre point == anchor, reused
-            if (p, value_key(v)) in done:
+            if is_done((p, value_key(v))):
                 continue
             plan.append((p, v))
 
@@ -390,6 +435,21 @@ def main():
     if diffs:
         print("   anchor differs from the tuned default: "
               + ", ".join(f"{k}={v}" for k, v in sorted(diffs.items())))
+    if stale:
+        by_budget = {}
+        for k in stale:
+            by_budget.setdefault(done[k], []).append(k)
+        print(f"\n   !! {len(stale)} recorded point(s) were trained at a DIFFERENT "
+              f"budget than --itr {args.itr} --train_epochs {args.train_epochs}:")
+        for b, ks in sorted(by_budget.items()):
+            names = ", ".join(sorted("anchor" if k[0] == "anchor" else f"{k[0]}={k[1]}"
+                                     for k in ks)[:6])
+            more = f" (+{len(ks) - 6} more)" if len(ks) > 6 else ""
+            print(f"        itr={b[0]} epochs={b[1]}: {names}{more}")
+        if ("anchor", "") in stale:
+            print("        ^ the ANCHOR is among them -- it is the centre of every")
+            print("          panel, so the curves will not line up with a fresh run.")
+        print("      They are being KEPT. Re-run with --refresh to retrain them.\n")
     for p, v in plan:
         print(f"   - {'anchor' if p is None else f'{p} = {v}'}")
 
