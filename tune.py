@@ -373,8 +373,8 @@ def parse_tune_args():
     p.add_argument('--use_events', action='store_true', default=False,
                    help='Tune the news-event model: switches data->custom_events and adds '
                         'event_dim to the search space (event_fusion/past/future fixed)')
-    p.add_argument('--event_data_path', type=str, default='events.csv',
-                   help='Event calendar csv inside root_path')
+    p.add_argument('--event_data_path', type=str, default='events_daily_features.csv',
+                   help='Event calendar csv inside root_path (see build_event_features.py)')
     p.add_argument('--event_fusion', type=str, default='channel', choices=['inject', 'channel'],
                    help='How past events enter the backbone; fixed across the study')
     p.add_argument('--event_dim', type=int, default=8,

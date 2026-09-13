@@ -34,7 +34,7 @@ def data_provider(args, flag):
 
     extra_kwargs = {}
     if Data is Dataset_Custom_Events:
-        extra_kwargs['event_path'] = getattr(args, 'event_data_path', 'events.csv')
+        extra_kwargs['event_path'] = getattr(args, 'event_data_path', 'events_daily_features.csv')
     elif Data is Dataset_Pred and getattr(args, 'use_events', False):
         raise NotImplementedError(
             'flag="pred" (Dataset_Pred) does not support --use_events; '

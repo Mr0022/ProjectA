@@ -127,7 +127,8 @@ class Dataset_Custom(Dataset):
 
 class Dataset_Custom_Events(Dataset_Custom):
     """
-    Dataset_Custom + a daily macro news-event calendar (data/events.csv).
+    Dataset_Custom + a daily macro news-event calendar
+    (data/events_daily_features.csv, built by build_event_features.py).
 
     The event file must contain a 'date' column plus numeric per-day event
     features (multi-hot 'evt_*' indicator columns and 'n_events*' counts).
@@ -149,7 +150,7 @@ class Dataset_Custom_Events(Dataset_Custom):
     def __init__(self, root_path, flag='train', size=None,
                  features='S', data_path='EURUSD-RV.csv',
                  target='RV', scale=False, timeenc=0, freq='h',
-                 event_path='events.csv'):
+                 event_path='events_daily_features.csv'):
         self.event_path = event_path
         super().__init__(root_path=root_path, flag=flag, size=size,
                          features=features, data_path=data_path,
