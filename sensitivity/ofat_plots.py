@@ -36,7 +36,7 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ofat_sensitivity as ofat  # noqa: E402
 from ofat_sensitivity import (ANCHORS, GRIDS, ORDER, ORDER_EVENTS,  # noqa: E402
-                              anchor_for, results_path, value_key)
+                              anchor_for, load_anchor, results_path, value_key)
 
 # --- validated colorblind-safe palette (dataviz reference instance) ----------
 # Categorical slots 1-3, in fixed order. Validated all-pairs on both surfaces:
@@ -326,10 +326,11 @@ def fig_event_dim(df, anchor, out, title_tag=""):
 # ---------------------------------------------------------------------------
 # Cross-horizon figure -- which knobs matter, side by side across h
 # ---------------------------------------------------------------------------
-def fig_cross_horizon(per_h, metric, out):
+def fig_cross_horizon(per_h, metric, out, anchors=None):
     """per_h: {pred_len: (df, anchor, params)}. One grouped bar per parameter,
     one colour per horizon (categorical slots 1-3, validated all-pairs)."""
     horizons = sorted(per_h)
+    anchors = anchors or {h: ANCHORS[h] for h in horizons}
     shared = [p for p in ORDER_EVENTS
               if all(p in per_h[h][2] for h in horizons)]
     if not shared or len(horizons) < 2:
@@ -340,7 +341,7 @@ def fig_cross_horizon(per_h, metric, out):
     data = {}
     for h in horizons:
         df, anchor, _ = per_h[h]
-        anchor_for(h)
+        anchor_for(h, anchors[h])
         a = float(anchor[metric].mean())
         data[h] = []
         for prm in shared:
@@ -397,13 +398,17 @@ def write_summary(df, anchor, params, out_csv):
 
 
 # ---------------------------------------------------------------------------
-def _load_one(pred_len, use_events, results=None):
-    """Load one horizon's sweep and pin the matching anchor. -> (df, anchor, params)"""
-    path = results or results_path(pred_len, use_events)
+def _load_one(pred_len, use_events, results=None, tag=None):
+    """Load one horizon's sweep and pin the matching anchor. -> (df, anchor, params)
+
+    The anchor comes from the sidecar written by the runner, so a study centred
+    somewhere other than the tuned default is plotted around ITS anchor.
+    """
+    path = results or results_path(pred_len, use_events, tag)
     if not os.path.exists(path):
         raise SystemExit(f"no results for h={pred_len}: {path} not found "
                          f"(run ofat_sensitivity.py --pred_len {pred_len} first)")
-    anchor_for(pred_len)
+    anchor_for(pred_len, load_anchor(path, pred_len))
     df, anchor = load(path)
     names = ORDER_EVENTS if use_events else ORDER
     params = [p for p in names if not df[df["param"] == p].empty]
@@ -423,6 +428,8 @@ def main():
                     help="plot the EventTCN sweep instead of plain ModernTCN")
     ap.add_argument("--results", default=None,
                     help="override the results CSV (single-horizon mode only)")
+    ap.add_argument("--tag", default=None,
+                    help="study tag used by the sweep (e.g. --tag custom)")
     ap.add_argument("--outdir", default="sensitivity/figures")
     ap.add_argument("--metric", default="mse", choices=["mse", "mae", "rse", "qlike"],
                     help="metric for the tornado / sensitivity-bar / compare figures")
@@ -434,8 +441,10 @@ def main():
     tag_model = model_name(args.use_events)
 
     if args.pred_len is not None:
-        df, anchor, params = _load_one(args.pred_len, args.use_events, args.results)
-        outdir = os.path.join(args.outdir, f"h{args.pred_len}")
+        df, anchor, params = _load_one(args.pred_len, args.use_events,
+                                       args.results, args.tag)
+        outdir = os.path.join(args.outdir,
+                              f"h{args.pred_len}" + (f"_{args.tag}" if args.tag else ""))
         os.makedirs(outdir, exist_ok=True)
         tag = f"{tag_model} (h={args.pred_len})"
         j = lambda n: os.path.join(outdir, n)
@@ -448,10 +457,12 @@ def main():
         print("\nFigures for h=%s in %s" % (args.pred_len, outdir))
 
     if args.compare:
-        per_h = {h: _load_one(h, args.use_events) for h in args.compare}
+        per_h = {h: _load_one(h, args.use_events, tag=args.tag) for h in args.compare}
         os.makedirs(args.outdir, exist_ok=True)
+        anchors = {h: load_anchor(results_path(h, args.use_events, args.tag), h)
+                   for h in args.compare}
         fig_cross_horizon(per_h, args.metric, os.path.join(
-            args.outdir, f"ofat_cross_horizon_{args.metric}"))
+            args.outdir, f"ofat_cross_horizon_{args.metric}"), anchors)
         print("\nCross-horizon figure in", args.outdir)
 
 

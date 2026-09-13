@@ -40,6 +40,7 @@ instead; that adds event_dim to the sweep.
 
 import argparse
 import csv
+import json
 import os
 import re
 import subprocess
@@ -84,19 +85,63 @@ HORIZONS = sorted(ANCHORS)
 ANCHOR = ANCHORS[1]
 
 
-def anchor_for(pred_len):
-    """Return (and pin as the module-level ANCHOR) the anchor for a horizon."""
+def anchor_for(pred_len, override=None):
+    """Return (and pin as the module-level ANCHOR) the anchor for a horizon.
+
+    `override` is a full anchor dict (e.g. from a results sidecar) that replaces
+    the tuned default -- used when a study is anchored somewhere else.
+    """
     global ANCHOR
+    if override is not None:
+        ANCHOR = dict(override)
+        return ANCHOR
     if pred_len not in ANCHORS:
         raise SystemExit(f"no tuned anchor for h={pred_len}; have {HORIZONS}")
     ANCHOR = ANCHORS[pred_len]
     return ANCHOR
 
 
-def results_path(pred_len, use_events=False):
-    """Per-horizon results CSV, so the three studies never mix."""
+def results_path(pred_len, use_events=False, tag=None):
+    """Per-horizon results CSV, so separate studies never mix.
+
+    `tag` names a study that uses a non-default anchor, e.g. tag="custom" ->
+    ofat_moderntcn_h5_custom.csv, keeping it apart from the tuned-anchor run.
+    """
     kind = "eventtcn" if use_events else "moderntcn"
-    return os.path.join("sensitivity", f"ofat_{kind}_h{pred_len}.csv")
+    suffix = f"_{tag}" if tag else ""
+    return os.path.join("sensitivity", f"ofat_{kind}_h{pred_len}{suffix}.csv")
+
+
+def anchor_sidecar(csv_path):
+    """Path of the JSON recording which anchor produced a results CSV."""
+    return os.path.splitext(csv_path)[0] + ".anchor.json"
+
+
+def parse_anchor_overrides(pairs, base):
+    """Apply `key=value` overrides to a copy of `base`, typed like the base."""
+    cfg = dict(base)
+    for item in pairs or []:
+        if "=" not in item:
+            raise SystemExit(f"--anchor expects key=value, got {item!r}")
+        k, v = item.split("=", 1)
+        if k not in base:
+            raise SystemExit(f"unknown anchor key {k!r}; valid: {sorted(base)}")
+        cfg[k] = float(v) if isinstance(base[k], float) else type(base[k])(v)
+    return cfg
+
+
+def save_anchor(csv_path, cfg, pred_len):
+    with open(anchor_sidecar(csv_path), "w") as f:
+        json.dump({"pred_len": pred_len, "anchor": cfg}, f, indent=2)
+
+
+def load_anchor(csv_path, pred_len):
+    """Anchor that produced this CSV: the sidecar if present, else the tuned one."""
+    side = anchor_sidecar(csv_path)
+    if os.path.exists(side):
+        with open(side) as f:
+            return json.load(f)["anchor"]
+    return ANCHORS[pred_len]
 
 
 # ---------------------------------------------------------------------------
@@ -149,9 +194,10 @@ def value_key(v):
     return str(v)
 
 
-def build_cmd(param, value, itr, epochs, model_id, pred_len, use_events=False):
+def build_cmd(param, value, itr, epochs, model_id, pred_len, use_events=False,
+              anchor=None):
     """Assemble the run.py command for one OFAT point (all others = anchor)."""
-    cfg = dict(anchor_for(pred_len))
+    cfg = dict(anchor if anchor is not None else anchor_for(pred_len))
     if param is not None:
         cfg[param] = value
     # mirror tune.py: stride never exceeds patch size
@@ -240,10 +286,11 @@ def append_rows(csv_path, rows):
 # ---------------------------------------------------------------------------
 # Run one OFAT point
 # ---------------------------------------------------------------------------
-def run_point(param, value, itr, epochs, timeout, dry_run, pred_len, use_events=False):
+def run_point(param, value, itr, epochs, timeout, dry_run, pred_len,
+              use_events=False, anchor=None):
     tag = "anchor" if param is None else f"{param}_{value_key(value)}"
     model_id = f"OFAT_h{pred_len}_{tag}".replace(".", "p").replace("-", "m")
-    cmd = build_cmd(param, value, itr, epochs, model_id, pred_len, use_events)
+    cmd = build_cmd(param, value, itr, epochs, model_id, pred_len, use_events, anchor)
 
     print(f"\n{'='*70}\n[OFAT] {tag}\n{' '.join(cmd)}\n{'='*70}", flush=True)
     if dry_run:
@@ -283,6 +330,12 @@ def main():
                     help="forecast horizon; each has its own tuned anchor and CSV")
     ap.add_argument("--use_events", action="store_true",
                     help="study EventTCN (adds the event calendar and event_dim)")
+    ap.add_argument("--anchor", nargs="+", metavar="KEY=VALUE", default=None,
+                    help="override anchor entries, e.g. --anchor seq_len=35 dim=64. "
+                         "The resolved anchor is saved beside the results CSV.")
+    ap.add_argument("--tag", default=None,
+                    help="name this study, keeping it in its own CSV "
+                         "(e.g. --tag custom -> ofat_moderntcn_h5_custom.csv)")
     ap.add_argument("--params", nargs="+", default=None, choices=ORDER_EVENTS,
                     help="which hyperparameters to sweep (default: all applicable)")
     ap.add_argument("--itr", type=int, default=5, help="seeds per point")
@@ -300,16 +353,21 @@ def main():
     if args.quick:
         args.itr, args.train_epochs = 2, 15
 
-    anchor = anchor_for(args.pred_len)
+    if args.out is None:
+        args.out = results_path(args.pred_len, args.use_events, args.tag)
+    # An existing study keeps the anchor it was started with, so a resumed sweep
+    # can never silently mix points from two different centres.
+    base = load_anchor(args.out, args.pred_len)
+    anchor = anchor_for(args.pred_len,
+                        parse_anchor_overrides(args.anchor, base))
     if args.params is None:
         args.params = ORDER_EVENTS if args.use_events else ORDER
     elif not args.use_events and "event_dim" in args.params:
         raise SystemExit("event_dim only applies with --use_events")
-    if args.out is None:
-        args.out = results_path(args.pred_len, args.use_events)
-
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     done = load_done(args.out)
+    if not args.dry_run:
+        save_anchor(args.out, anchor, args.pred_len)
 
     # Build the full plan (anchor first, then each swept point).
     plan = []
@@ -328,25 +386,30 @@ def main():
     print(f"OFAT plan [{kind}, h={args.pred_len}]: {len(plan)} config(s) to train "
           f"(itr={args.itr}, epochs={args.train_epochs}); "
           f"already done: {len(done)} row-group(s). -> {args.out}")
+    diffs = {k: v for k, v in anchor.items() if ANCHORS[args.pred_len].get(k) != v}
+    if diffs:
+        print("   anchor differs from the tuned default: "
+              + ", ".join(f"{k}={v}" for k, v in sorted(diffs.items())))
     for p, v in plan:
         print(f"   - {'anchor' if p is None else f'{p} = {v}'}")
 
     if args.dry_run:
         for p, v in plan:
             run_point(p, v, args.itr, args.train_epochs, args.timeout, True,
-                      args.pred_len, args.use_events)
+                      args.pred_len, args.use_events, anchor)
         print("\n[dry-run] no training performed.")
         return
 
     for i, (p, v) in enumerate(plan, 1):
         print(f"\n########## [{i}/{len(plan)}] ##########")
         rows = run_point(p, v, args.itr, args.train_epochs, args.timeout, False,
-                         args.pred_len, args.use_events)
+                         args.pred_len, args.use_events, anchor)
         if rows:
             append_rows(args.out, rows)
 
     print(f"\nDone. Results in {args.out}")
-    print(f"Next:  python sensitivity/ofat_plots.py --pred_len {args.pred_len}")
+    tagarg = f" --tag {args.tag}" if args.tag else ""
+    print(f"Next:  python sensitivity/ofat_plots.py --pred_len {args.pred_len}{tagarg}")
 
 
 if __name__ == "__main__":

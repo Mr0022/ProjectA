@@ -3,4 +3,5 @@ ofat_results.csv
 ofat_moderntcn_h*.csv
 ofat_eventtcn_h*.csv
 ofat_sensitivity_by_horizon.csv
+*.anchor.json
 figures/
