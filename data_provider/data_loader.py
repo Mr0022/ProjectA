@@ -30,8 +30,13 @@ class Dataset_Custom(Dataset):
             self.label_len = size[1]
             self.pred_len = size[2]
         # init
-        assert flag in ['train', 'test', 'val']
-        type_map = {'train': 0, 'val': 1, 'test': 2}
+        # 'train_val' is the refit split: train + validation as one training
+        # set. It exists so that, AFTER the number of epochs has been chosen on
+        # the validation years, the final model can be fitted on every row that
+        # precedes the test period -- the same rows the HAR baselines use.
+        # Anything early-stopping on 'val' must never train on 'train_val'.
+        assert flag in ['train', 'test', 'val', 'train_val']
+        type_map = {'train': 0, 'val': 1, 'test': 2, 'train_val': 3}
         self.set_type = type_map[flag]
 
         self.features = features
@@ -70,8 +75,9 @@ class Dataset_Custom(Dataset):
         # train: <= 2021, val: 2022-2023, test: >= 2024
         train_end = int((df_raw['date'].dt.year <= 2021).sum())
         val_end = int((df_raw['date'].dt.year <= 2023).sum())
-        border1s = [0, train_end - self.seq_len, val_end - self.seq_len]
-        border2s = [train_end, val_end, len(df_raw)]
+        # index 3 = 'train_val': everything before the test period.
+        border1s = [0, train_end - self.seq_len, val_end - self.seq_len, 0]
+        border2s = [train_end, val_end, len(df_raw), val_end]
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
 
@@ -193,8 +199,9 @@ class Dataset_Custom_Events(Dataset_Custom):
         self.n_event_features = events.shape[1]
         # slice with the same borders as data_x/data_y so indices line up
         val_end = int((df_raw['date'].dt.year <= 2023).sum())
-        border1s = [0, train_end - self.seq_len, val_end - self.seq_len]
-        border2s = [train_end, val_end, len(df_raw)]
+        # index 3 = 'train_val': everything before the test period.
+        border1s = [0, train_end - self.seq_len, val_end - self.seq_len, 0]
+        border2s = [train_end, val_end, len(df_raw), val_end]
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
         self.data_events = events[border1:border2]

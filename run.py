@@ -109,6 +109,12 @@ parser.add_argument('--loss', type=str, default='mse', help='loss function')
 parser.add_argument('--lradj', type=str, default='type3', help='adjust learning rate')
 parser.add_argument('--pct_start', type=float, default=0.3, help='pct_start')
 parser.add_argument('--use_amp', action='store_true', help='use automatic mixed precision training', default=False)
+parser.add_argument('--refit_on_val', action='store_true', default=False,
+                    help='two-stage fit: after early stopping picks the best epoch E on the '
+                         'validation years, RE-INITIALISE and refit on train+val for E epochs '
+                         'with no early stopping. Recovers the ~20%% of pre-test rows that are '
+                         'otherwise spent only as a stopping signal, and puts the deep models on '
+                         'the same training window as the HAR baselines (<=2023).')
 parser.add_argument('--aggregate_mean', '--aggregate_logsum', action='store_true',
                     dest='aggregate_mean', default=False,
                     help='when pred_len>1, predict the single aggregated target ln((1/h) * sum_{k=1..h} RV_{t+k}) -- the log of the horizon-average variance -- instead of each step individually (single-value output). --aggregate_logsum is accepted as a deprecated alias.')
@@ -210,6 +216,11 @@ if __name__ == '__main__':
                 ii)
             if args.use_events:
                 setting += '_ev{}d{}p{:d}f{:d}'.format(args.event_fusion[:3], args.event_dim, args.event_past, args.event_future)
+            if args.refit_on_val:
+                # A refit run ends with different weights in checkpoint.pth, so it
+                # needs its own directory or it would silently overwrite -- and be
+                # overwritten by -- the plain run it is meant to be compared against.
+                setting += '_refit'
 
             exp = Exp(args)  # set experiments
             print('>>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>'.format(setting))
@@ -267,6 +278,8 @@ if __name__ == '__main__':
                                                                                                       args.des, ii)
         if args.use_events:
             setting += '_ev{}d{}p{:d}f{:d}'.format(args.event_fusion[:3], args.event_dim, args.event_past, args.event_future)
+        if args.refit_on_val:
+            setting += '_refit'
 
         exp = Exp(args)  # set experiments
         print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))

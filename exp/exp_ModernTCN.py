@@ -145,6 +145,94 @@ class Exp_Main(Exp_Basic):
         self.model.train()
         return total_loss
 
+    def _train_one_epoch(self, train_loader, model_optim, criterion, scheduler,
+                         scaler, epoch, train_steps, time_now, total_epochs):
+        """
+        One pass over `train_loader`. Returns (mean train loss, time_now).
+
+        Extracted so the two-stage refit (--refit_on_val) reuses this exact
+        loop instead of a second copy: a divergence between the two copies
+        would surface as an unexplained quality gap between a staged and an
+        unstaged run, which is a miserable thing to debug.
+        """
+        iter_count = 0
+        train_loss = []
+
+        self.model.train()
+        for i, batch in enumerate(train_loader):
+            batch_x, batch_y, batch_x_mark, batch_y_mark, event_x, event_y = self._unpack_batch(batch)
+            iter_count += 1
+            model_optim.zero_grad()
+            batch_x = batch_x.float().to(self.device)
+
+            batch_y = batch_y.float().to(self.device)
+            batch_x_mark = batch_x_mark.float().to(self.device)
+            batch_y_mark = batch_y_mark.float().to(self.device)
+
+            # decoder input
+            dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len:, :]).float()
+            dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(self.device)
+
+            # encoder - decoder
+            if self.args.use_amp:
+                with torch.cuda.amp.autocast():
+                    if 'Linear' in self.args.model or 'TST' in self.args.model:
+                        outputs = self.model(batch_x)
+                    elif 'TCN' in self.args.model:
+                        outputs = self.model(batch_x, batch_x_mark, event_x=event_x, event_y=event_y)
+                        #outputs = self.model(batch_x)   #if decide not to use time stamp, use this code
+                    else:
+                        if self.args.output_attention:
+                            outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
+                        else:
+                            outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
+
+                    f_dim = -1 if self.args.features == 'MS' else 0
+                    outputs = outputs[:, -self.args.pred_len:, f_dim:]
+                    batch_y = self._get_target(batch_y, f_dim)
+                    loss = criterion(outputs, batch_y)
+                    train_loss.append(loss.item())
+            else:
+                if 'Linear' in self.args.model or 'TST' in self.args.model:
+                    outputs = self.model(batch_x)
+                elif 'TCN' in self.args.model:
+                    outputs = self.model(batch_x, batch_x_mark, event_x=event_x, event_y=event_y)
+                    # outputs = self.model(batch_x)   #if decide not to use time stamp, use this code
+                else:
+                    if self.args.output_attention:
+                        outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
+
+                    else:
+                        outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark, batch_y)
+                # print(outputs.shape,batch_y.shape)
+                f_dim = -1 if self.args.features == 'MS' else 0
+                outputs = outputs[:, -self.args.pred_len:, f_dim:]
+                batch_y = self._get_target(batch_y, f_dim)
+                loss = criterion(outputs, batch_y)
+                train_loss.append(loss.item())
+
+            if (i + 1) % 100 == 0:
+                print("\titers: {0}, epoch: {1} | loss: {2:.7f}".format(i + 1, epoch + 1, loss.item()))
+                speed = (time.time() - time_now) / iter_count
+                left_time = speed * ((total_epochs - epoch) * train_steps - i)
+                print('\tspeed: {:.4f}s/iter; left time: {:.4f}s'.format(speed, left_time))
+                iter_count = 0
+                time_now = time.time()
+
+            if self.args.use_amp:
+                scaler.scale(loss).backward()
+                scaler.step(model_optim)
+                scaler.update()
+            else:
+                loss.backward()
+                model_optim.step()
+
+            if self.args.lradj == 'TST':
+                adjust_learning_rate(model_optim, scheduler, epoch + 1, self.args, printout=False)
+                scheduler.step()
+
+        return np.average(train_loss), time_now
+
     def train(self, setting):
         train_data, train_loader = self._get_data(flag='train')
         vali_data, vali_loader = self._get_data(flag='val')
@@ -162,8 +250,7 @@ class Exp_Main(Exp_Basic):
         model_optim = self._select_optimizer()
         criterion = self._select_criterion()
 
-        if self.args.use_amp:
-            scaler = torch.cuda.amp.GradScaler()
+        scaler = torch.cuda.amp.GradScaler() if self.args.use_amp else None
 
         scheduler = lr_scheduler.OneCycleLR(optimizer=model_optim,
                                             steps_per_epoch=train_steps,
@@ -171,92 +258,30 @@ class Exp_Main(Exp_Basic):
                                             epochs=self.args.train_epochs,
                                             max_lr=self.args.learning_rate)
 
+        # Which epoch produced the checkpoint. --refit_on_val needs it as the
+        # stage-2 epoch budget, so it is tracked off EarlyStopping's own
+        # best_score rather than inferred from the patience counter.
+        best_epoch = 0
+
         for epoch in range(self.args.train_epochs):
-            iter_count = 0
-            train_loss = []
-
-            self.model.train()
             epoch_time = time.time()
-            for i, batch in enumerate(train_loader):
-                batch_x, batch_y, batch_x_mark, batch_y_mark, event_x, event_y = self._unpack_batch(batch)
-                iter_count += 1
-                model_optim.zero_grad()
-                batch_x = batch_x.float().to(self.device)
-
-                batch_y = batch_y.float().to(self.device)
-                batch_x_mark = batch_x_mark.float().to(self.device)
-                batch_y_mark = batch_y_mark.float().to(self.device)
-
-                # decoder input
-                dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len:, :]).float()
-                dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(self.device)
-
-                # encoder - decoder
-                if self.args.use_amp:
-                    with torch.cuda.amp.autocast():
-                        if 'Linear' in self.args.model or 'TST' in self.args.model:
-                            outputs = self.model(batch_x)
-                        elif 'TCN' in self.args.model:
-                            outputs = self.model(batch_x, batch_x_mark, event_x=event_x, event_y=event_y)
-                            #outputs = self.model(batch_x)   #if decide not to use time stamp, use this code
-                        else:
-                            if self.args.output_attention:
-                                outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
-                            else:
-                                outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
-
-                        f_dim = -1 if self.args.features == 'MS' else 0
-                        outputs = outputs[:, -self.args.pred_len:, f_dim:]
-                        batch_y = self._get_target(batch_y, f_dim)
-                        loss = criterion(outputs, batch_y)
-                        train_loss.append(loss.item())
-                else:
-                    if 'Linear' in self.args.model or 'TST' in self.args.model:
-                        outputs = self.model(batch_x)
-                    elif 'TCN' in self.args.model:
-                        outputs = self.model(batch_x, batch_x_mark, event_x=event_x, event_y=event_y)
-                        # outputs = self.model(batch_x)   #if decide not to use time stamp, use this code
-                    else:
-                        if self.args.output_attention:
-                            outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
-
-                        else:
-                            outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark, batch_y)
-                    # print(outputs.shape,batch_y.shape)
-                    f_dim = -1 if self.args.features == 'MS' else 0
-                    outputs = outputs[:, -self.args.pred_len:, f_dim:]
-                    batch_y = self._get_target(batch_y, f_dim)
-                    loss = criterion(outputs, batch_y)
-                    train_loss.append(loss.item())
-
-                if (i + 1) % 100 == 0:
-                    print("\titers: {0}, epoch: {1} | loss: {2:.7f}".format(i + 1, epoch + 1, loss.item()))
-                    speed = (time.time() - time_now) / iter_count
-                    left_time = speed * ((self.args.train_epochs - epoch) * train_steps - i)
-                    print('\tspeed: {:.4f}s/iter; left time: {:.4f}s'.format(speed, left_time))
-                    iter_count = 0
-                    time_now = time.time()
-
-                if self.args.use_amp:
-                    scaler.scale(loss).backward()
-                    scaler.step(model_optim)
-                    scaler.update()
-                else:
-                    loss.backward()
-                    model_optim.step()
-
-                if self.args.lradj == 'TST':
-                    adjust_learning_rate(model_optim, scheduler, epoch + 1, self.args, printout=False)
-                    scheduler.step()
+            train_loss, time_now = self._train_one_epoch(
+                train_loader, model_optim, criterion, scheduler, scaler,
+                epoch, train_steps, time_now, self.args.train_epochs)
 
             print("Epoch: {} cost time: {}".format(epoch + 1, time.time() - epoch_time))
-            train_loss = np.average(train_loss)
             vali_loss = self.vali(vali_data, vali_loader, criterion)
+            # Monitoring only -- early stopping below keys on vali_loss alone.
+            # Nothing may select on this number.
             test_loss = self.vali(test_data, test_loader, criterion)
 
             print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Vali Loss: {3:.7f} Test Loss: {4:.7f}".format(
                 epoch + 1, train_steps, train_loss, vali_loss, test_loss))
+
+            prev_best = early_stopping.best_score
             early_stopping(vali_loss, self.model, path)
+            if early_stopping.best_score != prev_best:
+                best_epoch = epoch + 1
             if early_stopping.early_stop:
                 print("Early stopping")
                 break
@@ -268,7 +293,80 @@ class Exp_Main(Exp_Basic):
 
         best_model_path = path + '/' + 'checkpoint.pth'
         self.model.load_state_dict(torch.load(best_model_path))
+        print('Best validation epoch: {} of {} run'.format(best_epoch, epoch + 1))
 
+        if getattr(self.args, 'refit_on_val', False):
+            self._refit_on_train_val(path, best_epoch)
+
+        return self.model
+
+    def _refit_on_train_val(self, path, best_epoch):
+        """
+        Stage 2 of --refit_on_val: refit on train + validation for the epoch
+        count stage 1 chose.
+
+        Stage 1 spends the validation years on early stopping and then throws
+        them away, so the shipped model never trains on the most recent ~20% of
+        the pre-test sample -- precisely the rows closest in distribution to the
+        test period. The HAR baselines DO fit on those years, so without this
+        stage a HAR-vs-deep comparison is also comparing training-set sizes.
+
+        Two invariants keep this a refit rather than a leak:
+
+          * The model is RE-INITIALISED, not fine-tuned from the stage-1
+            weights, so the validation rows influence the epoch count and
+            nothing else.
+          * There is NO early stopping here, because those rows are now inside
+            the training set. Stopping on them would be selecting on data being
+            trained on, which is the exact failure this method exists to avoid.
+
+        The OneCycle schedule is rebuilt to span exactly `best_epoch` epochs so
+        the cycle completes; in stage 1 early stopping cuts it off mid-schedule.
+        train+val holds ~20% more batches, so the same epoch count is ~20% more
+        gradient steps -- intended, since more data is the whole point.
+        """
+        if best_epoch < 1:
+            print('[refit] stage 1 never improved on its first epoch; skipping refit')
+            return self.model
+
+        print('\n' + '=' * 78)
+        print('[refit] stage 2: re-fitting on train+val for {} epoch(s)'.format(best_epoch))
+        print('=' * 78)
+
+        refit_data, refit_loader = self._get_data(flag='train_val')
+
+        # Re-initialise. Fine-tuning the stage-1 weights would carry the
+        # early-stopped model's state into a run that can no longer be stopped.
+        self.model = self._build_model().to(self.device)
+
+        model_optim = self._select_optimizer()
+        criterion = self._select_criterion()
+        scaler = torch.cuda.amp.GradScaler() if self.args.use_amp else None
+
+        train_steps = len(refit_loader)
+        scheduler = lr_scheduler.OneCycleLR(optimizer=model_optim,
+                                            steps_per_epoch=train_steps,
+                                            pct_start=self.args.pct_start,
+                                            epochs=best_epoch,
+                                            max_lr=self.args.learning_rate)
+
+        time_now = time.time()
+        for epoch in range(best_epoch):
+            epoch_time = time.time()
+            train_loss, time_now = self._train_one_epoch(
+                refit_loader, model_optim, criterion, scheduler, scaler,
+                epoch, train_steps, time_now, best_epoch)
+            print('[refit] Epoch: {}/{}, Steps: {} | Train Loss: {:.7f} | {:.1f}s'.format(
+                epoch + 1, best_epoch, train_steps, train_loss, time.time() - epoch_time))
+
+            if self.args.lradj != 'TST':
+                adjust_learning_rate(model_optim, scheduler, epoch + 1, self.args)
+
+        # Overwrite the checkpoint so test() loads the refitted weights. test()
+        # reloads from disk when called with test=1, so leaving the stage-1
+        # checkpoint here would silently score the wrong model.
+        torch.save(self.model.state_dict(), path + '/' + 'checkpoint.pth')
+        print('[refit] done -- checkpoint now holds the train+val model')
         return self.model
 
     def test(self, setting, test=0):
